@@ -10,21 +10,21 @@ var can_bocor = false
 var can_meltdown = false
 var can_attacked_fish = false
 
+var status_lampu = false
+
 @onready var list_of_available_bocor_spot := $Node2D
 
 func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
-	bocor_mulai(GameManager.ZONE.BATHYPELAGIC)
-	GameManager.emit_signal("start_meltdown")
 
 func bocor_mulai(zone):
 	match zone:
-		GameManager.ZONE.BATHYPELAGIC:
+		GameManager.ZONE.MESOPELAGIC:
 			can_bocor = true
 			$bocor_timer.start()
-		GameManager.ZONE.ABYSSOPELAGIC:
+		GameManager.ZONE.BATHYPELAGIC:
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
@@ -55,7 +55,6 @@ func meltdown_done():
 	$menltdown_kill.stop()
 	$meltdown_timer.stop()
 	$meltdown_timer.start()
-		
 	if Input.is_key_label_pressed(KEY_T):
 		%Camera2D.shake()
 
@@ -64,7 +63,7 @@ func _on_explode_fish_timeout():
 
 func lights_switch(nyala):
 	# TODO: NYALAIN/MATIIN LAMPU @Fredo
-	pass
+	status_lampu = nyala
 
 func _process(delta):
 	if Input.is_key_label_pressed(KEY_R):
@@ -72,5 +71,6 @@ func _process(delta):
 
 func _on_attacked_fish_timer_timeout():
 	if can_attacked_fish:
-		GameManager.emit_signal("start_meltdown")
-		$meltdown_timer.wait_time = randi_range(30,40)
+		$attacked_fish_timer.wait_time = randi_range(30,40)
+		if not status_lampu:
+			GameManager.emit_signal("game_over",GameManager.DEATH_REASON.BIG_FISH)

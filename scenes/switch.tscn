@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cme66b2aa4w52"]
+[gd_scene load_steps=7 format=3 uid="uid://cme66b2aa4w52"]
 
 [ext_resource type="Script" path="res://scripts/switch.gd" id="1_rgfxr"]
+[ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="2_aki0j"]
+[ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="3_85346"]
+[ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="4_5iq2p"]
+[ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="5_2ipcu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lqhc"]
 size = Vector2(20, 89)
@@ -13,6 +17,40 @@ script = ExtResource("1_rgfxr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2lqhc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -47.0
+offset_top = -241.0
+offset_right = 48.0
+offset_bottom = -147.0
+alignment = 1
+
+[node name="p1_control" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/p1_control"]
+layout_mode = 2
+texture = ExtResource("2_aki0j")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/p1_control"]
+layout_mode = 2
+texture = ExtResource("3_85346")
+
+[node name="p2_control" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/p2_control"]
+layout_mode = 2
+texture = ExtResource("4_5iq2p")
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/p2_control"]
+layout_mode = 2
+texture = ExtResource("5_2ipcu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

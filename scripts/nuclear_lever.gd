@@ -22,6 +22,7 @@ var is_ready = false
 
 func _ready():
 	GameManager.connect("start_meltdown", _set_up)
+	next_lever.connect("button_hit", _on_next_lever_button_hit)
 
 func _set_up():
 	$alert.visible = true
@@ -30,10 +31,8 @@ func _set_up():
 		var that = 1 if this==2 else 2
 		self.going_to_show = this
 		next_lever.going_to_show = that
-		next_lever.connect("button_hit", _on_next_lever_button_hit)
 		can_take_input = true
 	else:
-		next_lever.connect("button_hit", _on_next_lever_button_hit)
 		can_take_input = false
 	count=0
 	player_idx = null
@@ -50,6 +49,8 @@ func _process(delta):
 		return
 	
 	if is_ready and next_lever.is_ready:
+		%p2_control.visible = false
+		%p1_control.visible = false
 		is_minigaming = true
 	
 	if is_minigaming:
@@ -88,10 +89,12 @@ func _on_area_2d_body_entered(body):
 		if body.player_number==2:
 			p2_entered = true
 			player2_triggerer = body
+			%p2_control.visible = true
 			player_idx = 2
 		elif body.player_number==1:
 			player1_triggerer = body
 			p1_entered = true
+			%p1_control.visible = true
 			player_idx = 1
 
 func _on_area_2d_body_exited(body):
@@ -99,9 +102,11 @@ func _on_area_2d_body_exited(body):
 		if body.player_number==2:
 			p2_entered = false
 			player2_triggerer = null
+			%p2_control.visible = false
 		elif body.player_number==1:
 			player1_triggerer = null
 			p1_entered = false
+			%p1_control.visible = false
 
 func _on_next_lever_button_hit():
 	if is_leader:

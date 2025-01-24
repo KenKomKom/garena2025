@@ -2,7 +2,7 @@ extends Node
 
 enum ZONE {EPIPELAGIC, MESOPELAGIC, BATHYPELAGIC, ABYSSOPELAGIC, HADAL}
 enum ZONE_DURATION {EPIPELAGIC=2, MESOPELAGIC=3, BATHYPELAGIC=3, ABYSSOPELAGIC=3, HADAL=3}
-enum DEATH_REASON {AIR, PRESSURE, MELTDOWN}
+enum DEATH_REASON {AIR, PRESSURE, MELTDOWN, BIG_FISH}
 
 var next_level
 
@@ -22,7 +22,7 @@ signal lights_switch(nyala)
 var zone_now = ZONE.EPIPELAGIC :
 	set(value):
 		zone_now = value
-		print(zone_now)
+		emit_signal("zone_reached", zone_now)
 
 func play_audio(file_path, pitch=1.0, volume = 0):
 	if not audiostream1.playing :

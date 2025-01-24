@@ -55,9 +55,6 @@ script = ExtResource("1_0syjc")
 position = Vector2(2.5, 1.5)
 shape = SubResource("RectangleShape2D_iwwoa")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-texture = ExtResource("2_ey5pk")
-
 [node name="Timer" type="Timer" parent="."]
 
 [node name="allert" type="Sprite2D" parent="Timer"]

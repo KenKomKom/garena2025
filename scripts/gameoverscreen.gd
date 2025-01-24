@@ -15,3 +15,5 @@ func end(why):
 			reason.text = "THE SHIP IMPLODED"
 		GameManager.DEATH_REASON.MELTDOWN:
 			reason.text = "YOU DIED OF RADIATION POISONING"
+		GameManager.DEATH_REASON.BIG_FISH:
+			reason.text = "THE SHIP CRASHED DUE TO UNFORSEEN CIRCUMSTENCES"

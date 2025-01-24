@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dksg0hhm72jl2"]
+[gd_scene load_steps=7 format=3 uid="uid://dksg0hhm72jl2"]
 
 [ext_resource type="Script" path="res://scripts/floor_changer.gd" id="1_g88n3"]
-[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="2_fmbfq"]
+[ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="3_57r44"]
+[ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="4_2fnb0"]
+[ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="5_0qfsx"]
+[ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="6_g6b53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p76t0"]
 size = Vector2(139, 76)
@@ -15,8 +18,39 @@ script = ExtResource("1_g88n3")
 position = Vector2(-0.5, -28)
 shape = SubResource("RectangleShape2D_p76t0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_fmbfq")
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -47.0
+offset_top = -241.0
+offset_right = 48.0
+offset_bottom = -147.0
+alignment = 1
+
+[node name="p1_control" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/p1_control"]
+layout_mode = 2
+texture = ExtResource("3_57r44")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/p1_control"]
+layout_mode = 2
+texture = ExtResource("4_2fnb0")
+
+[node name="p2_control" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/p2_control"]
+layout_mode = 2
+texture = ExtResource("5_0qfsx")
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/p2_control"]
+layout_mode = 2
+texture = ExtResource("6_g6b53")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

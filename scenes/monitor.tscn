@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp6q6gl14njn7"]
+[gd_scene load_steps=9 format=3 uid="uid://cp6q6gl14njn7"]
 
 [ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
 [ext_resource type="Texture2D" uid="uid://beh2hd8ri7vkh" path="res://monitor.png" id="2_i5fg5"]
 [ext_resource type="PackedScene" uid="uid://byuo3pffa5pbd" path="res://scenes/spinny_thing.tscn" id="3_o7nyx"]
+[ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="4_ht1cu"]
+[ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="5_jl754"]
+[ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="6_dscv4"]
+[ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="7_wrwqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ori3e"]
 size = Vector2(148, 170)
@@ -26,6 +30,40 @@ shape = SubResource("RectangleShape2D_ori3e")
 [node name="spinny_thing" parent="." instance=ExtResource("3_o7nyx")]
 visible = false
 position = Vector2(0, -244)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_left = -47.0
+offset_top = -241.0
+offset_right = 48.0
+offset_bottom = -147.0
+alignment = 1
+
+[node name="p1_control" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/p1_control"]
+layout_mode = 2
+texture = ExtResource("4_ht1cu")
+
+[node name="TextureRect2" type="TextureRect" parent="VBoxContainer/p1_control"]
+layout_mode = 2
+texture = ExtResource("5_jl754")
+
+[node name="p2_control" type="HBoxContainer" parent="VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="VBoxContainer/p2_control"]
+layout_mode = 2
+texture = ExtResource("6_dscv4")
+
+[node name="TextureRect4" type="TextureRect" parent="VBoxContainer/p2_control"]
+layout_mode = 2
+texture = ExtResource("7_wrwqh")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

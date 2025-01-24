@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://dvyoa6ctkyn4b" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
-[ext_resource type="PackedScene" path="res://scenes/camera_2d.tscn" id="12_2w4m7"]
+[ext_resource type="PackedScene" uid="uid://br0oecw3gpeef" path="res://scenes/camera_2d.tscn" id="12_2w4m7"]
 [ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
 [ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
 [ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
@@ -167,11 +167,11 @@ position = Vector2(421, 998)
 collision_mask = 2
 
 [node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1603, 994)
+position = Vector2(1603, 1038)
 next_floor = NodePath("../floor_changer2")
 
 [node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1582, 452)
+position = Vector2(1582, 481)
 next_floor = NodePath("../floor_changer")
 
 [node name="tanky_pick_up" parent="." instance=ExtResource("5_kbbad")]
@@ -226,7 +226,6 @@ wait_time = 5.0
 
 [node name="attacked_fish_timer" type="Timer" parent="."]
 wait_time = 20.0
-autostart = true
 
 [node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
 position = Vector2(94, 460)

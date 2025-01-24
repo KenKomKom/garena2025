@@ -52,7 +52,6 @@ layout_mode = 2
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_0y2ul")
 theme_override_styles/fill = SubResource("StyleBoxFlat_037se")
-value = 100.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
