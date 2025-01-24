@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=17 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -7,10 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
-[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
-[ext_resource type="PackedScene" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
-[ext_resource type="PackedScene" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
+[ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
+[ext_resource type="PackedScene" uid="uid://dvyoa6ctkyn4b" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
+[ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
+[ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
+[ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(1950, 104)
@@ -30,7 +33,6 @@ texture = ExtResource("2_rdm1g")
 
 [node name="lantai1" type="StaticBody2D" parent="."]
 position = Vector2(0, 948)
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1"]
 position = Vector2(965, 106)
@@ -54,7 +56,6 @@ shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="lantai2" type="StaticBody2D" parent="."]
 position = Vector2(0, 340)
-collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2"]
 position = Vector2(965, 177)
@@ -76,14 +77,17 @@ collision_layer = 3
 position = Vector2(-12, -231.5)
 shape = SubResource("RectangleShape2D_s75dw")
 
+[node name="Monitor" parent="." instance=ExtResource("12_a5rk3")]
+position = Vector2(557, 937)
+
 [node name="player2" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(491, 1063)
+position = Vector2(499, 461)
 collision_mask = 2
 script = ExtResource("3_cq5im")
 player_number = 2
 
 [node name="player" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(590, 494)
+position = Vector2(421, 998)
 collision_mask = 2
 
 [node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
@@ -136,6 +140,24 @@ visible = false
 [node name="bocor_timer" type="Timer" parent="."]
 wait_time = 7.0
 
+[node name="meltdown_timer" type="Timer" parent="."]
+wait_time = 40.0
+
+[node name="menltdown_kill" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(94, 460)
+next_lever = NodePath("../nuclear_lever2")
+is_leader = true
+
+[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(85, 998)
+next_lever = NodePath("../nuclear_lever")
+
+[node name="switch" parent="." instance=ExtResource("14_6nbof")]
+position = Vector2(1362, 339)
+
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D"]
@@ -169,3 +191,5 @@ position = Vector2(1261, 1000)
 position = Vector2(1371, 1000)
 
 [connection signal="timeout" from="bocor_timer" to="." method="_on_bocor_timer_timeout"]
+[connection signal="timeout" from="meltdown_timer" to="." method="_on_meltdown_timer_timeout"]
+[connection signal="timeout" from="menltdown_kill" to="." method="_on_menltdown_kill_timeout"]

@@ -13,9 +13,6 @@ var sudut_check
 
 signal success
 
-func _ready():
-	set_up(1)
-
 func set_up(plyaer_idx):
 	visible = true
 	var index = randi_range(0,len(textures)-1)

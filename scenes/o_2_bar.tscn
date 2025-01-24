@@ -26,10 +26,11 @@ vertical_alignment = 3
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 30)
 layout_mode = 2
-value = 70.0
+value = 100.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -17,6 +17,7 @@ func _physics_process(delta):
 	if can_move:
 		direction = Input.get_axis("leftp1", "rightp1")
 		if direction:
+			$AnimatedSprite2D.flip_h = true if direction<0	 else false
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
@@ -44,7 +45,6 @@ func set_move_to_target(target):
 
 func set_is_tanky(boolean):
 	is_tanky = boolean
-	print_debug(is_tanky)
 	if is_tanky:
 		#TODO PLAY ANIMATION PICK UP
 		pass

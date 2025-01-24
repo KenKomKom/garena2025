@@ -4,6 +4,7 @@ func _physics_process(delta):
 	if can_move:
 		direction = Input.get_axis("leftp2", "rightp2")
 		if direction:
+			$AnimatedSprite2D.flip_h = true if direction<0	 else false
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)

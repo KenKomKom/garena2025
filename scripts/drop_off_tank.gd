@@ -9,6 +9,7 @@ var player2_triggerer : Player
 var is_minigaming = false
 var hits = 0
 var done = false
+var status = false
 @onready var button_mash_bar = %ProgressBar
 @export var target_hits:=7
 
@@ -32,12 +33,17 @@ func _process(delta):
 			player2_triggerer.can_move = false
 			start_minigame()
 	if is_minigaming:
+		if p1_entered:
+			%p1_control.visible = true
+		if p2_entered:
+			%p2_control.visible = true
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 			hits+=1
 			button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
 			if hits==target_hits:
 				button_mash_bar.value=target_hits
 				is_minigaming=false
+				$"panah animasi".visible = false
 				if player1_triggerer:
 					player1_triggerer.can_move = true
 					set_status(true)
@@ -45,6 +51,10 @@ func _process(delta):
 					player2_triggerer.can_move = true
 					set_status(true)
 				%ProgressBar.visible = false
+				if p1_entered:
+					%p1_control.visible = false
+				if p2_entered:
+					%p2_control.visible = false
 
 func _on_body_entered(body):
 	if body is Player:
@@ -64,19 +74,22 @@ func _on_body_exited(body):
 			player1_triggerer = null
 			p1_entered = false
 
-func set_status(boolean):
+func set_status(boolean):	
 	if boolean:
-		$Timer.wait_time = randi_range(20,40) - GameManager.zone_now
+		if not status:
+			GameManager.emit_signal("add_air_depletion",3)
+		status = boolean
+		$Timer.wait_time = randi_range(30,40) - (GameManager.zone_now*2)
 		$Timer.start()
-		GameManager.emit_signal("add_air_depletion",5)
 		return
 	else:
+		if not status:
+			GameManager.emit_signal("add_air_depletion",-3)
+		status = boolean
 		# TODO: masukin ALLERT sprite
 		$Timer/allert.visible = true
 		%ProgressBar.visible = true
 		%ProgressBar.value = 0
-		print("tank minus")
-		GameManager.emit_signal("add_air_depletion",-5)
 
 func _on_timer_timeout():
 	set_status(false)
@@ -86,6 +99,7 @@ func start_minigame():
 	is_minigaming = true
 	hits = 0
 	%ProgressBar.visible = true
+	$"panah animasi".visible = true
 
 func _on_minus_timer_timeout():
 	if is_minigaming:

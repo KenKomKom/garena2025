@@ -8,9 +8,11 @@
 script = ExtResource("1_d2hog")
 
 [node name="spinny_half_circle" type="Sprite2D" parent="."]
+scale = Vector2(0.481646, 0.481646)
 texture = ExtResource("2_snxug")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 99)
+position = Vector2(-1.60933e-06, 45)
 rotation = 1.14008
+scale = Vector2(0.463471, 0.463471)
 texture = ExtResource("3_ooqv3")
