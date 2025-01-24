@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp6q6gl14njn7"]
+
+[ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ori3e"]
+
+[node name="valve_area" type="Area2D"]
+script = ExtResource("1_2f4ox")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ori3e")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
