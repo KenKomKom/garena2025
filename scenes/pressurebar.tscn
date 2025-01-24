@@ -1,24 +1,46 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4itx6auhrctj"]
+[gd_scene load_steps=4 format=3 uid="uid://d4itx6auhrctj"]
 
 [ext_resource type="Script" path="res://scripts/pressurebar.gd" id="1_uosc2"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0y2ul"]
+bg_color = Color(0.521569, 0.156863, 0, 1)
+draw_center = false
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_037se"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="pressurebar" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_uosc2")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 20
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 1
 text = "Pressure Meter"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -27,6 +49,10 @@ vertical_alignment = 1
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 30)
 layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_0y2ul")
+theme_override_styles/fill = SubResource("StyleBoxFlat_037se")
+value = 100.0
 show_percentage = false
 
 [node name="Timer" type="Timer" parent="."]

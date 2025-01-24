@@ -12,5 +12,6 @@ func add_air_depletion(value):
 
 func _on_timer_timeout():
 	o2bar.value = min(100,o2bar.value+value)
+	
 	if o2bar.value<=0:
 		GameManager.emit_signal("game_over", GameManager.DEATH_REASON.AIR)

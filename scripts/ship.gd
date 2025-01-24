@@ -14,6 +14,7 @@ var can_meltdown = false
 func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
+	GameManager.connect("lights_switch", lights_switch)
 	bocor_mulai(GameManager.ZONE.BATHYPELAGIC)
 	GameManager.emit_signal("start_meltdown")
 
@@ -45,10 +46,6 @@ func _on_meltdown_timer_timeout():
 		GameManager.emit_signal("start_meltdown")
 		$meltdown_timer.wait_time = randi_range(30,40)
 
-func _process(delta):
-	if Input.is_key_label_pressed(KEY_R):
-		get_tree().reload_current_scene()
-
 func _on_menltdown_kill_timeout():
 	GameManager.emit_signal("gameover", GameManager.DEATH_REASON.MELTDOWN)
 
@@ -56,3 +53,18 @@ func meltdown_done():
 	$menltdown_kill.stop()
 	$meltdown_timer.stop()
 	$meltdown_timer.start()
+		
+	if Input.is_key_label_pressed(KEY_T):
+		%Camera2D.shake()
+
+func _on_explode_fish_timeout():
+	$explodingfish.emitting = true
+
+func lights_switch(nyala):
+	# TODO: NYALAIN/MATIIN LAMPU @Fredo
+	pass
+
+func _process(delta):
+	if Input.is_key_label_pressed(KEY_R):
+		get_tree().reload_current_scene()
+

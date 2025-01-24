@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=25 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
 [ext_resource type="Texture2D" uid="uid://b5nxvkqweiudc" path="res://assets/image.png" id="2_rdm1g"]
 [ext_resource type="Script" path="res://player2.gd" id="3_cq5im"]
+[ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="3_hu48s"]
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
@@ -11,9 +12,58 @@
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://dvyoa6ctkyn4b" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
+[ext_resource type="PackedScene" path="res://scenes/camera_2d.tscn" id="12_2w4m7"]
 [ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
 [ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
 [ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
+
+[sub_resource type="Curve" id="Curve_wjsnp"]
+_data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qdu3f"]
+curve = SubResource("Curve_wjsnp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_47u78"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 0, 1)
+angle_min = -20.0
+angle_max = -5.0
+direction = Vector3(-1, -1, 0)
+spread = 20.0
+initial_velocity_min = 100.0
+initial_velocity_max = 481.81
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 100.0
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_qdu3f")
+
+[sub_resource type="Curve" id="Curve_bkyyh"]
+_data = [Vector2(0.0260417, 0.714286), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ggsr8"]
+curve = SubResource("Curve_bkyyh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h42xr"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 0, 1)
+angle_min = -40.0
+angle_max = -20.0
+direction = Vector3(-1, -1, 0)
+spread = 20.0
+initial_velocity_min = 200.0
+initial_velocity_max = 481.81
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 100.0
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_ggsr8")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(1950, 104)
@@ -30,6 +80,28 @@ metadata/_edit_vertical_guides_ = [730.0, 1544.0]
 position = Vector2(986.301, 549.25)
 scale = Vector2(1.63216, 1.63216)
 texture = ExtResource("2_rdm1g")
+
+[node name="explodingfish" type="GPUParticles2D" parent="."]
+position = Vector2(1534, 977)
+emitting = false
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_47u78")
+texture = ExtResource("3_hu48s")
+lifetime = 7.0
+speed_scale = 1.2
+explosiveness = 1.0
+randomness = 1.0
+interpolate = false
+
+[node name="fish" type="GPUParticles2D" parent="."]
+position = Vector2(1534, 977)
+amount = 7
+process_material = SubResource("ParticleProcessMaterial_h42xr")
+texture = ExtResource("3_hu48s")
+lifetime = 7.0
+speed_scale = 1.2
+randomness = 1.0
+interpolate = false
 
 [node name="lantai1" type="StaticBody2D" parent="."]
 position = Vector2(0, 948)
@@ -123,14 +195,16 @@ offset_bottom = 71.0
 grow_horizontal = 0
 
 [node name="o2bar" parent="CanvasLayer" instance=ExtResource("8_p8u8m")]
+offset_left = 54.0
 offset_top = 57.0
+offset_right = 54.0
 offset_bottom = 57.0
 
 [node name="pressurebar" parent="CanvasLayer" instance=ExtResource("9_o8ebk")]
-offset_left = 3.0
-offset_top = 95.0
-offset_right = 3.0
-offset_bottom = 95.0
+offset_left = 32.0
+offset_top = 127.0
+offset_right = 32.0
+offset_bottom = 127.0
 
 [node name="gameoverscreen" parent="CanvasLayer" instance=ExtResource("10_hj736")]
 visible = false
@@ -145,6 +219,10 @@ wait_time = 40.0
 
 [node name="menltdown_kill" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="explode_fish" type="Timer" parent="."]
+wait_time = 17.0
+autostart = true
 
 [node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
 position = Vector2(94, 460)
@@ -190,6 +268,10 @@ position = Vector2(1261, 1000)
 [node name="Marker2D10" type="Marker2D" parent="Node2D"]
 position = Vector2(1371, 1000)
 
+[node name="Camera2D" parent="." instance=ExtResource("12_2w4m7")]
+unique_name_in_owner = true
+
 [connection signal="timeout" from="bocor_timer" to="." method="_on_bocor_timer_timeout"]
 [connection signal="timeout" from="meltdown_timer" to="." method="_on_meltdown_timer_timeout"]
 [connection signal="timeout" from="menltdown_kill" to="." method="_on_menltdown_kill_timeout"]
+[connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]

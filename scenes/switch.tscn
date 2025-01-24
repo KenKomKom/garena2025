@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://cme66b2aa4w52"]
+[gd_scene load_steps=3 format=3 uid="uid://cme66b2aa4w52"]
+
+[ext_resource type="Script" path="res://scripts/switch.gd" id="1_rgfxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lqhc"]
 size = Vector2(20, 89)
 
 [node name="switch" type="Node2D"]
+script = ExtResource("1_rgfxr")
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_2lqhc")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

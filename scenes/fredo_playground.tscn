@@ -1,26 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5ioxbs1mrkd7"]
+[gd_scene load_steps=9 format=3 uid="uid://b5ioxbs1mrkd7"]
 
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="1_ihof7"]
+[ext_resource type="Shader" path="res://shaders/white_silhouette.gdshader" id="2_jq4gy"]
+[ext_resource type="Shader" path="res://shaders/outline.gdshader" id="2_r8wou"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="4_brj1x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0jxi4"]
+shader = ExtResource("2_r8wou")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/width = 2.46
+shader_parameter/pattern = 2
+shader_parameter/inside = false
+shader_parameter/add_margins = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2euqt"]
+shader = ExtResource("2_jq4gy")
+shader_parameter/power = 1.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_piodw"]
+polygon = PackedVector2Array(60.6, 18.6, 65.2, 33.8, 87, 22.8, 80.8, 6.8, 69.4374, 13.4376)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybydm"]
+shader = ExtResource("4_brj1x")
+shader_parameter/time = 0.0
+shader_parameter/speed = 1.0
+shader_parameter/frequency = 5.0
+shader_parameter/amplitude = 0.05
 
 [node name="FredoPlayground" type="Node2D"]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BG" type="Sprite2D" parent="."]
 scale = Vector2(5, 5)
 texture = ExtResource("1_ihof7")
 
-[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
-position = Vector2(-29, -9)
-occluder = SubResource("OccluderPolygon2D_piodw")
+[node name="Outline" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0jxi4")
+position = Vector2(737, -329)
+scale = Vector2(5, 5)
+texture = ExtResource("1_ihof7")
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(266, 160)
+[node name="Silhouette" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_2euqt")
+position = Vector2(695, 466)
 scale = Vector2(5, 5)
 texture = ExtResource("1_ihof7")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(271, 7.00002)
+position = Vector2(2.00006, 4)
 scale = Vector2(5, 5)
+shadow_enabled = true
+texture = ExtResource("1_ihof7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+position = Vector2(-260, -38)
+scale = Vector2(5, 5)
+occluder = SubResource("OccluderPolygon2D_piodw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ybydm")
+position = Vector2(1999, -311)
+scale = Vector2(10, 10)
 texture = ExtResource("1_ihof7")

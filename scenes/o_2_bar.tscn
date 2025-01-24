@@ -1,31 +1,56 @@
-[gd_scene load_steps=2 format=3 uid="uid://cnn2k8adfc1rb"]
+[gd_scene load_steps=4 format=3 uid="uid://cnn2k8adfc1rb"]
 
 [ext_resource type="Script" path="res://scripts/o_2_bar.gd" id="1_4uqsw"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8f7s"]
+bg_color = Color(0.168627, 0.337255, 0.584314, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.231373, 0.278431, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iggbo"]
+bg_color = Color(0.356863, 0.698039, 0.639216, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [node name="o2bar" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
 script = ExtResource("1_4uqsw")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme_override_constants/separation = 70
 alignment = 1
 
 [node name="Label" type="Label" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 1
 text = "O2 meter"
-vertical_alignment = 3
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(500, 30)
 layout_mode = 2
+size_flags_vertical = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_g8f7s")
+theme_override_styles/fill = SubResource("StyleBoxFlat_iggbo")
 value = 100.0
 show_percentage = false
 

@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://cq1g456qxh1sb"]
+
+[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_o2ouy"]
+
+[node name="mainmenu" type="CanvasLayer"]
+script = ExtResource("1_o2ouy")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 128
+text = "CHALLENGER DEEP"
+horizontal_alignment = 1
+
+[node name="start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 48
+text = "Start Game"
+flat = true
+
+[connection signal="button_up" from="VBoxContainer/start" to="." method="_on_start_button_up"]
