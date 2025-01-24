@@ -7,7 +7,7 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	else:
+	elif not can_move and is_climbing:
 		if direction:
 			velocity.y = direction.y * SPEED
 			velocity.x = direction.x * SPEED
@@ -19,5 +19,6 @@ func _physics_process(delta):
 			global_position = target_floor.global_position
 			target_floor = null
 			can_move = true
+			is_climbing = false
 			velocity.y = 0
 	move_and_slide()

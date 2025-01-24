@@ -1,33 +1,45 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=14 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
+[ext_resource type="Texture2D" uid="uid://b5nxvkqweiudc" path="res://assets/image.png" id="2_rdm1g"]
 [ext_resource type="Script" path="res://player2.gd" id="3_cq5im"]
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
+[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" uid="uid://drhyio41umx6v" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
+[ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
+[ext_resource type="PackedScene" uid="uid://dvyoa6ctkyn4b" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
-size = Vector2(1950, 175)
+size = Vector2(1950, 104)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s75dw"]
-size = Vector2(44, 483)
+size = Vector2(69, 717.5)
 
 [node name="ship" type="Node2D"]
 script = ExtResource("1_flnp7")
+metadata/_edit_horizontal_guides_ = [932.0]
+metadata/_edit_vertical_guides_ = [730.0, 1544.0]
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(986.301, 549.25)
+scale = Vector2(1.63216, 1.63216)
+texture = ExtResource("2_rdm1g")
 
 [node name="lantai1" type="StaticBody2D" parent="."]
 position = Vector2(0, 948)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1"]
-position = Vector2(965, 77.5)
+position = Vector2(965, 106)
 shape = SubResource("RectangleShape2D_qgx55")
 
 [node name="tembok_kiri" type="StaticBody2D" parent="lantai1"]
 position = Vector2(-19, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1/tembok_kiri"]
-position = Vector2(-12, -231.5)
+position = Vector2(0.5, -190)
 shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="tembok_kanan" type="StaticBody2D" parent="lantai1"]
@@ -41,14 +53,14 @@ shape = SubResource("RectangleShape2D_s75dw")
 position = Vector2(0, 340)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2"]
-position = Vector2(965, 77.5)
+position = Vector2(965, 177)
 shape = SubResource("RectangleShape2D_qgx55")
 
 [node name="tembok_kiri" type="StaticBody2D" parent="lantai2"]
 position = Vector2(-19, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2/tembok_kiri"]
-position = Vector2(-12, -231.5)
+position = Vector2(-12, -155.75)
 shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="tembok_kanan" type="StaticBody2D" parent="lantai2"]
@@ -59,29 +71,94 @@ position = Vector2(-12, -231.5)
 shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="player2" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(323, 937)
+position = Vector2(491, 1063)
 script = ExtResource("3_cq5im")
 player_number = 2
 
 [node name="player" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(226, 330)
+position = Vector2(590, 494)
 
 [node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(590, 937)
+position = Vector2(1603, 994)
 next_floor = NodePath("../floor_changer2")
 
 [node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1635, 327)
+position = Vector2(1582, 452)
 next_floor = NodePath("../floor_changer")
 
 [node name="tanky_pick_up" parent="." instance=ExtResource("5_kbbad")]
-position = Vector2(178, 283)
+position = Vector2(308, 415)
 
 [node name="drop_off_tank" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(1810, 288)
+position = Vector2(1804, 397)
 
 [node name="drop_off_tank2" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(1814, 895)
+position = Vector2(1797, 938)
 
 [node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(386, 898)
+position = Vector2(237, 951)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="depth_level" parent="CanvasLayer" instance=ExtResource("7_ufoe0")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -141.0
+offset_top = 48.0
+offset_right = -48.0
+offset_bottom = 71.0
+grow_horizontal = 0
+
+[node name="o2bar" parent="CanvasLayer" instance=ExtResource("8_p8u8m")]
+offset_top = 57.0
+offset_bottom = 57.0
+
+[node name="pressurebar" parent="CanvasLayer" instance=ExtResource("9_o8ebk")]
+offset_left = 3.0
+offset_top = 95.0
+offset_right = 3.0
+offset_bottom = 95.0
+
+[node name="gameoverscreen" parent="CanvasLayer" instance=ExtResource("10_hj736")]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="bocor_timer" type="Timer" parent="."]
+wait_time = 7.0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D"]
+position = Vector2(686, 454)
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D"]
+position = Vector2(806, 457)
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D"]
+position = Vector2(523, 452)
+
+[node name="Marker2D4" type="Marker2D" parent="Node2D"]
+position = Vector2(934, 454)
+
+[node name="Marker2D5" type="Marker2D" parent="Node2D"]
+position = Vector2(1059, 458)
+
+[node name="Marker2D6" type="Marker2D" parent="Node2D"]
+position = Vector2(956, 1002)
+
+[node name="Marker2D7" type="Marker2D" parent="Node2D"]
+position = Vector2(1060, 996)
+
+[node name="Marker2D8" type="Marker2D" parent="Node2D"]
+position = Vector2(1163, 996)
+
+[node name="Marker2D9" type="Marker2D" parent="Node2D"]
+position = Vector2(1261, 1000)
+
+[node name="Marker2D10" type="Marker2D" parent="Node2D"]
+position = Vector2(1371, 1000)
+
+[connection signal="timeout" from="bocor_timer" to="." method="_on_bocor_timer_timeout"]

@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 var p1_entered = false
 var p2_entered = false
@@ -6,14 +6,22 @@ var p2_entered = false
 var player1_triggerer : Player
 var player2_triggerer : Player
 
+const SPEED = 60
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	GameManager.emit_signal("add_air_depletion",-1)
+	GameManager.emit_signal("pressure_dir",1)
+
 func _process(delta):
-	var p1_temp = Input.is_action_pressed("leftp1") and Input.is_action_pressed("rightp1")
-	var p2_temp = Input.is_action_pressed("leftp2") and Input.is_action_pressed("rightp2")
-	if (p1_entered and p1_temp) or (p2_entered and p2_temp):
-		if player1_triggerer and p1_temp:
-			player1_triggerer.set_is_tanky(true)
-		if player2_triggerer and p2_temp:
-			player2_triggerer.set_is_tanky(true)
+	if p1_entered or p2_entered:
+		$ProgressBar.value+=delta*SPEED
+	else:
+		$ProgressBar.value=0
+	if $ProgressBar.value == 100:
+		$ProgressBar.value=0
+		GameManager.emit_signal("add_air_depletion",1)
+		queue_free()
 
 func _on_body_entered(body):
 	if body is Player:
