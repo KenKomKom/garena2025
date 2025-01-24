@@ -54,3 +54,4 @@ func set_is_tanky(boolean):
 
 func end(_why=null):
 	can_move = false
+	velocity = Vector2.ZERO

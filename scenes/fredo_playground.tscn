@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5ioxbs1mrkd7"]
+
+[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="1_ihof7"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_piodw"]
+
+[node name="FredoPlayground" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(5, 5)
+texture = ExtResource("1_ihof7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="Sprite2D"]
+position = Vector2(-29, -9)
+occluder = SubResource("OccluderPolygon2D_piodw")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(266, 160)
+scale = Vector2(5, 5)
+texture = ExtResource("1_ihof7")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(271, 7.00002)
+scale = Vector2(5, 5)
+texture = ExtResource("1_ihof7")

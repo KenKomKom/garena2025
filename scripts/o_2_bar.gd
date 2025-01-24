@@ -1,6 +1,6 @@
 extends Control
 
-var value=0
+var value = 5
 @onready var o2bar = %ProgressBar
 
 # Called when the node enters the scene tree for the first time.
@@ -8,7 +8,8 @@ func _ready():
 	GameManager.connect("add_air_depletion", add_air_depletion)
 
 func add_air_depletion(value):
-	self.value+=value
+	self.value+=min(100,value)
+	print(self.value)
 
 func _on_timer_timeout():
 	o2bar.value+=value

@@ -34,3 +34,7 @@ func _on_bocor_timer_timeout():
 		for i in range(randi_range(2,5)):
 			instantiate_bocor()
 		$bocor_timer.wait_time = randi_range(9,12)
+
+func _process(delta):
+	if Input.is_key_label_pressed(KEY_R):
+		get_tree().reload_current_scene()

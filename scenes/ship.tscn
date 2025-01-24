@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
-[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
-[ext_resource type="PackedScene" uid="uid://drhyio41umx6v" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
-[ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
-[ext_resource type="PackedScene" uid="uid://dvyoa6ctkyn4b" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
+[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
+[ext_resource type="PackedScene" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
+[ext_resource type="PackedScene" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(1950, 104)
@@ -107,7 +107,6 @@ position = Vector2(1797, 938)
 position = Vector2(237, 951)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="depth_level" parent="CanvasLayer" instance=ExtResource("7_ufoe0")]
 anchors_preset = 1

@@ -35,4 +35,4 @@ func _on_area_2d_body_exited(body):
 			p1_entered = false
 
 func start_minigame():
-	pass
+	print('monitor')

@@ -1,10 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cp6q6gl14njn7"]
+[gd_scene load_steps=4 format=3 uid="uid://cp6q6gl14njn7"]
 
 [ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
+[ext_resource type="Texture2D" uid="uid://beh2hd8ri7vkh" path="res://monitor.png" id="2_i5fg5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ori3e"]
 
-[node name="valve_area" type="Area2D"]
+[node name="Monitor" type="Area2D"]
 script = ExtResource("1_2f4ox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -15,3 +16,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="Monitor" type="Sprite2D" parent="."]
+texture = ExtResource("2_i5fg5")
