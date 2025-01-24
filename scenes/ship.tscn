@@ -62,12 +62,18 @@ script = ExtResource("3_cq5im")
 player_number = 2
 
 [node name="player" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(130, 937)
+position = Vector2(226, 330)
 
 [node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(474, 937)
+position = Vector2(1649, 935)
 next_floor = NodePath("../floor_changer2")
 
 [node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1809, 329)
+position = Vector2(1685, 327)
 next_floor = NodePath("../floor_changer")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Oxygen level: 100
+Pressure level:0"
