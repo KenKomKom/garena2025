@@ -68,7 +68,7 @@ func set_status(boolean):
 	if boolean:
 		$Timer.wait_time = randi_range(20,40) - GameManager.zone_now
 		$Timer.start()
-		GameManager.emit_signal("add_air_depletion",1)
+		GameManager.emit_signal("add_air_depletion",5)
 		return
 	else:
 		# TODO: masukin ALLERT sprite
@@ -76,7 +76,7 @@ func set_status(boolean):
 		%ProgressBar.visible = true
 		%ProgressBar.value = 0
 		print("tank minus")
-		GameManager.emit_signal("add_air_depletion",-1)
+		GameManager.emit_signal("add_air_depletion",-5)
 
 func _on_timer_timeout():
 	set_status(false)
