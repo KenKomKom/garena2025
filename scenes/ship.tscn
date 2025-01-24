@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=15 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
+[ext_resource type="PackedScene" uid="uid://br0oecw3gpeef" path="res://scenes/camera_2d.tscn" id="12_2w4m7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(1950, 104)
@@ -159,5 +160,8 @@ position = Vector2(1261, 1000)
 
 [node name="Marker2D10" type="Marker2D" parent="Node2D"]
 position = Vector2(1371, 1000)
+
+[node name="Camera2D" parent="." instance=ExtResource("12_2w4m7")]
+unique_name_in_owner = true
 
 [connection signal="timeout" from="bocor_timer" to="." method="_on_bocor_timer_timeout"]

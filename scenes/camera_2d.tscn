@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://br0oecw3gpeef"]
+
+[ext_resource type="Script" path="res://scripts/camera.gd" id="1_7pmmv"]
+
+[sub_resource type="Animation" id="Animation_lt2qr"]
+resource_name = "cam_shake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(-5, -3), Vector2(3, 3), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r65qs"]
+_data = {
+"cam_shake": SubResource("Animation_lt2qr")
+}
+
+[node name="Camera2D" type="Node2D"]
+position = Vector2(960, 520)
+script = ExtResource("1_7pmmv")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(5, 5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r65qs")
+}
