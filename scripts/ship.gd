@@ -8,6 +8,7 @@ var live_tank :=3
 var bocor_preload = preload("res://scenes/bocor.tscn")
 var can_bocor = false
 var can_meltdown = false
+var can_attacked_fish = false
 
 @onready var list_of_available_bocor_spot := $Node2D
 
@@ -25,6 +26,7 @@ func bocor_mulai(zone):
 			$bocor_timer.start()
 		GameManager.ZONE.ABYSSOPELAGIC:
 			can_meltdown = true
+			can_attacked_fish = true
 			$meltdown_timer.start()
 
 func instantiate_bocor():
@@ -68,3 +70,7 @@ func _process(delta):
 	if Input.is_key_label_pressed(KEY_R):
 		get_tree().reload_current_scene()
 
+func _on_attacked_fish_timer_timeout():
+	if can_attacked_fish:
+		GameManager.emit_signal("start_meltdown")
+		$meltdown_timer.wait_time = randi_range(30,40)

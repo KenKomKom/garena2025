@@ -93,6 +93,10 @@ explosiveness = 1.0
 randomness = 1.0
 interpolate = false
 
+[node name="explode_fish" type="Timer" parent="."]
+wait_time = 17.0
+autostart = true
+
 [node name="fish" type="GPUParticles2D" parent="."]
 position = Vector2(1534, 977)
 amount = 7
@@ -220,8 +224,8 @@ wait_time = 40.0
 [node name="menltdown_kill" type="Timer" parent="."]
 wait_time = 5.0
 
-[node name="explode_fish" type="Timer" parent="."]
-wait_time = 17.0
+[node name="attacked_fish_timer" type="Timer" parent="."]
+wait_time = 20.0
 autostart = true
 
 [node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
@@ -271,7 +275,8 @@ position = Vector2(1371, 1000)
 [node name="Camera2D" parent="." instance=ExtResource("12_2w4m7")]
 unique_name_in_owner = true
 
+[connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="timeout" from="bocor_timer" to="." method="_on_bocor_timer_timeout"]
 [connection signal="timeout" from="meltdown_timer" to="." method="_on_meltdown_timer_timeout"]
 [connection signal="timeout" from="menltdown_kill" to="." method="_on_menltdown_kill_timeout"]
-[connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
+[connection signal="timeout" from="attacked_fish_timer" to="." method="_on_attacked_fish_timer_timeout"]
