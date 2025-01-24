@@ -8,10 +8,12 @@ var live_tank :=3
 
 
 func _ready():
-	
-	pass
-
+	GameManager.connect("tank_minus", air_minus)
+	pass # Replace with function body.
 
 
 func _process(delta):
 	pass
+
+func air_minus():
+	live_tank-=1

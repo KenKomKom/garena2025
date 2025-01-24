@@ -7,9 +7,9 @@ var direction = Vector2.ZERO
 var can_move = true
 var target_floor = null
 
+var is_tanky = false
+
 func _physics_process(delta):
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	if can_move:
 		direction = Input.get_axis("leftp1", "rightp1")
 		if direction:
@@ -36,3 +36,13 @@ func set_move_to_target(target):
 	target_floor = target
 	direction = (target.global_position-global_position).normalized()
 	print(direction)
+
+func set_is_tanky(boolean):
+	is_tanky = boolean
+	print_debug(is_tanky)
+	if is_tanky:
+		#TODO PLAY ANIMATION PICK UP
+		pass
+	else :
+		#TODO PLAY ANIMATION DROP
+		pass

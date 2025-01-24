@@ -1,11 +1,10 @@
-extends Node2D
+extends Area2D
 
 var p1_entered = false
 var p2_entered = false
 
-var player1_triggerer = null
-var player2_triggerer = null
-@export var next_floor:Node2D
+var player1_triggerer : Player
+var player2_triggerer : Player
 
 func _process(delta):
 	var p1_temp = Input.is_action_just_pressed("leftp1") and Input.is_action_just_pressed("rightp1")
@@ -13,11 +12,11 @@ func _process(delta):
 	if (p1_entered and p1_temp) or \
 	(p2_entered and p2_temp):
 		if player1_triggerer and p1_temp:
-			player1_triggerer.set_move_to_target(next_floor)
+			player1_triggerer.set_is_tanky(true)
 		if player2_triggerer and p2_temp:
-			player2_triggerer.set_move_to_target(next_floor)
+			player2_triggerer.set_is_tanky(true)
 
-func _on_area_2d_body_entered(body):
+func _on_body_entered(body):
 	if body is Player:
 		if body.player_number==2:
 			p2_entered = true
@@ -26,7 +25,7 @@ func _on_area_2d_body_entered(body):
 			player1_triggerer = body
 			p1_entered = true
 
-func _on_area_2d_body_exited(body):
+func _on_body_exited(body):
 	if body is Player:
 		if body.player_number==2:
 			p2_entered = false

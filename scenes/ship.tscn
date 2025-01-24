@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=9 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
 [ext_resource type="Script" path="res://player2.gd" id="3_cq5im"]
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
+[ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
+[ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(1950, 175)
@@ -65,15 +67,21 @@ player_number = 2
 position = Vector2(226, 330)
 
 [node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1649, 935)
+position = Vector2(590, 937)
 next_floor = NodePath("../floor_changer2")
 
 [node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1685, 327)
+position = Vector2(1635, 327)
 next_floor = NodePath("../floor_changer")
 
-[node name="Label" type="Label" parent="."]
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Oxygen level: 100
-Pressure level:0"
+[node name="tanky_pick_up" parent="." instance=ExtResource("5_kbbad")]
+position = Vector2(178, 283)
+
+[node name="drop_off_tank" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(1810, 288)
+
+[node name="drop_off_tank2" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(1814, 895)
+
+[node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(386, 898)
