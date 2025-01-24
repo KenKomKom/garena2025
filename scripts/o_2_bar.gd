@@ -9,7 +9,6 @@ func _ready():
 
 func add_air_depletion(value):
 	self.value+=value
-	print(self.value)
 
 func _on_timer_timeout():
 	o2bar.value+=value

@@ -30,6 +30,7 @@ texture = ExtResource("2_rdm1g")
 
 [node name="lantai1" type="StaticBody2D" parent="."]
 position = Vector2(0, 948)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1"]
 position = Vector2(965, 106)
@@ -37,6 +38,7 @@ shape = SubResource("RectangleShape2D_qgx55")
 
 [node name="tembok_kiri" type="StaticBody2D" parent="lantai1"]
 position = Vector2(-19, 0)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1/tembok_kiri"]
 position = Vector2(0.5, -190)
@@ -44,6 +46,7 @@ shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="tembok_kanan" type="StaticBody2D" parent="lantai1"]
 position = Vector2(1978, 0)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1/tembok_kanan"]
 position = Vector2(-12, -231.5)
@@ -51,6 +54,7 @@ shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="lantai2" type="StaticBody2D" parent="."]
 position = Vector2(0, 340)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2"]
 position = Vector2(965, 177)
@@ -58,6 +62,7 @@ shape = SubResource("RectangleShape2D_qgx55")
 
 [node name="tembok_kiri" type="StaticBody2D" parent="lantai2"]
 position = Vector2(-19, 0)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2/tembok_kiri"]
 position = Vector2(-12, -155.75)
@@ -65,6 +70,7 @@ shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="tembok_kanan" type="StaticBody2D" parent="lantai2"]
 position = Vector2(1978, 0)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2/tembok_kanan"]
 position = Vector2(-12, -231.5)
@@ -72,11 +78,13 @@ shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="player2" parent="." instance=ExtResource("2_4b3cq")]
 position = Vector2(491, 1063)
+collision_mask = 2
 script = ExtResource("3_cq5im")
 player_number = 2
 
 [node name="player" parent="." instance=ExtResource("2_4b3cq")]
 position = Vector2(590, 494)
+collision_mask = 2
 
 [node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
 position = Vector2(1603, 994)
