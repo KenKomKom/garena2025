@@ -1,0 +1,23 @@
+extends Player
+
+func _physics_process(delta):
+	if can_move:
+		direction = Input.get_axis("leftp2", "rightp2")
+		if direction:
+			velocity.x = direction * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+	else:
+		if direction:
+			velocity.y = direction.y * SPEED
+			velocity.x = direction.x * SPEED
+		else:
+			velocity.y = move_toward(velocity.y, 0, SPEED)
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+		#print((target_floor.global_position-global_position).length())
+		if (target_floor.global_position-global_position).length()<10:
+			global_position = target_floor.global_position
+			target_floor = null
+			can_move = true
+			velocity.y = 0
+	move_and_slide()

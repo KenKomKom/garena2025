@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjho0pes2mkkk"]
+
+[ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
+[ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
+[ext_resource type="Script" path="res://player2.gd" id="3_cq5im"]
+[ext_resource type="PackedScene" uid="uid://bdel4b7e6xlqj" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
+size = Vector2(1950, 175)
+
+[node name="ship" type="Node2D"]
+script = ExtResource("1_flnp7")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 948)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(965, 77.5)
+shape = SubResource("RectangleShape2D_qgx55")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(0, 436)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(965, 77.5)
+shape = SubResource("RectangleShape2D_qgx55")
+
+[node name="player2" parent="." instance=ExtResource("2_4b3cq")]
+position = Vector2(323, 937)
+script = ExtResource("3_cq5im")
+player_number = 2
+
+[node name="player" parent="." instance=ExtResource("2_4b3cq")]
+position = Vector2(130, 937)
+
+[node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
+position = Vector2(474, 928)
+next_floor = NodePath("../floor_changer2")
+
+[node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
+position = Vector2(1809, 409)
+next_floor = NodePath("../floor_changer")

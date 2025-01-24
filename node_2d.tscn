@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://cyuoao2g3f0ul"]
+
+[ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="1_ahhdl"]
+[ext_resource type="Script" path="res://player2.gd" id="2_cd4e1"]
+
+[node name="control" type="VBoxContainer"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="atas" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 540)
+render_target_update_mode = 4
+
+[node name="player" parent="SubViewportContainer/atas" instance=ExtResource("1_ahhdl")]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="atas" type="SubViewport" parent="SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(1920, 540)
+render_target_update_mode = 4
+
+[node name="player" parent="SubViewportContainer2/atas" instance=ExtResource("1_ahhdl")]
+script = ExtResource("2_cd4e1")
