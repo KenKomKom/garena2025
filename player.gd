@@ -5,9 +5,13 @@ var direction = Vector2.ZERO
 @export var player_number=1
 
 var can_move = true
+var is_climbing = false
 var target_floor = null
 
 var is_tanky = false
+
+func _ready():
+	GameManager.connect("game_over", end)
 
 func _physics_process(delta):
 	if can_move:
@@ -16,7 +20,7 @@ func _physics_process(delta):
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	else:
+	elif not can_move and is_climbing:
 		if direction:
 			velocity.y = direction.y * SPEED
 			velocity.x = direction.x * SPEED
@@ -28,14 +32,15 @@ func _physics_process(delta):
 			global_position = target_floor.global_position
 			target_floor = null
 			can_move = true
+			is_climbing = false
 			velocity.y = 0
 	move_and_slide()
 
 func set_move_to_target(target):
 	can_move = false
+	is_climbing = true
 	target_floor = target
 	direction = (target.global_position-global_position).normalized()
-	print(direction)
 
 func set_is_tanky(boolean):
 	is_tanky = boolean
@@ -46,3 +51,6 @@ func set_is_tanky(boolean):
 	else :
 		#TODO PLAY ANIMATION DROP
 		pass
+
+func end(_why=null):
+	can_move = false
