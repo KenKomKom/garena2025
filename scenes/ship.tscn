@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=10 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
+[ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="7_hv73h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(1950, 175)
@@ -58,16 +59,8 @@ position = Vector2(1978, 0)
 position = Vector2(-12, -231.5)
 shape = SubResource("RectangleShape2D_s75dw")
 
-[node name="player2" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(323, 937)
-script = ExtResource("3_cq5im")
-player_number = 2
-
-[node name="player" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(226, 330)
-
 [node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(590, 937)
+position = Vector2(1632, 937)
 next_floor = NodePath("../floor_changer2")
 
 [node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
@@ -84,4 +77,19 @@ position = Vector2(1810, 288)
 position = Vector2(1814, 895)
 
 [node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(386, 898)
+position = Vector2(180, 870)
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Monitor" parent="." instance=ExtResource("7_hv73h")]
+position = Vector2(610, 840)
+
+[node name="player2" parent="." instance=ExtResource("2_4b3cq")]
+position = Vector2(323, 937)
+script = ExtResource("3_cq5im")
+player_number = 2
+
+[node name="player" parent="." instance=ExtResource("2_4b3cq")]
+position = Vector2(226, 330)
