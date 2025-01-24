@@ -13,9 +13,11 @@ func _process(delta):
 	var p2_temp = Input.is_action_just_pressed("leftp2") and Input.is_action_just_pressed("rightp2")
 	if can_take_input and ((p1_entered and p1_temp) or (p2_entered and p2_temp)):
 		if player1_triggerer and p1_temp:
+			player1_triggerer.can_move = false
 			start_minigame(1)
 			can_take_input = false
 		if player2_triggerer and p2_temp:
+			player2_triggerer.can_move = false
 			start_minigame(2)
 			can_take_input = false
 
@@ -47,4 +49,9 @@ func start_minigame(value):
 func _on_spinny_thing_success():
 	GameManager.emit_signal("add_pressure_value",-1)
 	get_tree().create_timer(0.1).timeout
+	can_take_input = true
+	if player1_triggerer:
+		player1_triggerer.can_move = true
+	if player2_triggerer:
+		player2_triggerer.can_move = true
 	can_take_input = true
