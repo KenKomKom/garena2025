@@ -24,7 +24,6 @@ func _process(delta):
 		$Sprite2D.material = GameManager.station_outline
 	else:
 		$Sprite2D.material = null
-			
 
 func _on_body_entered(body):
 	if body is Player:

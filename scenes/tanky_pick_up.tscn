@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cdhum33vaepwc"]
+[gd_scene load_steps=10 format=3 uid="uid://cdhum33vaepwc"]
 
 [ext_resource type="Script" path="res://scripts/tanky_pick_up.gd" id="1_w247v"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="3_jfdox"]
@@ -8,13 +8,34 @@
 [ext_resource type="Texture2D" uid="uid://cutn0x36jgjb4" path="res://assets/tanks supply.png" id="6_x1ken"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6o73"]
-size = Vector2(174, 97)
+size = Vector2(258, 150)
+
+[sub_resource type="Animation" id="Animation_2m3pi"]
+resource_name = "interact"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.7, 1.7), Vector2(1.345, 0.99), Vector2(1.285, 1.285)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxmvq"]
+_data = {
+"interact": SubResource("Animation_2m3pi")
+}
 
 [node name="tanky_pick_up" type="Area2D"]
 script = ExtResource("1_w247v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -2.5)
+position = Vector2(8, -28)
 shape = SubResource("RectangleShape2D_y6o73")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -52,8 +73,16 @@ layout_mode = 2
 texture = ExtResource("6_1maky")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(13, -28)
 scale = Vector2(1.285, 1.285)
 texture = ExtResource("6_x1ken")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cxmvq")
+}
+autoplay = "interact"
+speed_scale = 3.1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
