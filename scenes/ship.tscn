@@ -185,7 +185,7 @@ metadata/_edit_horizontal_guides_ = [932.0]
 metadata/_edit_vertical_guides_ = [730.0, 1544.0]
 
 [node name="Water" type="Sprite2D" parent="."]
-modulate = Color(0.28238, 0.241307, 0.677465, 1)
+modulate = Color(0.0128434, 0.0308231, 0.216842, 1)
 light_mask = 2
 visibility_layer = 2
 position = Vector2(1142, 649)
@@ -531,23 +531,23 @@ texture = ExtResource("16_clamp")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -392.0
-offset_top = 857.0
-offset_right = -117.0
-offset_bottom = 905.0
+offset_left = -491.0
+offset_top = 850.0
+offset_right = -216.0
+offset_bottom = 898.0
 grow_horizontal = 0
 
 [node name="o2bar" parent="CanvasLayer" instance=ExtResource("8_p8u8m")]
-offset_left = 30.0
-offset_top = 57.0
-offset_right = 30.0
-offset_bottom = 57.0
+offset_left = 204.0
+offset_top = 139.0
+offset_right = 204.0
+offset_bottom = 139.0
 
 [node name="pressurebar" parent="CanvasLayer" instance=ExtResource("9_o8ebk")]
-offset_left = 32.0
-offset_top = 156.0
-offset_right = 32.0
-offset_bottom = 156.0
+offset_left = 204.0
+offset_top = 215.0
+offset_right = 204.0
+offset_bottom = 215.0
 
 [node name="gameoverscreen" parent="CanvasLayer" instance=ExtResource("10_hj736")]
 visible = false
