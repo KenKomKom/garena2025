@@ -65,3 +65,4 @@ func end(_why=null):
 	can_move = false
 	is_climbing = false
 	velocity = Vector2.ZERO
+	$AnimatedSprite2D.play("p1_idle")

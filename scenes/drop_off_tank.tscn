@@ -84,6 +84,7 @@ scale = Vector2(1.285, 1.285)
 texture = ExtResource("3_ptuto")
 
 [node name="tank empty" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-34, -16)
 scale = Vector2(1.285, 1.285)
 texture = ExtResource("4_1ob1d")

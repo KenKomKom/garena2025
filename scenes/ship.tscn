@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/water_display.gd" id="5_arokv"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
-[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://clgf8cinhemr6" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
