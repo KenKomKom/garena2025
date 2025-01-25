@@ -32,7 +32,7 @@ anchors_preset = 0
 script = ExtResource("1_4uqsw")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
+wait_time = 2.0
 autostart = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -54,5 +54,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_g8f7s")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iggbo")
 value = 100.0
 show_percentage = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 391.0
+offset_top = 22.0
+offset_right = 431.0
+offset_bottom = 45.0
+text = "hoho"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

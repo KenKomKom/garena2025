@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcrt1g72qbv5b"]
+[gd_scene load_steps=4 format=3 uid="uid://cnbphfxc8qcrc"]
 
 [ext_resource type="Script" path="res://scripts/bocor.gd" id="1_1tvli"]
 [ext_resource type="Texture2D" uid="uid://birxt1tpn2tu2" path="res://scenes/crack.png" id="2_mtou2"]

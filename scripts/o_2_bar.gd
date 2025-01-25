@@ -13,6 +13,7 @@ func _ready():
 func add_air_depletion(value):
 	self.value = min(3, self.value + value)
 	print_debug(self.value)
+	$Label.text = $Label.text + " " + str(value)
 
 func _on_timer_timeout():
 	o2bar.value = min(100,o2bar.value+value)
@@ -20,7 +21,7 @@ func _on_timer_timeout():
 	o2bar.get_theme_stylebox("background").bg_color = Color(c.r-(value*2/255.0), c.g+(value/2/255.0), c.b+(value/2/255.0))
 	c = o2bar.get_theme_stylebox("fill").bg_color
 	o2bar.get_theme_stylebox("fill").bg_color = Color(c.r-(value*1.5/255.0), c.g+(value/255.0), c.b+(value/255.0))
-	#print(o2bar.get_theme_stylebox("background").bg_color)
+
 	if o2bar.value<=0 and emittable:
 		GameManager.emit_signal("game_over", GameManager.DEATH_REASON.AIR)
 

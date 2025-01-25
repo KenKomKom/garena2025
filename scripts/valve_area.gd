@@ -63,7 +63,7 @@ func start_minigame(value):
 	$spinny_thing.set_up(value)
 
 func _on_spinny_thing_success():
-	GameManager.emit_signal("add_pressure_value",-1)
+	GameManager.emit_signal("add_pressure_value",-2)
 	GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
 	if player1_triggerer:
 		player1_triggerer.can_move = true

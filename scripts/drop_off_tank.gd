@@ -101,18 +101,15 @@ func set_status(boolean):
 	if boolean:
 		if not status:
 			GameManager.emit_signal("add_air_depletion",3)
-			pass
 		status = boolean
 		$Timer.wait_time = randi_range(10,40) - (GameManager.zone_now*2)
 		$Timer.start()
-		
 		$"tank empty".visible = false
 		$"tank filled".visible = true
 		return
 	else:
 		if status:
 			GameManager.emit_signal("add_air_depletion",-3)
-			pass
 		status = boolean
 		# TODO: masukin ALLERT sprite
 		$"tank empty".visible = true
