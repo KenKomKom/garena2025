@@ -25,6 +25,9 @@ signal start_meltdown()
 signal meltdown_done()
 signal lights_switch(nyala)
 
+var station_outline = preload("res://shaders/stations/outline.tres")
+var station_silhouette = preload("res://shaders/stations/silhouette.tres")
+
 var zone_now = ZONE.EPIPELAGIC :
 	set(value):
 		zone_now = value

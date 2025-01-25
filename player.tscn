@@ -1,60 +1,60 @@
 [gd_scene load_steps=20 format=3 uid="uid://c03tl6n7esv2t"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_vai4p"]
-[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="2_0ab8e"]
-[ext_resource type="Texture2D" uid="uid://bx0qwtxxic4qn" path="res://assets/p1_walking.png" id="3_6kyl6"]
-[ext_resource type="Texture2D" uid="uid://bh5qajtdetfqk" path="res://assets/spritesheet_12.png" id="3_40yi2"]
-[ext_resource type="Texture2D" uid="uid://b76vqxug3pskk" path="res://assets/spritesheet_11.png" id="3_ssr3x"]
+[ext_resource type="Texture2D" uid="uid://bh5qajtdetfqk" path="res://assets/player_climb.png" id="2_tpkoy"]
+[ext_resource type="Texture2D" uid="uid://b76vqxug3pskk" path="res://assets/player_idle.png" id="3_qhc5s"]
+[ext_resource type="Texture2D" uid="uid://bx0qwtxxic4qn" path="res://assets/player_walking.png" id="4_j63fx"]
+[ext_resource type="Texture2D" uid="uid://70pgxvxr45pm" path="res://assets/tanky.png" id="5_87srg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6li"]
 size = Vector2(51, 228)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vpc8v"]
-atlas = ExtResource("3_40yi2")
+atlas = ExtResource("2_tpkoy")
 region = Rect2(0, 0, 93, 309)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nyu08"]
-atlas = ExtResource("3_40yi2")
+atlas = ExtResource("2_tpkoy")
 region = Rect2(93, 0, 93, 309)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8ukf"]
-atlas = ExtResource("3_ssr3x")
+atlas = ExtResource("3_qhc5s")
 region = Rect2(0, 0, 106, 281)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3fxik"]
-atlas = ExtResource("3_ssr3x")
+atlas = ExtResource("3_qhc5s")
 region = Rect2(106, 0, 106, 281)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lrgqg"]
-atlas = ExtResource("3_ssr3x")
+atlas = ExtResource("3_qhc5s")
 region = Rect2(212, 0, 106, 281)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bv0up"]
-atlas = ExtResource("3_ssr3x")
+atlas = ExtResource("3_qhc5s")
 region = Rect2(318, 0, 106, 281)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j2cdk"]
-atlas = ExtResource("3_6kyl6")
+atlas = ExtResource("4_j63fx")
 region = Rect2(0, 0, 178, 283)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xs3vy"]
-atlas = ExtResource("3_6kyl6")
+atlas = ExtResource("4_j63fx")
 region = Rect2(178, 0, 178, 283)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ch5al"]
-atlas = ExtResource("3_6kyl6")
+atlas = ExtResource("4_j63fx")
 region = Rect2(356, 0, 178, 283)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8c2vc"]
-atlas = ExtResource("3_6kyl6")
+atlas = ExtResource("4_j63fx")
 region = Rect2(534, 0, 178, 283)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i6cxd"]
-atlas = ExtResource("3_6kyl6")
+atlas = ExtResource("4_j63fx")
 region = Rect2(712, 0, 178, 283)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ccr"]
-atlas = ExtResource("3_6kyl6")
+atlas = ExtResource("4_j63fx")
 region = Rect2(890, 0, 178, 283)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t3bxi"]
@@ -117,11 +117,6 @@ collision_mask = 0
 up_direction = Vector2(0, 1)
 script = ExtResource("1_vai4p")
 
-[node name="tanky" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(0, -417)
-texture = ExtResource("2_0ab8e")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -116)
 shape = SubResource("RectangleShape2D_uj6li")
@@ -130,4 +125,11 @@ shape = SubResource("RectangleShape2D_uj6li")
 position = Vector2(0, -138)
 sprite_frames = SubResource("SpriteFrames_t3bxi")
 animation = &"p1_walk"
+frame_progress = 0.749836
 speed_scale = 2.0
+
+[node name="tanky" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(14, -151)
+rotation = 0.727937
+texture = ExtResource("5_87srg")

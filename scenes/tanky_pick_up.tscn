@@ -1,19 +1,54 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdhum33vaepwc"]
+[gd_scene load_steps=11 format=3 uid="uid://cdhum33vaepwc"]
 
 [ext_resource type="Script" path="res://scripts/tanky_pick_up.gd" id="1_w247v"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="3_jfdox"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="4_feg3c"]
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="5_h73fp"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="6_1maky"]
+[ext_resource type="Material" uid="uid://reqqsg2pfh05" path="res://shaders/stations/silhouette.tres" id="6_r1361"]
+[ext_resource type="Texture2D" uid="uid://cutn0x36jgjb4" path="res://assets/tanks supply.png" id="6_x1ken"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6o73"]
-size = Vector2(174, 97)
+size = Vector2(258, 150)
+
+[sub_resource type="Animation" id="Animation_2m3pi"]
+resource_name = "interact"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("6_r1361"), null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1.2), Vector2(1.345, 0.99), Vector2(1.285, 1.285)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cxmvq"]
+_data = {
+"interact": SubResource("Animation_2m3pi")
+}
 
 [node name="tanky_pick_up" type="Area2D"]
 script = ExtResource("1_w247v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2, -2.5)
+position = Vector2(8, -28)
 shape = SubResource("RectangleShape2D_y6o73")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -49,6 +84,18 @@ texture = ExtResource("5_h73fp")
 [node name="TextureRect4" type="TextureRect" parent="VBoxContainer/p2_control"]
 layout_mode = 2
 texture = ExtResource("6_1maky")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(13, -28)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("6_x1ken")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cxmvq")
+}
+autoplay = "interact"
+speed_scale = 3.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://scripts/water_display.gd" id="5_arokv"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
-[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://clgf8cinhemr6" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
@@ -270,6 +270,27 @@ shape = SubResource("RectangleShape2D_s75dw")
 [node name="Monitor" parent="." instance=ExtResource("12_a5rk3")]
 position = Vector2(557, 937)
 
+[node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
+position = Vector2(1586, 1038)
+next_floor = NodePath("../floor_changer2")
+
+[node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
+position = Vector2(1582, 481)
+next_floor = NodePath("../floor_changer")
+
+[node name="tanky_pick_up" parent="." instance=ExtResource("5_kbbad")]
+position = Vector2(381, 413)
+
+[node name="drop_off_tank" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(1804, 397)
+
+[node name="drop_off_tank2" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(1797, 938)
+
+[node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(237, 951)
+scale = Vector2(-1, 1)
+
 [node name="player2" parent="." instance=ExtResource("2_4b3cq")]
 position = Vector2(471, 484)
 collision_mask = 2
@@ -284,27 +305,6 @@ collision_mask = 2
 position = Vector2(1585, 511)
 scale = Vector2(1.27286, 1.27286)
 texture = ExtResource("12_ek5i2")
-
-[node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1586, 1038)
-next_floor = NodePath("../floor_changer2")
-
-[node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1582, 481)
-next_floor = NodePath("../floor_changer")
-
-[node name="tanky_pick_up" parent="." instance=ExtResource("5_kbbad")]
-position = Vector2(308, 415)
-
-[node name="drop_off_tank" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(1804, 397)
-
-[node name="drop_off_tank2" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(1797, 938)
-
-[node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(237, 951)
-scale = Vector2(-1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -335,8 +335,6 @@ visible = false
 
 [node name="manual" parent="CanvasLayer" instance=ExtResource("15_akuct")]
 unique_name_in_owner = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="bocor_timer" type="Timer" parent="."]
 wait_time = 7.0
