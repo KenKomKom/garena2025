@@ -1,6 +1,6 @@
 extends PointLight2D
 
-# @Ken USAGE:
+# USAGE:
 # %SubmarineMain.is_on = is_light_on
 # %SubmarineMain.is_meltdown = is_meltdown
 

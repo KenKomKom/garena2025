@@ -11,6 +11,7 @@ var can_meltdown = false
 var can_attacked_fish = false
 
 var status_lampu = false
+var is_aggresive_fish_in_death_area = false
 
 @onready var list_of_available_bocor_spot := $Node2D
 
@@ -25,6 +26,7 @@ func bocor_mulai(zone):
 	match zone:
 		GameManager.ZONE.EPIPELAGIC:
 			# Level 1
+			can_attacked_fish = true # TODO: HAPUS
 			var p = %manual as Manual
 			p.add_text(p.EVENTS.TANK)
 			p.add_text(p.EVENTS.MONITOR)
@@ -96,9 +98,36 @@ func lights_switch(nyala):
 func _process(delta):
 	if Input.is_key_label_pressed(KEY_R):
 		get_tree().reload_current_scene()
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_attacked_fish_timer_timeout()
+		
+	# check if fish is in death area
+	if is_aggresive_fish_in_death_area and status_lampu:
+		GameManager.emit_signal("game_over",GameManager.DEATH_REASON.BIG_FISH)
 
 func _on_attacked_fish_timer_timeout():
 	if can_attacked_fish:
 		$attacked_fish_timer.wait_time = randi_range(30,40) - GameManager.zone_now*2
-		if not status_lampu:
-			GameManager.emit_signal("game_over",GameManager.DEATH_REASON.BIG_FISH)
+		
+		var tween = get_tree().create_tween()
+		const mid = Vector2(960, 540)
+		const range_anim = 3000
+		const duration = 10
+		var rand_angle = randf_range(-PI/4, PI/4)
+		if randi() % 2 == 1:
+			# dari ke kiri mau ke kanan
+			$Fishes/Fish.rotation = rand_angle
+			$Fishes/Fish/Sprite2D.flip_h = false
+		else:
+			# dari kanan mau ke kiri
+			$Fishes/Fish.rotation = rand_angle
+			$Fishes/Fish/Sprite2D.flip_h = true
+			rand_angle += PI
+			
+		$Fishes/Fish.position = mid + Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim
+		
+		tween.tween_property($Fishes/Fish, "position", Vector2(mid - Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim), duration).set_trans(Tween.TRANS_LINEAR)
+		#tween.tween_callback($Fishes/Fish.queue_free)
+		
+		
