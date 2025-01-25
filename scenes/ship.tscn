@@ -552,7 +552,7 @@ texture_scale = 45.0
 
 [node name="SeaLight" type="PointLight2D" parent="Lightnings"]
 visibility_layer = 2
-position = Vector2(1174, 106)
+position = Vector2(942, 485)
 energy = 0.21
 range_item_cull_mask = 3
 shadow_enabled = true

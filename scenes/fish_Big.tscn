@@ -1,26 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://6oumufnovahp"]
+[gd_scene load_steps=5 format=3 uid="uid://dapykj3k7g2j0"]
 
-[ext_resource type="Script" path="res://scripts/AggresiveFish.gd" id="1_q2vib"]
-[ext_resource type="Texture2D" uid="uid://bc7pu86rgsqf" path="res://assets/Fish_OK_2.png" id="2_6uar5"]
+[ext_resource type="Script" path="res://scripts/AggresiveFish.gd" id="1_kpa0y"]
+[ext_resource type="Texture2D" uid="uid://c5oy5m8teu5b5" path="res://assets/Fish_Big_2.png" id="2_p2w6s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojtcg"]
-radius = 86.9999
-height = 934.0
+radius = 215.0
+height = 2166.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_233gk"]
+polygon = PackedVector2Array(-1407, -196, -1308, -313, -1090, -331, -896, -425, -92, -434, 137, -373, 366, -304, 590, -203, 689, -142, 801, -137, 858, -49, 693, 71, 509, 148, 310, 206, -430, 330, -689, 339, -848, 285, -996, 321, -1225, 274, -1462, 281, -1554, 253, -1638, 275, -1644, 207, -1658, 204, -1646, 86, -1620, 78, -1564, -111, -1558, -140, -1601, -109, -1558, -154, -1534, -172, -1496, -246, -1413, -322, -1279, -407, -1407, -310, -1480, -218, -1492, -196, -1561, -11, -1563, 57, -1525, -40, -1545, 71, -1533, 98, -1509, 105, -1511, 9, -1488, -31, -1490, 58, -1481, 102, -1449, 104, -1430, -8, -1413, 115, -1373, 112, -1368, 58, -1354, 120, -1331, 126, -1319, 78, -1304, 124, -1268, 129, -1261, 86, -1249, 129, -1224, 127, -1224, 91, -1205, 128, -1162, 128, -1244, 51, -1299, 16, -1317, 9, -1343, 74, -1348, 18, -1333, -27, -1381, -67, -1400, 14, -1402, -37, -1426, 9, -1396, -90, -1418, -121, -1487, 21, -1483, -75, -1452, -131, -1445, -148, -1488, -168, -1507, -185, -1464, -203)
 
 [node name="Fish Big" type="Area2D"]
-position = Vector2(2928, 481)
-script = ExtResource("1_q2vib")
+script = ExtResource("1_kpa0y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(36, 145)
-texture = ExtResource("2_6uar5")
+position = Vector2(21, -42)
+texture = ExtResource("2_p2w6s")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-12, -42)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ojtcg")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+occluder = SubResource("OccluderPolygon2D_233gk")
+occluder_light_mask = 2
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

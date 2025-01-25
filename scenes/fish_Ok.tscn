@@ -1,26 +1,35 @@
-[gd_scene load_steps=4 format=3 uid="uid://dapykj3k7g2j0"]
+[gd_scene load_steps=5 format=3 uid="uid://6oumufnovahp"]
 
-[ext_resource type="Script" path="res://scripts/AggresiveFish.gd" id="1_0frhu"]
-[ext_resource type="Texture2D" uid="uid://c5oy5m8teu5b5" path="res://assets/Fish_Big_2.png" id="2_rfyqt"]
+[ext_resource type="Script" path="res://scripts/AggresiveFish.gd" id="1_qkcsu"]
+[ext_resource type="Texture2D" uid="uid://bc7pu86rgsqf" path="res://assets/Fish_OK_2.png" id="2_jylmo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojtcg"]
-radius = 215.0
-height = 2166.0
+radius = 86.9999
+height = 934.0
 
-[node name="Fish Big" type="Area2D"]
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7jsg7"]
+polygon = PackedVector2Array(-644, -23, -593, -115, -548, -186, -349, -235, -178, -238, -134, -237, 158, -188, 459, -65, 675, 59, 804, 191, 718, 132, 497, 61, 231, 16, -101, 24, -246, 76, -304, 117, -392, 136, -443, 176, -510, 200, -590, 190, -638, 171, -609, 167, -571, 104, -561, 45, -571, -7, -590, -41, -602, -52, -625, -16, -615, 29)
+
+[node name="Fish Ok" type="Area2D"]
 position = Vector2(2928, 481)
-script = ExtResource("1_0frhu")
+script = ExtResource("1_qkcsu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(363, -53)
-texture = ExtResource("2_rfyqt")
+position = Vector2(36, 145)
+texture = ExtResource("2_jylmo")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-12, -42)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ojtcg")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+occluder = SubResource("OccluderPolygon2D_7jsg7")
+occluder_light_mask = 2
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
