@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://dapykj3k7g2j0"]
+
+[ext_resource type="Script" path="res://scripts/AggresiveFish.gd" id="1_0frhu"]
+[ext_resource type="Texture2D" uid="uid://c5oy5m8teu5b5" path="res://assets/Fish_Big_2.png" id="2_rfyqt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojtcg"]
+radius = 215.0
+height = 2166.0
+
+[node name="Fish Big" type="Area2D"]
+position = Vector2(2928, 481)
+script = ExtResource("1_0frhu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(363, -53)
+texture = ExtResource("2_rfyqt")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-12, -42)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_ojtcg")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
