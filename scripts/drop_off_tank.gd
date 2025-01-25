@@ -13,7 +13,7 @@ var status = true
 var can_trigger = true
 
 @onready var button_mash_bar = %ProgressBar
-@export var target_hits:=15
+@export var target_hits:=45
 
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
