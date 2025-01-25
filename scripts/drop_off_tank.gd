@@ -35,14 +35,12 @@ func _process(delta):
 			player2_triggerer.set_is_tanky(false)
 			player2_triggerer.can_move = false
 			start_minigame()
-	
 	if is_minigaming:
 		if p1_entered:
 			%p1_control.visible = true
 		if p2_entered:
 			%p2_control.visible = true
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
-			#GameManager.play_audio("res://audio/wheel-spin-on-gravel-106641.ogg", 1, -30)
 			hits+=1
 			button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
 			$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees +10,0.5)

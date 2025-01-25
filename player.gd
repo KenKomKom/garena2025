@@ -61,12 +61,6 @@ func set_move_to_target(target):
 
 func set_is_tanky(boolean):
 	is_tanky = boolean
-	if is_tanky:
-		#TODO PLAY ANIMATION PICK UP
-		pass
-	else :
-		#TODO PLAY ANIMATION DROP
-		pass
 
 func end(_why=null):
 	is_dead = true
