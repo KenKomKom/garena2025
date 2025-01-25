@@ -28,6 +28,7 @@ script = ExtResource("1_7pmmv")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(5, 5)
+zoom = Vector2(0.95, 0.95)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

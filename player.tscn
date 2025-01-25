@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c03tl6n7esv2t"]
+[gd_scene load_steps=16 format=3 uid="uid://c03tl6n7esv2t"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_vai4p"]
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="2_0ab8e"]
@@ -45,6 +45,10 @@ _data = {
 "p1_walk": SubResource("Animation_wxu64")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cf31"]
+atlas = ExtResource("3_6kyl6")
+region = Rect2(890, 0, 178, 283)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_1f7sp"]
 atlas = ExtResource("3_6kyl6")
 region = Rect2(0, 0, 178, 283)
@@ -71,6 +75,14 @@ region = Rect2(890, 0, 178, 283)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t3bxi"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cf31")
+}],
+"loop": true,
+"name": &"p1_idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1f7sp")
@@ -119,4 +131,4 @@ autoplay = "p1_walk"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -138)
 sprite_frames = SubResource("SpriteFrames_t3bxi")
-animation = &"p1_walk"
+animation = &"p1_idle"

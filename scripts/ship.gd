@@ -18,11 +18,14 @@ func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
+	
+	bocor_mulai(GameManager.ZONE.BATHYPELAGIC) # TODO: HAPUS, DEBUGGING PURPOSES
 
 func bocor_mulai(zone):
 	match zone:
 		GameManager.ZONE.MESOPELAGIC:
 			can_bocor = true
+			can_meltdown = true # TODO: HAPUS
 			$bocor_timer.start()
 		GameManager.ZONE.BATHYPELAGIC:
 			can_meltdown = true
@@ -46,7 +49,8 @@ func _on_bocor_timer_timeout():
 func _on_meltdown_timer_timeout():
 	if can_meltdown:
 		GameManager.emit_signal("start_meltdown")
-		$meltdown_timer.wait_time = randi_range(30,40)
+		print("meltdown")
+		$meltdown_timer.wait_time = 3 #randi_range(30,40)
 
 func _on_menltdown_kill_timeout():
 	GameManager.emit_signal("gameover", GameManager.DEATH_REASON.MELTDOWN)
@@ -62,8 +66,9 @@ func _on_explode_fish_timeout():
 	$explodingfish.emitting = true
 
 func lights_switch(nyala):
-	# TODO: NYALAIN/MATIIN LAMPU @Fredo
+	# @Kenichi TODO selesaikan ini, light harusnya tidak on off ketika player gantian klik switch
 	status_lampu = nyala
+
 
 func _process(delta):
 	if Input.is_key_label_pressed(KEY_R):

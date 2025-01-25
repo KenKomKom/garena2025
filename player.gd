@@ -17,9 +17,11 @@ func _physics_process(delta):
 	if can_move:
 		direction = Input.get_axis("leftp1", "rightp1")
 		if direction:
+			$AnimatedSprite2D.play("p1_walk")
 			$AnimatedSprite2D.flip_h = true if direction<0	 else false
 			velocity.x = direction * SPEED
 		else:
+			$AnimatedSprite2D.play("p1_idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	elif not can_move and is_climbing:
 		if direction:

@@ -1,8 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=28 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
-[ext_resource type="Texture2D" uid="uid://b5nxvkqweiudc" path="res://assets/image.png" id="2_rdm1g"]
+[ext_resource type="Texture2D" uid="uid://c6y78j54n28q2" path="res://assets/image2.png" id="3_bh5y7"]
 [ext_resource type="Script" path="res://player2.gd" id="3_cq5im"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="3_hu48s"]
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
@@ -16,30 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
 [ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
 [ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
-
-[sub_resource type="Curve" id="Curve_wjsnp"]
-_data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_qdu3f"]
-curve = SubResource("Curve_wjsnp")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_47u78"]
-particle_flag_rotate_y = true
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(500, 0, 1)
-angle_min = -20.0
-angle_max = -5.0
-direction = Vector3(-1, -1, 0)
-spread = 20.0
-initial_velocity_min = 100.0
-initial_velocity_max = 481.81
-gravity = Vector3(0, 0, 0)
-radial_accel_max = 100.0
-scale_min = 0.2
-scale_max = 0.4
-scale_curve = SubResource("CurveTexture_qdu3f")
+[ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="17_hs2jj"]
+[ext_resource type="Script" path="res://scripts/SubmarineMainLight.gd" id="18_e7lqm"]
 
 [sub_resource type="Curve" id="Curve_bkyyh"]
 _data = [Vector2(0.0260417, 0.714286), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -65,21 +43,70 @@ scale_min = 0.2
 scale_max = 0.4
 scale_curve = SubResource("CurveTexture_ggsr8")
 
+[sub_resource type="Curve" id="Curve_wjsnp"]
+_data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qdu3f"]
+curve = SubResource("Curve_wjsnp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_47u78"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 0, 1)
+angle_min = -20.0
+angle_max = -5.0
+direction = Vector3(-1, -1, 0)
+spread = 20.0
+initial_velocity_min = 100.0
+initial_velocity_max = 481.81
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 100.0
+scale_min = 0.2
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_qdu3f")
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(1950, 104)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s75dw"]
 size = Vector2(69, 717.5)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mfdjc"]
+polygon = PackedVector2Array(1191, 928, 1317, 713, 1453, 739, 1428, 905)
+
 [node name="ship" type="Node2D"]
 script = ExtResource("1_flnp7")
 metadata/_edit_horizontal_guides_ = [932.0]
 metadata/_edit_vertical_guides_ = [730.0, 1544.0]
 
-[node name="Image" type="Sprite2D" parent="."]
+[node name="Water" type="Sprite2D" parent="."]
+modulate = Color(0.28238, 0.241307, 0.677465, 1)
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1142, 649)
+scale = Vector2(100, 100)
+texture = ExtResource("17_hs2jj")
+
+[node name="fish" type="GPUParticles2D" parent="."]
+position = Vector2(1534, 977)
+amount = 7
+process_material = SubResource("ParticleProcessMaterial_h42xr")
+texture = ExtResource("3_hu48s")
+lifetime = 7.0
+speed_scale = 1.2
+randomness = 1.0
+interpolate = false
+
+[node name="Submarine" type="Sprite2D" parent="."]
 position = Vector2(986.301, 549.25)
 scale = Vector2(1.63216, 1.63216)
-texture = ExtResource("2_rdm1g")
+texture = ExtResource("3_bh5y7")
+
+[node name="explode_fish" type="Timer" parent="."]
+wait_time = 17.0
+autostart = true
 
 [node name="explodingfish" type="GPUParticles2D" parent="."]
 position = Vector2(1534, 977)
@@ -90,20 +117,6 @@ texture = ExtResource("3_hu48s")
 lifetime = 7.0
 speed_scale = 1.2
 explosiveness = 1.0
-randomness = 1.0
-interpolate = false
-
-[node name="explode_fish" type="Timer" parent="."]
-wait_time = 17.0
-autostart = true
-
-[node name="fish" type="GPUParticles2D" parent="."]
-position = Vector2(1534, 977)
-amount = 7
-process_material = SubResource("ParticleProcessMaterial_h42xr")
-texture = ExtResource("3_hu48s")
-lifetime = 7.0
-speed_scale = 1.2
 randomness = 1.0
 interpolate = false
 
@@ -273,6 +286,62 @@ position = Vector2(1371, 1000)
 
 [node name="Camera2D" parent="." instance=ExtResource("12_2w4m7")]
 unique_name_in_owner = true
+
+[node name="Lightnings" type="Node2D" parent="."]
+
+[node name="SubmarineAmbient" type="PointLight2D" parent="Lightnings"]
+scale = Vector2(100, 100)
+energy = 0.81
+blend_mode = 1
+texture = ExtResource("17_hs2jj")
+
+[node name="SubmarineMain" type="PointLight2D" parent="Lightnings"]
+unique_name_in_owner = true
+position = Vector2(1194, -2430)
+scale = Vector2(100, 100)
+color = Color(0.541, 1, 0.824, 1)
+energy = 0.81
+shadow_enabled = true
+texture = ExtResource("17_hs2jj")
+texture_scale = 10.0
+script = ExtResource("18_e7lqm")
+normal_color = Color(0.541176, 1, 0.823529, 1)
+emergency_color = Color(0.500741, 1.2153e-06, 1.44392e-07, 1)
+
+[node name="SeaAmbient" type="PointLight2D" parent="Lightnings"]
+visible = false
+light_mask = 3
+position = Vector2(1192, 426)
+scale = Vector2(100, 100)
+energy = 0.0
+blend_mode = 1
+range_item_cull_mask = 2
+shadow_item_cull_mask = 3
+texture = ExtResource("17_hs2jj")
+texture_scale = 45.0
+
+[node name="SeaLight" type="PointLight2D" parent="Lightnings"]
+visibility_layer = 2
+position = Vector2(1014, 389)
+energy = 0.21
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_color = Color(1, 1, 1, 0)
+shadow_item_cull_mask = 3
+texture = ExtResource("17_hs2jj")
+texture_scale = 45.0
+
+[node name="TesObjSubmarine" type="LightOccluder2D" parent="Lightnings"]
+visible = false
+position = Vector2(213, -188)
+occluder = SubResource("OccluderPolygon2D_mfdjc")
+
+[node name="TesObjSea" type="LightOccluder2D" parent="Lightnings"]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-134, -108)
+occluder = SubResource("OccluderPolygon2D_mfdjc")
+occluder_light_mask = 2
 
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="timeout" from="bocor_timer" to="." method="_on_bocor_timer_timeout"]
