@@ -5,6 +5,7 @@ var p2_entered = false
 
 var player1_triggerer : Player
 var player2_triggerer : Player
+var can_trigger = true
 
 const SPEED = 80
 
@@ -12,9 +13,13 @@ const SPEED = 80
 func _ready():
 	GameManager.emit_signal("add_air_depletion",-1)
 	GameManager.emit_signal("add_pressure_value",1)
+	GameManager.connect("lights_switch",lights_switch)
+
+func lights_switch(status):
+	can_trigger = status
 
 func _process(delta):
-	if (p1_entered and not player1_triggerer.is_tanky) or (p2_entered and not player2_triggerer.is_tanky) :
+	if (p1_entered and not player1_triggerer.is_tanky) or (p2_entered and not player2_triggerer.is_tanky) and can_trigger:
 		$ProgressBar.value+=delta*SPEED
 	else:
 		$ProgressBar.value=0

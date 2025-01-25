@@ -17,11 +17,13 @@ signal button_hit()
 var count = 0
 var can_take_input = true
 var player_idx
+var can_trigger = false
 
 var is_ready = false
 
 func _ready():
 	GameManager.connect("start_meltdown", _set_up)
+	GameManager.connect("lights_switch", lights_switch)
 	next_lever.connect("button_hit", _on_next_lever_button_hit)
 
 func _set_up():
@@ -37,11 +39,14 @@ func _set_up():
 	count=0
 	player_idx = null
 
+func lights_switch(status):
+	can_trigger = status
+
 func _process(delta):
 	if $alert.visible:
 		var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 		var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
-		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
+		if (p1_entered and p1_temp) or (p2_entered and p2_temp) and can_trigger:
 			if p1_entered:
 				GameManager.reset_p1()
 				player1_triggerer.can_move = false

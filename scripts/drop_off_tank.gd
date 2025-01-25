@@ -10,10 +10,13 @@ var is_minigaming = false
 var hits = 0
 var done = false
 var status = false
+var can_trigger = true
+
 @onready var button_mash_bar = %ProgressBar
 @export var target_hits:=15
 
 func _ready():
+	GameManager.connect("lights_switch",lights_switch)
 	$Timer.wait_time = randi_range(12,40) - GameManager.zone_now
 	$Timer.start()
 	button_mash_bar.max_value = target_hits
@@ -22,8 +25,7 @@ func _ready():
 func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
-	if (p1_entered and p1_temp) or \
-	(p2_entered and p2_temp):
+	if (p1_entered and p1_temp) or (p2_entered and p2_temp) and can_trigger:
 		if player1_triggerer and player1_triggerer.is_tanky and p1_temp:
 			player1_triggerer.set_is_tanky(false)
 			player1_triggerer.can_move = false
@@ -63,12 +65,12 @@ func _on_body_entered(body):
 		if body.player_number==2:
 			p2_entered = true
 			player2_triggerer = body
-			if player2_triggerer.is_tanky:
+			if player2_triggerer.is_tanky and can_trigger:
 				%p2_control.visible = true
 		elif body.player_number==1:
 			player1_triggerer = body
 			p1_entered = true
-			if player1_triggerer.is_tanky:
+			if player1_triggerer.is_tanky and can_trigger:
 				%p1_control.visible = true
 
 func _on_body_exited(body):
@@ -115,3 +117,6 @@ func _on_minus_timer_timeout():
 		button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
 		$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees - 10,0.5)
 		$minus_timer.start()
+
+func lights_switch(status):
+	can_trigger = status
