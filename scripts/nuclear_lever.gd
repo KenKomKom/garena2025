@@ -39,12 +39,14 @@ func _set_up():
 
 func _process(delta):
 	if $alert.visible:
-		var p1_temp = Input.is_action_just_pressed("leftp1") and Input.is_action_just_pressed("rightp1")
-		var p2_temp = Input.is_action_just_pressed("leftp2") and Input.is_action_just_pressed("rightp2")
+		var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
+		var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 			if p1_entered:
+				GameManager.reset_p1()
 				player1_triggerer.can_move = false
 			else:
+				GameManager.reset_p2()
 				player2_triggerer.can_move = false
 			is_ready = true
 			return
@@ -56,11 +58,11 @@ func _process(delta):
 	
 	if is_minigaming:
 		$alert.visible = false
-		var p1_left = Input.is_action_just_pressed("leftp1")
-		var p1_right = Input.is_action_just_pressed("rightp1")
+		var p1_left = GameManager.get_leftp1()
+		var p1_right = GameManager.get_rightp1()
 		
-		var p2_left = Input.is_action_just_pressed("leftp2")
-		var p2_right = Input.is_action_just_pressed("rightp2")
+		var p2_left = GameManager.get_leftp2()
+		var p2_right = GameManager.get_rightp2()
 		
 		var strr = ("kiri" if going_to_show==1 else "kanan")+str(player_idx)
 		if can_take_input:

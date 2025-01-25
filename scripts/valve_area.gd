@@ -8,15 +8,19 @@ var player2_triggerer = null
 
 var can_take_input = true
 
+
 func _process(delta):
-	var p1_temp = Input.is_action_just_pressed("leftp1") and Input.is_action_just_pressed("rightp1")
-	var p2_temp = Input.is_action_just_pressed("leftp2") and Input.is_action_just_pressed("rightp2")
+	
+	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
+	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
 	if can_take_input and ((p1_entered and p1_temp) or (p2_entered and p2_temp)):
 		if player1_triggerer and p1_temp:
+			GameManager.reset_p1()
 			player1_triggerer.can_move = false
 			start_minigame(1)
 			can_take_input = false
 		if player2_triggerer and p2_temp:
+			GameManager.reset_p2()
 			player2_triggerer.can_move = false
 			start_minigame(2)
 			can_take_input = false

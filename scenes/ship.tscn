@@ -1,11 +1,13 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=33 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
 [ext_resource type="Script" path="res://player2.gd" id="3_cq5im"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="3_hu48s"]
-[ext_resource type="Texture2D" uid="uid://ctah36csvmvwe" path="res://assets/bg.png" id="4_4ka46"]
+[ext_resource type="Shader" path="res://shaders/water.gdshader" id="4_0abr6"]
+[ext_resource type="Texture2D" uid="uid://ctah36csvmvwe" path="res://assets/bg.png" id="4_27y15"]
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
+[ext_resource type="Script" path="res://scripts/water_display.gd" id="5_arokv"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 [ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
@@ -40,8 +42,8 @@ initial_velocity_min = 200.0
 initial_velocity_max = 481.81
 gravity = Vector3(0, 0, 0)
 radial_accel_max = 100.0
-scale_min = 0.2
-scale_max = 0.4
+scale_min = 0.03
+scale_max = 0.2
 scale_curve = SubResource("CurveTexture_ggsr8")
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
@@ -59,14 +61,38 @@ emission_box_extents = Vector3(500, 0, 1)
 angle_min = -20.0
 angle_max = -5.0
 direction = Vector3(-1, -1, 0)
-spread = 20.0
+spread = 5.0
 initial_velocity_min = 100.0
 initial_velocity_max = 481.81
 gravity = Vector3(0, 0, 0)
 radial_accel_max = 100.0
-scale_min = 0.2
-scale_max = 0.4
+scale_min = 0.05
+scale_max = 0.2
 scale_curve = SubResource("CurveTexture_qdu3f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6tsco"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 0, 1)
+angle_min = 180.0
+angle_max = 180.0
+direction = Vector3(1, -1, 0)
+spread = 5.0
+initial_velocity_min = 60.0
+initial_velocity_max = 150.0
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 100.0
+scale_min = 0.05
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_qdu3f")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecqxv"]
+shader = ExtResource("4_0abr6")
+shader_parameter/time = 0.0
+shader_parameter/speed = 1.0
+shader_parameter/frequency = 5.0
+shader_parameter/amplitude = 0.05
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(1950, 104)
@@ -91,6 +117,7 @@ scale = Vector2(100, 100)
 texture = ExtResource("17_hs2jj")
 
 [node name="fish" type="GPUParticles2D" parent="."]
+visible = false
 position = Vector2(1534, 977)
 amount = 7
 process_material = SubResource("ParticleProcessMaterial_h42xr")
@@ -102,20 +129,62 @@ interpolate = false
 
 [node name="explodingfish" type="GPUParticles2D" parent="."]
 position = Vector2(1534, 977)
-emitting = false
-amount = 15
 process_material = SubResource("ParticleProcessMaterial_47u78")
 texture = ExtResource("3_hu48s")
-lifetime = 7.0
+lifetime = 25.0
+preprocess = 10.0
 speed_scale = 1.2
 explosiveness = 1.0
 randomness = 1.0
 interpolate = false
 
+[node name="explodingfish2" type="GPUParticles2D" parent="."]
+position = Vector2(545, 1117)
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_47u78")
+texture = ExtResource("3_hu48s")
+lifetime = 20.0
+preprocess = 10.0
+speed_scale = 1.2
+explosiveness = 1.0
+randomness = 1.0
+interpolate = false
+
+[node name="explodingfish3" type="GPUParticles2D" parent="."]
+position = Vector2(2173, 568)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_47u78")
+texture = ExtResource("3_hu48s")
+lifetime = 20.0
+preprocess = 10.0
+speed_scale = 1.2
+explosiveness = 1.0
+randomness = 1.0
+interpolate = false
+
+[node name="explodingfish4" type="GPUParticles2D" parent="."]
+position = Vector2(139, 976)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_6tsco")
+texture = ExtResource("3_hu48s")
+lifetime = 20.0
+preprocess = 10.0
+speed_scale = 1.2
+explosiveness = 0.45
+randomness = 1.0
+interpolate = false
+
+[node name="water_display" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ecqxv")
+position = Vector2(896, 548)
+scale = Vector2(18.92, 11.96)
+texture = ExtResource("17_hs2jj")
+script = ExtResource("5_arokv")
+
 [node name="Submarine" type="Sprite2D" parent="."]
-position = Vector2(943.274, 530.592)
-scale = Vector2(1.31406, 1.31406)
-texture = ExtResource("4_4ka46")
+position = Vector2(960, 540)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("4_27y15")
 
 [node name="explode_fish" type="Timer" parent="."]
 wait_time = 17.0
@@ -255,7 +324,7 @@ position = Vector2(85, 998)
 next_lever = NodePath("../nuclear_lever")
 
 [node name="switch" parent="." instance=ExtResource("14_6nbof")]
-position = Vector2(1346, 339)
+position = Vector2(1338, 316)
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -327,7 +396,7 @@ texture_scale = 45.0
 
 [node name="SeaLight" type="PointLight2D" parent="Lightnings"]
 visibility_layer = 2
-position = Vector2(978, 313)
+position = Vector2(1174, 106)
 energy = 0.21
 range_item_cull_mask = 3
 shadow_enabled = true

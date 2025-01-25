@@ -20,9 +20,10 @@ func _ready():
 	%ProgressBar.visible = false
 
 func _process(delta):
-	var p1_temp = Input.is_action_just_pressed("leftp1") and Input.is_action_just_pressed("rightp1")
-	var p2_temp = Input.is_action_just_pressed("leftp2") and Input.is_action_just_pressed("rightp2")
-	if (p1_entered and p1_temp) or (p2_entered and p2_temp):
+	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
+	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
+	if (p1_entered and p1_temp) or \
+	(p2_entered and p2_temp):
 		if player1_triggerer and player1_triggerer.is_tanky and p1_temp:
 			player1_triggerer.set_is_tanky(false)
 			player1_triggerer.can_move = false
