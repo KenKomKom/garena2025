@@ -82,7 +82,7 @@ libraries = {
 "": SubResource("AnimationLibrary_cxmvq")
 }
 autoplay = "interact"
-speed_scale = 3.0
+speed_scale = 3.1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
