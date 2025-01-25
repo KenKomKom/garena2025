@@ -5,6 +5,7 @@
 [ext_resource type="Script" path="res://player2.gd" id="3_cq5im"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="3_hu48s"]
 [ext_resource type="Texture2D" uid="uid://ctah36csvmvwe" path="res://assets/bg.png" id="4_27y15"]
+[ext_resource type="Texture2D" uid="uid://ctah36csvmvwe" path="res://assets/bg.png" id="4_4ka46"]
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]

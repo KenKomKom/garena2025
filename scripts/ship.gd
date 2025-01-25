@@ -93,7 +93,6 @@ func lights_switch(nyala):
 	%SubmarineMain.is_on = nyala
 	status_lampu = nyala
 
-
 func _process(delta):
 	if Input.is_key_label_pressed(KEY_R):
 		get_tree().reload_current_scene()
