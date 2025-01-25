@@ -44,10 +44,10 @@ func _process(delta):
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 			if p1_entered:
 				GameManager.reset_p1()
-			player1_triggerer.can_move = false
+				player1_triggerer.can_move = false
 			else:
 				GameManager.reset_p2()
-			player2_triggerer.can_move = false
+				player2_triggerer.can_move = false
 			is_ready = true
 			return
 	

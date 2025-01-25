@@ -24,11 +24,13 @@ func _ready():
 func bocor_mulai(zone):
 	match zone:
 		GameManager.ZONE.EPIPELAGIC:
+			# Level 1
 			var p = %manual as Manual
 			p.add_text(p.EVENTS.TANK)
 			p.add_text(p.EVENTS.MONITOR)
 			p.animate_in()
 		GameManager.ZONE.MESOPELAGIC:
+			# Level 2
 			can_bocor = true
 			$bocor_timer.start()
 			var p = %manual as Manual
@@ -36,12 +38,23 @@ func bocor_mulai(zone):
 			p.add_text(p.EVENTS.PREDATOR_FISH)
 			p.animate_in()
 		GameManager.ZONE.BATHYPELAGIC:
+			# Level 3
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
 			var p = %manual as Manual
 			p.add_text(p.EVENTS.NUCLEAR_MELTDOWN)
 			p.animate_in()
+		GameManager.ZONE.ABYSSOPELAGIC:
+			# Level 4
+			can_meltdown = true
+			can_attacked_fish = true
+			$meltdown_timer.start()
+		GameManager.ZONE.HADAL:
+			# Level 5
+			can_meltdown = true
+			can_attacked_fish = true
+			$meltdown_timer.start()
 
 func instantiate_bocor():
 	var temp = bocor_preload.instantiate()
@@ -87,6 +100,6 @@ func _process(delta):
 
 func _on_attacked_fish_timer_timeout():
 	if can_attacked_fish:
-		$attacked_fish_timer.wait_time = randi_range(30,40)
+		$attacked_fish_timer.wait_time = randi_range(30,40) - GameManager.zone_now*2
 		if not status_lampu:
 			GameManager.emit_signal("game_over",GameManager.DEATH_REASON.BIG_FISH)

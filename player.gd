@@ -1,10 +1,8 @@
 class_name  Player extends CharacterBody2D
 
-var SPEED = 500.0
+var SPEED = 600.0
 var direction = Vector2.ZERO
 @export var player_number=1
-
-@export var outfit_color : Color
 
 var can_move = true
 var is_climbing = false

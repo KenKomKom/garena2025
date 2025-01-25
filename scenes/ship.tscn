@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=30 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -8,15 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
-[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
-[ext_resource type="PackedScene" uid="uid://dvyoa6ctkyn4b" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
+[ext_resource type="PackedScene" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
 [ext_resource type="PackedScene" uid="uid://br0oecw3gpeef" path="res://scenes/camera_2d.tscn" id="12_2w4m7"]
 [ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
 [ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
 [ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
-[ext_resource type="PackedScene" uid="uid://c8hhgm3cvlaeq" path="res://scenes/manual.tscn" id="15_akuct"]
+[ext_resource type="PackedScene" path="res://scenes/manual.tscn" id="15_akuct"]
 [ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="17_hs2jj"]
 [ext_resource type="Script" path="res://scripts/SubmarineMainLight.gd" id="18_e7lqm"]
 
@@ -122,8 +122,8 @@ interpolate = false
 position = Vector2(1534, 977)
 process_material = SubResource("ParticleProcessMaterial_47u78")
 texture = ExtResource("3_hu48s")
-lifetime = 20.0
-preprocess = 5.0
+lifetime = 25.0
+preprocess = 10.0
 speed_scale = 1.2
 explosiveness = 1.0
 randomness = 1.0
@@ -135,7 +135,7 @@ amount = 12
 process_material = SubResource("ParticleProcessMaterial_47u78")
 texture = ExtResource("3_hu48s")
 lifetime = 20.0
-preprocess = 5.0
+preprocess = 10.0
 speed_scale = 1.2
 explosiveness = 1.0
 randomness = 1.0
@@ -147,7 +147,7 @@ amount = 10
 process_material = SubResource("ParticleProcessMaterial_47u78")
 texture = ExtResource("3_hu48s")
 lifetime = 20.0
-preprocess = 5.0
+preprocess = 10.0
 speed_scale = 1.2
 explosiveness = 1.0
 randomness = 1.0
@@ -155,13 +155,13 @@ interpolate = false
 
 [node name="explodingfish4" type="GPUParticles2D" parent="."]
 position = Vector2(139, 976)
-amount = 20
+amount = 30
 process_material = SubResource("ParticleProcessMaterial_6tsco")
 texture = ExtResource("3_hu48s")
 lifetime = 20.0
-preprocess = 5.0
+preprocess = 10.0
 speed_scale = 1.2
-explosiveness = 1.0
+explosiveness = 0.45
 randomness = 1.0
 interpolate = false
 
