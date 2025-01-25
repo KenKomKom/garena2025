@@ -80,7 +80,6 @@ func lights_switch(nyala):
 	# @Kenichi TODO selesaikan ini, light harusnya tidak on off ketika player gantian klik switch
 	status_lampu = nyala
 
-
 func _process(delta):
 	if Input.is_key_label_pressed(KEY_R):
 		get_tree().reload_current_scene()

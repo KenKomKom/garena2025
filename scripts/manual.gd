@@ -12,6 +12,7 @@ enum EVENTS {
 
 var _count = 0
 
+
 const DESC = [
 	"In event of an OXYGEN TANK being empty, REPLACE it with one of the tanks piled in the second floor",
 	"In event of PRESSURE INCREASE, go to the MONITOR and adjust the gauge",
@@ -21,7 +22,7 @@ const DESC = [
 ]
 
 func add_text(idx):
-	%Label.text += "\n"+DESC[idx]
+	%Label.text += "\n\n"+DESC[idx]
 	_count+=1
 
 func _clear_text():
@@ -30,7 +31,7 @@ func _clear_text():
 
 func animate_in():
 	var tween = get_tree().create_tween()
-	tween.tween_property($background, "position", Vector2($background.position.x,1094-350-(_count*100)), 1)
+	tween.tween_property($background, "position", Vector2($background.position.x,1094-200-(_count*80)), 1)
 	await get_tree().create_timer(12*_count).timeout
 	_animate_out()
 
