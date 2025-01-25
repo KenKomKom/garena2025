@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c8hhgm3cvlaeq"]
 
 [ext_resource type="Script" path="res://scripts/manual.gd" id="1_kjoqn"]
-[ext_resource type="Texture2D" uid="uid://r26r1r4050d4" path="res://assets/Frame 1171275453.png" id="1_spbuo"]
+[ext_resource type="Texture2D" uid="uid://r26r1r4050d4" path="res://assets/manual.png" id="1_spbuo"]
 [ext_resource type="FontFile" uid="uid://cn0isg2ngqae4" path="res://font/Courier New Bold Italic font.ttf" id="3_7d0by"]
 
 [node name="manual" type="Control"]

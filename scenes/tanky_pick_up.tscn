@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdhum33vaepwc"]
+[gd_scene load_steps=8 format=3 uid="uid://cdhum33vaepwc"]
 
 [ext_resource type="Script" path="res://scripts/tanky_pick_up.gd" id="1_w247v"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="3_jfdox"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="4_feg3c"]
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="5_h73fp"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="6_1maky"]
+[ext_resource type="Texture2D" uid="uid://cutn0x36jgjb4" path="res://assets/tanks supply.png" id="6_x1ken"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y6o73"]
 size = Vector2(174, 97)
@@ -49,6 +50,10 @@ texture = ExtResource("5_h73fp")
 [node name="TextureRect4" type="TextureRect" parent="VBoxContainer/p2_control"]
 layout_mode = 2
 texture = ExtResource("6_1maky")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("6_x1ken")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

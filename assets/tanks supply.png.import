@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b76vqxug3pskk"
-path="res://.godot/imported/spritesheet_11.png-30faff4d05c4cf454ae2f1cfa5ae67b4.ctex"
+uid="uid://cutn0x36jgjb4"
+path="res://.godot/imported/tanks supply.png-3a23945338c483aaa1c480668d8fe12c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/spritesheet_11.png"
-dest_files=["res://.godot/imported/spritesheet_11.png-30faff4d05c4cf454ae2f1cfa5ae67b4.ctex"]
+source_file="res://assets/tanks supply.png"
+dest_files=["res://.godot/imported/tanks supply.png-3a23945338c483aaa1c480668d8fe12c.ctex"]
 
 [params]
 

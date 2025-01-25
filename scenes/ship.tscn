@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=39 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
 [ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
 [ext_resource type="PackedScene" uid="uid://c8hhgm3cvlaeq" path="res://scenes/manual.tscn" id="15_akuct"]
+[ext_resource type="Texture2D" uid="uid://c1avbie1i2s7l" path="res://assets/wires.png" id="16_clamp"]
 [ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="17_hs2jj"]
 [ext_resource type="Script" path="res://scripts/SubmarineMainLight.gd" id="18_e7lqm"]
 
@@ -302,6 +303,27 @@ position = Vector2(1261, 1000)
 [node name="Marker2D10" type="Marker2D" parent="Node2D"]
 position = Vector2(1371, 1000)
 
+[node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
+position = Vector2(1586, 1038)
+next_floor = NodePath("../floor_changer2")
+
+[node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
+position = Vector2(1582, 481)
+next_floor = NodePath("../floor_changer")
+
+[node name="tanky_pick_up" parent="." instance=ExtResource("5_kbbad")]
+position = Vector2(381, 413)
+
+[node name="drop_off_tank" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(1776, 255)
+
+[node name="drop_off_tank2" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(1772, 815)
+
+[node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
+position = Vector2(182, 828)
+scale = Vector2(-1, 1)
+
 [node name="player2" parent="." instance=ExtResource("2_4b3cq")]
 position = Vector2(471, 484)
 collision_mask = 2
@@ -317,26 +339,10 @@ position = Vector2(1585, 511)
 scale = Vector2(1.27286, 1.27286)
 texture = ExtResource("12_ek5i2")
 
-[node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1586, 1038)
-next_floor = NodePath("../floor_changer2")
-
-[node name="floor_changer2" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
-position = Vector2(1582, 481)
-next_floor = NodePath("../floor_changer")
-
-[node name="tanky_pick_up" parent="." instance=ExtResource("5_kbbad")]
-position = Vector2(308, 415)
-
-[node name="drop_off_tank" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(1804, 397)
-
-[node name="drop_off_tank2" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(1797, 938)
-
-[node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(237, 951)
-scale = Vector2(-1, 1)
+[node name="wires" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("16_clamp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -344,10 +350,10 @@ scale = Vector2(-1, 1)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -323.0
-offset_top = 88.0
-offset_right = -48.0
-offset_bottom = 136.0
+offset_left = -392.0
+offset_top = 857.0
+offset_right = -117.0
+offset_bottom = 905.0
 grow_horizontal = 0
 
 [node name="o2bar" parent="CanvasLayer" instance=ExtResource("8_p8u8m")]
@@ -367,8 +373,6 @@ visible = false
 
 [node name="manual" parent="CanvasLayer" instance=ExtResource("15_akuct")]
 unique_name_in_owner = true
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
 
 [node name="bocor_timer" type="Timer" parent="."]
 wait_time = 7.0

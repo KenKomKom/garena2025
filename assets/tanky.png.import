@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx0qwtxxic4qn"
-path="res://.godot/imported/p1_walking.png-e01773149938839cbd29b6dffc542c24.ctex"
+uid="uid://70pgxvxr45pm"
+path="res://.godot/imported/tanky.png-5879af2fd3d49fafb9139a2890af8610.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/p1_walking.png"
-dest_files=["res://.godot/imported/p1_walking.png-e01773149938839cbd29b6dffc542c24.ctex"]
+source_file="res://assets/tanky.png"
+dest_files=["res://.godot/imported/tanky.png-5879af2fd3d49fafb9139a2890af8610.ctex"]
 
 [params]
 

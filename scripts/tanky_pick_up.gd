@@ -6,6 +6,7 @@ var p2_entered = false
 var player1_triggerer : Player
 var player2_triggerer : Player
 
+
 func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
@@ -17,6 +18,13 @@ func _process(delta):
 		if player2_triggerer and p2_temp:
 			GameManager.reset_p2()
 			player2_triggerer.set_is_tanky(true)
+		$AnimationPlayer.play("interact")
+		
+	if p1_entered or p2_entered:
+		$Sprite2D.material = GameManager.station_outline
+	else:
+		$Sprite2D.material = null
+			
 
 func _on_body_entered(body):
 	if body is Player:
@@ -39,3 +47,4 @@ func _on_body_exited(body):
 			player1_triggerer = null
 			p1_entered = false
 			%p1_control.visible = false
+

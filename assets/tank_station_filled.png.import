@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://r26r1r4050d4"
-path="res://.godot/imported/Frame 1171275453.png-2e4113075986729a51246a1099f74e7b.ctex"
+uid="uid://cd04q7ao0kvlk"
+path="res://.godot/imported/tank_station_filled.png-3b7a8b86c25936bba3cfb61818da5308.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Frame 1171275453.png"
-dest_files=["res://.godot/imported/Frame 1171275453.png-2e4113075986729a51246a1099f74e7b.ctex"]
+source_file="res://assets/tank_station_filled.png"
+dest_files=["res://.godot/imported/tank_station_filled.png-3b7a8b86c25936bba3cfb61818da5308.ctex"]
 
 [params]
 

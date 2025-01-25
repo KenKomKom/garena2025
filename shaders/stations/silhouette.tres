@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://reqqsg2pfh05"]
+
+[ext_resource type="Shader" path="res://shaders/white_silhouette.gdshader" id="1_dycbs"]
+
+[resource]
+shader = ExtResource("1_dycbs")
+shader_parameter/power = 1.0
