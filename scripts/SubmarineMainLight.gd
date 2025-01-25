@@ -15,7 +15,6 @@ var is_meltdown = false
 
 const FREQ = 0.6
 
-
 func _process(delta):
 	if not is_on:
 		# off

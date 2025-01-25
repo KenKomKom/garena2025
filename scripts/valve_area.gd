@@ -7,7 +7,7 @@ var player1_triggerer = null
 var player2_triggerer = null
 
 var can_take_input = true
-var can_trigger = false
+var can_trigger = true
 
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
