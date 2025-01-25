@@ -6,9 +6,14 @@ var emittable = true
 @onready var pressure_bar = %ProgressBar
 
 func _ready():
+	visible = true
 	GameManager.connect("add_pressure_value", add_pressure_value)
 	GameManager.connect("game_over", end)
 	value = -2
+	GameManager.connect("stop_all", stop_all)
+
+func stop_all():
+	emittable = false
 
 func add_pressure_value(value):
 	self.value += value
@@ -20,3 +25,4 @@ func _on_timer_timeout():
 
 func end(_why):
 	emittable = false
+	visible = false

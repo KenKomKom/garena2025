@@ -6,19 +6,22 @@ var emittable = true
 var bg_color = Color("#2b5695")
 var fill_color =Color("#5bb2a3")
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
+	visible = true
 	GameManager.connect("add_air_depletion", add_air_depletion)
 	GameManager.connect("game_over", end)
 	o2bar.get_theme_stylebox("background").bg_color = bg_color
 	o2bar.get_theme_stylebox("fill").bg_color = fill_color
-	print(fill_color, bg_color)
 	value = 6
+	GameManager.connect("stop_all", stop_all)
+
+func stop_all():
+	emittable = false
 
 func add_air_depletion(value):
-	self.value = self.value + value
-	print_debug(self.value)
-	$Label.text = $Label.text + " " + str(value)
+	if emittable:
+		self.value = self.value + value
+		print_debug(self.value)
 
 func _on_timer_timeout():
 	o2bar.value = min(100,o2bar.value+value)
@@ -32,3 +35,4 @@ func _on_timer_timeout():
 
 func end(_why):
 	emittable = false
+	visible = false

@@ -56,23 +56,25 @@ scale_curve = SubResource("CurveTexture_qdu3f")
 script = ExtResource("1_nk60o")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.164706, 0.164706, 0.164706, 0.819608)
+color = Color(0, 0, 0, 0.937255)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = -40
+theme_override_constants/separation = 0
 alignment = 1
 
-[node name="title" type="Label" parent="VBoxContainer"]
+[node name="title" type="Label" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_krkut")
 theme_override_font_sizes/font_size = 300
@@ -80,59 +82,58 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="reason" type="Label" parent="VBoxContainer"]
+[node name="reason" type="Label" parent="ColorRect/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_s4abb")
 theme_override_font_sizes/font_size = 58
 horizontal_alignment = 1
 
-[node name="Control" type="Control" parent="VBoxContainer"]
+[node name="Control" type="Control" parent="ColorRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="BackToLastCheckpoint" type="Label" parent="VBoxContainer/GridContainer"]
+[node name="BackToLastCheckpoint" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_s4abb")
-theme_override_font_sizes/font_size = 58
+theme_override_font_sizes/font_size = 40
 text = "Play Again?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackToMainMenu" type="Label" parent="VBoxContainer/GridContainer"]
+[node name="BackToMainMenu" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_s4abb")
-theme_override_font_sizes/font_size = 58
+theme_override_font_sizes/font_size = 40
 text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/GridContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="A" type="TextureRect" parent="VBoxContainer/GridContainer/CenterContainer"]
-custom_minimum_size = Vector2(140, 100)
+[node name="A" type="TextureRect" parent="ColorRect/VBoxContainer/GridContainer/CenterContainer"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_26mtb")
 expand_mode = 4
 
-[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer/GridContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="ColorRect/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="D" type="TextureRect" parent="VBoxContainer/GridContainer/CenterContainer2"]
-custom_minimum_size = Vector2(140, 100)
+[node name="D" type="TextureRect" parent="ColorRect/VBoxContainer/GridContainer/CenterContainer2"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("3_l3err")
 expand_mode = 4

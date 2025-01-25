@@ -8,6 +8,12 @@ var player2_triggerer : Player
 
 var nyala = true
 
+func _ready():
+	GameManager.connect("stop_all", stop_all)
+
+func stop_all():
+	GameManager.emit_signal("lights_switch", false)
+
 func _on_area_2d_body_entered(body):
 	if body is Player:
 		if body.player_number==2:

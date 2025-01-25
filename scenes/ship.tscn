@@ -1,7 +1,8 @@
-[gd_scene load_steps=52 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=53 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
+[ext_resource type="Texture2D" uid="uid://bq3dmvkootd66" path="res://assets/glass_crack.png" id="3_cxbdq"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="3_hu48s"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="4_0abr6"]
 [ext_resource type="Texture2D" uid="uid://ctah36csvmvwe" path="res://assets/bg.png" id="4_27y15"]
@@ -10,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 [ext_resource type="Texture2D" uid="uid://gvnp4qcxctw0" path="res://assets/senter.png" id="6_x54mt"]
-[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://clgf8cinhemr6" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
@@ -33,7 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="20_7urvd"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="21_plvay"]
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="22_k0lnr"]
-[ext_resource type="PackedScene" path="res://player_2.tscn" id="22_qb8wm"]
+[ext_resource type="PackedScene" uid="uid://b8jfrw0n4fo3s" path="res://player_2.tscn" id="22_qb8wm"]
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -232,6 +233,12 @@ position = Vector2(896, 548)
 scale = Vector2(18.92, 11.96)
 texture = ExtResource("17_hs2jj")
 script = ExtResource("5_arokv")
+
+[node name="glass" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(949, 483)
+scale = Vector2(1.32454, 1.36682)
+texture = ExtResource("3_cxbdq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.0980392)
@@ -467,15 +474,6 @@ player_number = 2
 position = Vector2(378, 1038)
 collision_mask = 2
 
-[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(1, 432)
-next_lever = NodePath("../nuclear_lever2")
-is_leader = true
-
-[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(-1, 970)
-next_lever = NodePath("../nuclear_lever")
-
 [node name="Cover" type="Sprite2D" parent="."]
 position = Vector2(1585, 511)
 scale = Vector2(1.27286, 1.27286)
@@ -485,6 +483,15 @@ texture = ExtResource("12_ek5i2")
 position = Vector2(960, 540)
 scale = Vector2(1.285, 1.285)
 texture = ExtResource("16_clamp")
+
+[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(1, 432)
+next_lever = NodePath("../nuclear_lever2")
+is_leader = true
+
+[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(-1, 970)
+next_lever = NodePath("../nuclear_lever")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

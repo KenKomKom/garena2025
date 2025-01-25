@@ -12,8 +12,13 @@ func _ready():
 
 func end(why):
 	if !once:
-		once = true
+		timer = INPUT_DISABLE_DURATION
+		
 		visible = true
+		var tween = get_tree().create_tween()
+		tween.tween_property($ColorRect, "modulate:a", 1,0.4)
+		
+		once = true
 		match why:
 			GameManager.DEATH_REASON.AIR:
 				reason.text = "YOU DIED OF SUFFOCATION"
@@ -23,7 +28,6 @@ func end(why):
 				reason.text = "YOU DIED OF RADIATION POISONING"
 			GameManager.DEATH_REASON.BIG_FISH:
 				reason.text = "THE SHIP CRASHED DUE TO UNFORSEEN CIRCUMSTENCES"
-		timer = INPUT_DISABLE_DURATION
 
 func _process(delta):
 	timer -= delta

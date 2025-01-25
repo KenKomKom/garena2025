@@ -7,6 +7,9 @@ var opening_credits = false:
 			proc = 0.3
 var proc = 0.3
 
+func _ready():
+	GameManager.stop_audio_background()
+
 func _on_start_button_up():
 	#$start.texture_normal = load("res://icon.svg")
 	GameManager.play_audio("res://audio/buttons-67224.ogg")

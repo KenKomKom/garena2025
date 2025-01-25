@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cq1g456qxh1sb"]
+[gd_scene load_steps=16 format=3 uid="uid://cq1g456qxh1sb"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_o2ouy"]
 [ext_resource type="Texture2D" uid="uid://ckx7ldjob3ld3" path="res://assets/IMG_8217.jpg" id="2_srpgd"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="5_k8sq3"]
 [ext_resource type="Texture2D" uid="uid://chq0bm2o10r76" path="res://assets/Untitled_Artwork 7.png" id="5_yhco0"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="6_ygwga"]
-[ext_resource type="PackedScene" path="res://scenes/credits.tscn" id="7_cc6dk"]
+[ext_resource type="PackedScene" uid="uid://c82oduutg0qhw" path="res://scenes/credits.tscn" id="7_cc6dk"]
+[ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="9_1yyjf"]
 
 [sub_resource type="Curve" id="Curve_c8ty4"]
 _data = [Vector2(0.00520834, 0.813187), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -90,7 +91,7 @@ texture_normal = ExtResource("5_yhco0")
 position = Vector2(1440, 1024)
 process_material = SubResource("ParticleProcessMaterial_ymtru")
 texture = ExtResource("6_ygwga")
-lifetime = 25.0
+lifetime = 15.0
 preprocess = 10.0
 speed_scale = 1.2
 explosiveness = 1.0
@@ -102,7 +103,7 @@ position = Vector2(451, 1164)
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_ymtru")
 texture = ExtResource("6_ygwga")
-lifetime = 20.0
+lifetime = 15.0
 preprocess = 10.0
 speed_scale = 1.2
 explosiveness = 1.0
@@ -114,7 +115,7 @@ position = Vector2(2079, 615)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_ymtru")
 texture = ExtResource("6_ygwga")
-lifetime = 20.0
+lifetime = 15.0
 preprocess = 10.0
 speed_scale = 1.2
 explosiveness = 1.0
@@ -123,6 +124,8 @@ interpolate = false
 
 [node name="credits2" parent="." instance=ExtResource("7_cc6dk")]
 visible = false
+
+[node name="o2bar" parent="." instance=ExtResource("9_1yyjf")]
 
 [connection signal="button_up" from="start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="credits" to="." method="_on_credits_button_up"]

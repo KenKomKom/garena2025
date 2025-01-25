@@ -24,6 +24,11 @@ var is_dead = false
 func _ready():
 	initial_pos = position
 	GameManager.connect("game_over", end)
+	GameManager.connect("stop_all", stop_all)
+
+func stop_all():
+	is_dead = true
+	can_move = false
 
 func _physics_process(delta):
 	if can_move:

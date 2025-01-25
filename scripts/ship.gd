@@ -27,12 +27,12 @@ func _ready():
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
 	GameManager.emit_signal("zone_reached", GameManager.zone_now)
-	GameManager.emit_signal("start_meltdown")
+	$glass.visible = false
 	GameManager.play_audio("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",1,-10)
 	
 func bocor_mulai(zone):
 	var tween = get_tree().create_tween()
-	tween.tween_property($Water, "modulate", Color(sea_color[zone]),1)
+	tween.tween_property($Water, "modulate", Color(sea_color[zone]),4)
 	match zone:
 		GameManager.ZONE.EPIPELAGIC:
 			# Level 1
@@ -133,7 +133,7 @@ func _process(delta):
 		
 	# check if fish is in death area
 	if is_aggresive_fish_in_death_area>0 and status_lampu:
-		GameManager.emit_signal("game_over",GameManager.DEATH_REASON.BIG_FISH)
+		set_up_death_by_fish()
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		_on_attacked_fish_timer_timeout()
@@ -187,3 +187,9 @@ func _on_attacked_fish_timer_timeout():
 			$attacked_fish_timer.wait_time = randi_range(50,80) - GameManager.zone_now*2
 			$attacked_fish_timer.start()
 		)
+
+func set_up_death_by_fish():
+	%Camera2D.shake()
+	$glass.visible = true
+	await get_tree().create_timer(0.6).timeout
+	GameManager.emit_signal("game_over", GameManager.DEATH_REASON.BIG_FISH)

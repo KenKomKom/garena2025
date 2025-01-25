@@ -14,14 +14,22 @@ var can_trigger = true
 var default : Vector2
 
 @onready var button_mash_bar = %ProgressBar
-@export var target_hits:=15
+@export var target_hits:=8
 
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
+	GameManager.connect("zone_reached",zone_reached)
 	$Timer.wait_time = randi_range(12,40) - GameManager.zone_now
 	$Timer.start()
 	button_mash_bar.max_value = target_hits
 	%ProgressBar.visible = false
+
+func zone_reached(zone):
+	match zone:
+		GameManager.ZONE.BATHYPELAGIC:
+			target_hits = 9
+		GameManager.ZONE.ABYSSOPELAGIC:
+			target_hits = 10
 
 func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
