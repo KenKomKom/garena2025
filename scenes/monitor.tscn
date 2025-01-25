@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cp6q6gl14njn7"]
+[gd_scene load_steps=9 format=3 uid="uid://cp6q6gl14njn7"]
 
 [ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
 [ext_resource type="PackedScene" uid="uid://byuo3pffa5pbd" path="res://scenes/spinny_thing.tscn" id="3_o7nyx"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="4_ht1cu"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="5_jl754"]
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="6_dscv4"]
+[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="7_8iphc"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="7_wrwqh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ori3e"]
@@ -60,6 +61,9 @@ texture = ExtResource("6_dscv4")
 [node name="TextureRect4" type="TextureRect" parent="VBoxContainer/p2_control"]
 layout_mode = 2
 texture = ExtResource("7_wrwqh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("7_8iphc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
