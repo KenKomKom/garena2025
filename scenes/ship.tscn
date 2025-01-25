@@ -34,7 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="20_7urvd"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="21_plvay"]
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="22_k0lnr"]
-[ext_resource type="PackedScene" path="res://player_2.tscn" id="22_qb8wm"]
+[ext_resource type="PackedScene" uid="uid://digcdwiywuag2" path="res://player_2.tscn" id="22_qb8wm"]
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

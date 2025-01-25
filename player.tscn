@@ -68,7 +68,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"p1_climb",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -85,7 +85,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"p1_idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -145,13 +145,13 @@ shape = SubResource("RectangleShape2D_uj6li")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -138)
 sprite_frames = SubResource("SpriteFrames_t3bxi")
-animation = &"p1_climb"
+animation = &"p1_walk"
 autoplay = "p1_idle"
 speed_scale = 2.0
 
 [node name="tanky" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(14, -162.915)
+position = Vector2(14, -160)
 rotation = 0.727937
 texture = ExtResource("5_87srg")
 
