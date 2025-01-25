@@ -47,3 +47,8 @@ func _process(delta):
 		else:
 			$AnimatedSprite2D.play_backwards("default")
 		GameManager.emit_signal("lights_switch",nyala)
+	
+	if (p1_entered and not player1_triggerer.is_tanky) or (p2_entered and not player2_triggerer.is_tanky):
+		$AnimatedSprite2D.material = GameManager.station_outline
+	else:
+		$AnimatedSprite2D.material = null
