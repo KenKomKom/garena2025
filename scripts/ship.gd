@@ -15,6 +15,9 @@ var is_aggresive_fish_in_death_area = false
 
 @onready var list_of_available_bocor_spot := $Node2D
 
+const sea_color = ["#9bf1de","#4174a7","#2c3884","#231760","#100838"]
+
+
 func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
@@ -23,6 +26,7 @@ func _ready():
 	GameManager.play_audio("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",1,-10)
 	
 func bocor_mulai(zone):
+	$Water.modulate = sea_color[zone]
 	match zone:
 		GameManager.ZONE.EPIPELAGIC:
 			# Level 1
@@ -123,18 +127,24 @@ func _on_attacked_fish_timer_timeout():
 		const range_anim = 3000
 		const duration = 10
 		var rand_angle = randf_range(-PI/4, PI/4)
-		if randi() % 2 == 1:
-			# dari ke kiri mau ke kanan
-			$Fishes/Fish.rotation = rand_angle
-			$Fishes/Fish/Sprite2D.flip_h = false
-		else:
-			# dari kanan mau ke kiri
-			$Fishes/Fish.rotation = rand_angle
-			$Fishes/Fish/Sprite2D.flip_h = true
-			rand_angle += PI
 			
+		if GameManager.zone_now == GameManager.ZONE.ABYSSOPELAGIC:
+			# pengecualian abyssopelagic, aggresive fish swim dari bawah ke atas
+			rand_angle -= PI/2
+			
+		else:
+			if randi() % 2 == 1:
+				# dari ke kiri mau ke kanan
+				$Fishes/Fish.rotation = rand_angle
+				$Fishes/Fish/Sprite2D.flip_h = false
+			else:
+				# dari kanan mau ke kiri
+				$Fishes/Fish.rotation = rand_angle
+				$Fishes/Fish/Sprite2D.flip_h = true
+				rand_angle += PI
+				
 		$Fishes/Fish.position = mid + Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim
-		
+			
 		tween.tween_property($Fishes/Fish, "position", Vector2(mid - Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim), duration).set_trans(Tween.TRANS_LINEAR)
 		#tween.tween_callback($Fishes/Fish.queue_free)
 		

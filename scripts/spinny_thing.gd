@@ -31,9 +31,9 @@ func _process(delta):
 	if can_take_input:
 		segitiga.rotation_degrees += SPEED*delta*dir
 		if segitiga.rotation_degrees>90:
-			dir = -60 * delta
+			dir = -100 * delta
 		elif segitiga.rotation_degrees<-90:
-			dir = 60 * delta
+			dir = 100 * delta
 		
 		if str(player_id) == "1" and GameManager.get_leftp1() and GameManager.get_rightp1() or \
 			str(player_id) == "2" and GameManager.get_leftp2() and GameManager.get_rightp2():
