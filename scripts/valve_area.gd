@@ -9,6 +9,8 @@ var player2_triggerer = null
 var can_take_input = true
 var can_trigger = true
 
+var default : Vector2
+
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
 
@@ -56,6 +58,8 @@ func _on_body_exited(body):
 			%p1_control.visible = false
 
 func start_minigame(value):
+	default = $CollisionShape2D.shape.size
+	$CollisionShape2D.shape.size.x = $CollisionShape2D.shape.size.x+40
 	$spinny_thing.set_up(value)
 
 func _on_spinny_thing_success():
@@ -65,5 +69,6 @@ func _on_spinny_thing_success():
 		player1_triggerer.can_move = true
 	if player2_triggerer:
 		player2_triggerer.can_move = true
+	$CollisionShape2D.shape.size = default
 	await get_tree().create_timer(0.1).timeout
 	can_take_input = true
