@@ -133,3 +133,5 @@ visible = false
 position = Vector2(14, -151)
 rotation = 0.727937
 texture = ExtResource("5_87srg")
+
+[node name="useles" type="Sprite2D" parent="."]
