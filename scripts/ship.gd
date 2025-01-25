@@ -44,6 +44,7 @@ func bocor_mulai(zone):
 			p.animate_in()
 		GameManager.ZONE.BATHYPELAGIC:
 			# Level 3
+			can_bocor = true
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
@@ -53,6 +54,7 @@ func bocor_mulai(zone):
 		GameManager.ZONE.ABYSSOPELAGIC:
 			# Level 4
 			print("lvl4")
+			can_bocor = true
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
@@ -61,6 +63,7 @@ func bocor_mulai(zone):
 			p.animate_in()
 		GameManager.ZONE.HADAL:
 			# Level 5
+			can_bocor = true
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
