@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/credits.gd" id="1_0ao6f"]
 [ext_resource type="FontFile" uid="uid://chfeteve2ct6o" path="res://font/PhantomIsles.ttf" id="1_7p2hc"]
-[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="1_7yiqf"]
 [ext_resource type="FontFile" uid="uid://cn0isg2ngqae4" path="res://font/Courier New Bold Italic font.ttf" id="2_ciulg"]
+[ext_resource type="Texture2D" uid="uid://cbr6vsmeny1f4" path="res://assets/panel2.png" id="2_dcctc"]
 [ext_resource type="FontFile" uid="uid://5rhi3fj8rm1q" path="res://font/Courier New.ttf" id="3_erp2q"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="6_2puv6"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="7_yjpes"]
@@ -20,16 +20,33 @@ metadata/_edit_vertical_guides_ = [899.0]
 metadata/_edit_horizontal_guides_ = [973.0]
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
-offset_right = 884.0
-offset_bottom = 1070.0
-texture = ExtResource("1_7yiqf")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -446.0
+offset_top = -535.0
+offset_right = 446.0
+offset_bottom = 535.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_dcctc")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_top = 71.0
-offset_right = 874.0
-offset_bottom = 1003.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -437.0
+offset_top = -466.0
+offset_right = 437.0
+offset_bottom = 466.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 60
 theme_override_constants/margin_top = 60
 theme_override_constants/margin_right = 60

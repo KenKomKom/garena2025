@@ -20,6 +20,7 @@ var player_idx
 var can_trigger = true
 
 var is_ready = false
+var boolean_fuck_you = true
 
 var default : Vector2
 
@@ -62,8 +63,10 @@ func _process(delta):
 	if is_ready and next_lever.is_ready:
 		%p2_control.visible = false
 		%p1_control.visible = false
-		default = $Area2D/CollisionShape2D.shape.size
-		$Area2D/CollisionShape2D.shape.size.x = $Area2D/CollisionShape2D.shape.size.x+20
+		if boolean_fuck_you:
+			boolean_fuck_you = false
+			default = $Area2D/CollisionShape2D.shape.size
+			$Area2D/CollisionShape2D.shape.size.x = $Area2D/CollisionShape2D.shape.size.x+20
 		is_minigaming = true
 	
 	if is_minigaming:
@@ -100,6 +103,7 @@ func _process(delta):
 				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
 				$AnimatedSprite2D.play("down")
 				$Area2D/CollisionShape2D.shape.size = default
+				boolean_fuck_you = true
 
 func choose_left_right():
 	return randi_range(1,2)
@@ -148,5 +152,6 @@ func _on_next_lever_button_hit():
 			is_ready = false
 			GameManager.emit_signal("meltdown_done")
 			$Area2D/CollisionShape2D.shape.size = default
+			boolean_fuck_you = true
 	else:
 		can_take_input = true

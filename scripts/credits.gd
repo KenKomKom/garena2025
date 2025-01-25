@@ -4,4 +4,5 @@ extends Control
 func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 	if p1_temp:
+		get_parent().opening_credits = false
 		hide()

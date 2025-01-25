@@ -27,6 +27,7 @@ func _ready():
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
 	GameManager.emit_signal("zone_reached", GameManager.zone_now)
+	GameManager.emit_signal("start_meltdown")
 	GameManager.play_audio("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",1,-10)
 	
 func bocor_mulai(zone):
