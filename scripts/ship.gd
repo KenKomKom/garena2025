@@ -30,7 +30,8 @@ func _ready():
 	GameManager.play_audio("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",1,-10)
 	
 func bocor_mulai(zone):
-	$Water.modulate = sea_color[zone]
+	var tween = get_tree().create_tween()
+	tween.tween_property($Water, "modulate", Color(sea_color[zone]),1)
 	match zone:
 		GameManager.ZONE.EPIPELAGIC:
 			# Level 1

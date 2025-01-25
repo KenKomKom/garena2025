@@ -1,7 +1,7 @@
 [gd_scene load_steps=22 format=3 uid="uid://c03tl6n7esv2t"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_vai4p"]
-[ext_resource type="Texture2D" uid="uid://bh5qajtdetfqk" path="res://assets/player_climb.png" id="2_tpkoy"]
+[ext_resource type="Texture2D" uid="uid://dn1it7udypyhj" path="res://assets/spritesheet_13.png" id="2_q7syg"]
 [ext_resource type="Texture2D" uid="uid://cgnuf6nqu5bhs" path="res://assets/idle_beauty.png" id="3_065rf"]
 [ext_resource type="Texture2D" uid="uid://on7u4cm0yrkt" path="res://assets/walk_b.png" id="4_8fi3i"]
 [ext_resource type="Texture2D" uid="uid://70pgxvxr45pm" path="res://assets/tanky.png" id="5_87srg"]
@@ -9,12 +9,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6li"]
 size = Vector2(51, 228)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vpc8v"]
-atlas = ExtResource("2_tpkoy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfqps"]
+atlas = ExtResource("2_q7syg")
 region = Rect2(0, 0, 93, 309)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nyu08"]
-atlas = ExtResource("2_tpkoy")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cff57"]
+atlas = ExtResource("2_q7syg")
 region = Rect2(93, 0, 93, 309)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sa5i5"]
@@ -61,10 +61,10 @@ region = Rect2(890, 0, 178, 283)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vpc8v")
+"texture": SubResource("AtlasTexture_hfqps")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nyu08")
+"texture": SubResource("AtlasTexture_cff57")
 }],
 "loop": true,
 "name": &"p1_climb",
@@ -145,7 +145,7 @@ shape = SubResource("RectangleShape2D_uj6li")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -138)
 sprite_frames = SubResource("SpriteFrames_t3bxi")
-animation = &"p1_idle"
+animation = &"p1_climb"
 autoplay = "p1_idle"
 speed_scale = 2.0
 
