@@ -12,10 +12,11 @@ enum EVENTS {
 
 var _count = 0
 
-#func _ready():
-	#add_text(0)
-	#add_text(4)
-	#animate_in()
+func _ready():
+	GameManager.connect("zone_reached", add_text2)
+	add_text(0)
+	add_text(4)
+	animate_in()
 
 const DESC = [
 	"In event of an OXYGEN TANK being empty, REPLACE it with one of the tanks piled in the second floor",
@@ -29,14 +30,26 @@ func add_text(idx):
 	%Label.text += "\n\n"+DESC[idx]
 	_count+=1
 
+func add_text2(type):
+	%congrats.text = "NEW ZONE REACHED: "
+	match GameManager.zone_now:
+		GameManager.ZONE.EPIPELAGIC:
+			%congrats.text += "EPIPELAGIC"
+		GameManager.ZONE.MESOPELAGIC:
+			%congrats.text += "MESOPELAGIC"
+		GameManager.ZONE.BATHYPELAGIC:
+			%congrats.text += "BATHYPELAGIC"
+		GameManager.ZONE.ABYSSOPELAGIC:
+			%congrats.text += "ABYSSOPELAGIC"
+
 func _clear_text():
 	_count = 0
 	%Label.text = ""
 
 func animate_in():
 	var tween = get_tree().create_tween()
-	tween.tween_property($background, "position", Vector2($background.position.x,1094-20-(_count*120)), 1)
-	await get_tree().create_timer(10*_count).timeout
+	tween.tween_property($background, "position", Vector2($background.position.x,1094-100-(_count*120)), 1)
+	await get_tree().create_timer(7*_count).timeout
 	_animate_out()
 
 func _animate_out():

@@ -1,7 +1,7 @@
 extends Node
 
 enum ZONE {EPIPELAGIC, MESOPELAGIC, BATHYPELAGIC, ABYSSOPELAGIC, HADAL}
-enum ZONE_DURATION {EPIPELAGIC=2, MESOPELAGIC=3, BATHYPELAGIC=3, ABYSSOPELAGIC=3, HADAL=3}
+enum ZONE_DURATION {EPIPELAGIC=1, MESOPELAGIC=2, BATHYPELAGIC=3, ABYSSOPELAGIC=3, HADAL=3}
 enum DEATH_REASON {AIR, PRESSURE, MELTDOWN, BIG_FISH}
 
 var next_level
@@ -56,8 +56,6 @@ func stop_audio_background():
 	await get_tree().create_timer(1).timeout
 	background_player.stop()
 
-
-
 # player 1&2 left right tolerance
 const TOLERANCE = 0.05
 var leftp1 = 0
@@ -85,7 +83,7 @@ func get_leftp1():
 
 func get_rightp1():
 	return rightp1 > 0
-	
+
 func get_leftp2():
 	return leftp2 > 0
 

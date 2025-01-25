@@ -18,8 +18,7 @@ func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
-	
-	bocor_mulai(GameManager.ZONE.BATHYPELAGIC) # TODO: HAPUS, DEBUGGING PURPOSES
+	GameManager.emit_signal("start_meltdown")
 
 func bocor_mulai(zone):
 	match zone:
@@ -65,16 +64,16 @@ func instantiate_bocor():
 	temp.global_position = marker.global_position
 
 func _on_bocor_timer_timeout():
+	print("bocor bocor", can_bocor)
 	if can_bocor:
 		for i in range(randi_range(2,5)):
 			instantiate_bocor()
-		$bocor_timer.wait_time = randi_range(20,30)
+		$bocor_timer.wait_time = randi_range(15,25)
 
 func _on_meltdown_timer_timeout():
 	if can_meltdown:
 		GameManager.emit_signal("start_meltdown")
-		print("meltdown")
-		$meltdown_timer.wait_time = 3 #randi_range(30,40)
+		$meltdown_timer.wait_time = 3
 
 func _on_menltdown_kill_timeout():
 	GameManager.emit_signal("gameover", GameManager.DEATH_REASON.MELTDOWN)
@@ -99,6 +98,6 @@ func _process(delta):
 
 func _on_attacked_fish_timer_timeout():
 	if can_attacked_fish:
-		$attacked_fish_timer.wait_time = randi_range(30,40) - GameManager.zone_now*2
+		$attacked_fish_timer.wait_time = randi_range(25,40) - GameManager.zone_now*2
 		if not status_lampu:
 			GameManager.emit_signal("game_over",GameManager.DEATH_REASON.BIG_FISH)

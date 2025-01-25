@@ -70,10 +70,17 @@ func _process(delta):
 		
 		if can_take_input and (p1_entered and ((p1_left and going_to_show==1) or (p1_right and going_to_show==2))) or \
 		(p2_entered and ((p2_left and going_to_show==1) or (p2_right and going_to_show==2))):
+			if p1_entered:
+				GameManager.reset_p1()
+				player1_triggerer.can_move = false
+			else:
+				GameManager.reset_p2()
+				player2_triggerer.can_move = false
 			get_node(("kiri" if going_to_show==1 else "kanan")+str(player_idx)).visible = false
 			emit_signal("button_hit")
 			can_take_input = false
 			count+=1
+			print("wkwk")
 			if count==5 and not is_leader:
 				is_minigaming = false
 				is_ready = false
@@ -91,13 +98,13 @@ func _on_area_2d_body_entered(body):
 			p2_entered = true
 			player2_triggerer = body
 			player_idx = 2
-			if $alert.visible:
+			if $alert.visible and not body.is_tanky:
 				%p2_control.visible =true
 		elif body.player_number==1:
 			player1_triggerer = body
 			p1_entered = true
 			player_idx = 1
-			if $alert.visible:
+			if $alert.visible and not body.is_tanky:
 				%p1_control.visible =true
 
 func _on_area_2d_body_exited(body):
@@ -113,12 +120,13 @@ func _on_area_2d_body_exited(body):
 
 func _on_next_lever_button_hit():
 	if is_leader:
+		print(is_leader, count)
 		var this = choose_left_right()
 		var that = 1 if this==2 else 2
 		self.going_to_show = this
 		next_lever.going_to_show = that
 		can_take_input = true
-		if is_leader and count==5:
+		if count==5:
 			count=0
 			if p1_entered:
 				player1_triggerer.can_move = true
