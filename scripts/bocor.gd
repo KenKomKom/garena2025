@@ -11,7 +11,7 @@ const SPEED = 80
 
 func _init():
 	GameManager.emit_signal("add_air_depletion",-1)
-	GameManager.emit_signal("add_pressure_value",1)
+	GameManager.emit_signal("add_pressure_value",2)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +30,7 @@ func _process(delta):
 	if $ProgressBar.value == 100:
 		$ProgressBar.value=0
 		GameManager.emit_signal("add_air_depletion",1)
-		GameManager.emit_signal("add_pressure_value",-1)
+		GameManager.emit_signal("add_pressure_value",-2)
 		queue_free()
 
 func _on_body_entered(body):

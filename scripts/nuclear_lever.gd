@@ -38,6 +38,7 @@ func _set_up():
 		can_take_input = false
 	count=0
 	player_idx = null
+	$AnimatedSprite2D.play_backwards("down")
 
 func lights_switch(status):
 	can_trigger = status
@@ -47,10 +48,10 @@ func _process(delta):
 		var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 		var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp) and can_trigger:
-			if p1_entered:
+			if (p1_entered and not p2_entered):
 				GameManager.reset_p1()
 				player1_triggerer.can_move = false
-			else:
+			elif (not p1_entered and p2_entered):
 				GameManager.reset_p2()
 				player2_triggerer.can_move = false
 			is_ready = true
@@ -85,7 +86,6 @@ func _process(delta):
 			emit_signal("button_hit")
 			can_take_input = false
 			count+=1
-			print("wkwk")
 			if count==5 and not is_leader:
 				is_minigaming = false
 				is_ready = false
@@ -94,19 +94,20 @@ func _process(delta):
 				else:
 					player2_triggerer.can_move = true
 				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
+				$AnimatedSprite2D.play("down")
 
 func choose_left_right():
 	return randi_range(1,2)
 
 func _on_area_2d_body_entered(body):
 	if body is Player:
-		if body.player_number==2:
+		if body.player_number==2 and not p1_entered:
 			p2_entered = true
 			player2_triggerer = body
 			player_idx = 2
 			if $alert.visible and not body.is_tanky:
 				%p2_control.visible =true
-		elif body.player_number==1:
+		elif body.player_number==1 and not p2_entered:
 			player1_triggerer = body
 			p1_entered = true
 			player_idx = 1

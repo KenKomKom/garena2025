@@ -42,5 +42,5 @@ func _process(delta):
 			GameManager.reset_p2()
 		nyala = not nyala
 		if not nyala:
-			GameManager.emit_signal("res://audio/Power Off 01.mp3")
+			GameManager.play_audio("res://audio/Power Off 01.mp3")
 		GameManager.emit_signal("lights_switch",nyala)

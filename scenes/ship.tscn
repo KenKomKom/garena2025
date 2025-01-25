@@ -106,7 +106,7 @@ shader_parameter/frequency = 5.0
 shader_parameter/amplitude = 0.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
-size = Vector2(1950, 104)
+size = Vector2(2119, 104)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s75dw"]
 size = Vector2(69, 717.5)
@@ -226,11 +226,11 @@ autostart = true
 position = Vector2(0, 948)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1"]
-position = Vector2(965, 106)
+position = Vector2(943.5, 106)
 shape = SubResource("RectangleShape2D_qgx55")
 
 [node name="tembok_kiri" type="StaticBody2D" parent="lantai1"]
-position = Vector2(-19, 0)
+position = Vector2(-64, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1/tembok_kiri"]
@@ -238,7 +238,7 @@ position = Vector2(0.5, -190)
 shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="tembok_kanan" type="StaticBody2D" parent="lantai1"]
-position = Vector2(1978, 0)
+position = Vector2(2007, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1/tembok_kanan"]
@@ -253,7 +253,7 @@ position = Vector2(965, 177)
 shape = SubResource("RectangleShape2D_qgx55")
 
 [node name="tembok_kiri" type="StaticBody2D" parent="lantai2"]
-position = Vector2(-19, 0)
+position = Vector2(-48, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2/tembok_kiri"]
@@ -265,7 +265,7 @@ position = Vector2(1978, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2/tembok_kanan"]
-position = Vector2(-12, -231.5)
+position = Vector2(13, -231.5)
 shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="Monitor" parent="." instance=ExtResource("12_a5rk3")]
@@ -321,7 +321,7 @@ position = Vector2(1776, 255)
 position = Vector2(1772, 815)
 
 [node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(182, 828)
+position = Vector2(191, 783)
 scale = Vector2(-1, 1)
 
 [node name="player2" parent="." instance=ExtResource("2_4b3cq")]
@@ -387,12 +387,12 @@ wait_time = 30.0
 wait_time = 20.0
 
 [node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(94, 460)
+position = Vector2(16, 460)
 next_lever = NodePath("../nuclear_lever2")
 is_leader = true
 
 [node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(85, 998)
+position = Vector2(14, 998)
 next_lever = NodePath("../nuclear_lever")
 
 [node name="switch" parent="." instance=ExtResource("14_6nbof")]
