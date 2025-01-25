@@ -13,6 +13,7 @@ func _ready():
 func add_air_depletion(value):
 	self.value = self.value + value
 	print_debug(self.value)
+	$Label.text = $Label.text + " " + str(value)
 
 func _on_timer_timeout():
 	o2bar.value = min(100,o2bar.value+value)

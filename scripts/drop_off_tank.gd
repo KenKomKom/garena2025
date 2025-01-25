@@ -14,7 +14,7 @@ var can_trigger = true
 var default : Vector2
 
 @onready var button_mash_bar = %ProgressBar
-@export var target_hits:=45
+@export var target_hits:=15
 
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
@@ -43,7 +43,7 @@ func _process(delta):
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 			hits+=1
 			button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
-			$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees +10,0.5)
+			$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees +45,0.5)
 			if hits==target_hits:
 				button_mash_bar.value=target_hits
 				is_minigaming=false
@@ -99,18 +99,15 @@ func set_status(boolean):
 	if boolean:
 		if not status:
 			GameManager.emit_signal("add_air_depletion",3)
-			pass
 		status = boolean
 		$Timer.wait_time = randi_range(10,40) - (GameManager.zone_now*2)
 		$Timer.start()
-		
 		$"tank empty".visible = false
 		$"tank filled".visible = true
 		return
 	else:
 		if status:
 			GameManager.emit_signal("add_air_depletion",-3)
-			pass
 		status = boolean
 		# TODO: masukin ALLERT sprite
 		$"tank empty".visible = true
