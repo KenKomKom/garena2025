@@ -15,7 +15,7 @@ var is_aggresive_fish_in_death_area = 0
 
 @onready var list_of_available_bocor_spot := $Node2D
 
-const sea_color = ["#9bf1de","#4174a7","#2c3884","#231760","#100838"]
+const sea_color = ["#89d9c7","#345885","#212a64","#120d36","#07041f"]
 
 @onready var fish_ok = preload("res://scenes/fish_ok.tscn")
 @onready var fish_odd = preload("res://scenes/fish_odd.tscn")
