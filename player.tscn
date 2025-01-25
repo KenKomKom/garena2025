@@ -151,7 +151,7 @@ speed_scale = 2.0
 
 [node name="tanky" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(14, -167.343)
+position = Vector2(14, -162.915)
 rotation = 0.727937
 texture = ExtResource("5_87srg")
 
