@@ -30,6 +30,9 @@ func bocor_mulai(zone):
 	match zone:
 		GameManager.ZONE.EPIPELAGIC:
 			# Level 1
+			can_bocor = false
+			can_meltdown = false
+			can_attacked_fish = false
 			var p = %manual as Manual
 			p.add_text(p.EVENTS.TANK)
 			p.add_text(p.EVENTS.MONITOR)
@@ -37,6 +40,8 @@ func bocor_mulai(zone):
 		GameManager.ZONE.MESOPELAGIC:
 			# Level 2
 			can_bocor = true
+			can_meltdown = false
+			can_attacked_fish = false
 			$bocor_timer.start()
 			var p = %manual as Manual
 			p.add_text(p.EVENTS.LEAKS)
@@ -44,6 +49,7 @@ func bocor_mulai(zone):
 			p.animate_in()
 		GameManager.ZONE.BATHYPELAGIC:
 			# Level 3
+			can_bocor = true
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
@@ -52,7 +58,7 @@ func bocor_mulai(zone):
 			p.animate_in()
 		GameManager.ZONE.ABYSSOPELAGIC:
 			# Level 4
-			print("lvl4")
+			can_bocor = true
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
@@ -61,6 +67,7 @@ func bocor_mulai(zone):
 			p.animate_in()
 		GameManager.ZONE.HADAL:
 			# Level 5
+			can_bocor = true
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
