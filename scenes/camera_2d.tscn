@@ -4,6 +4,7 @@
 
 [sub_resource type="Animation" id="Animation_lt2qr"]
 resource_name = "cam_shake"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
