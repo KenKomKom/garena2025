@@ -9,10 +9,12 @@ var can_trigger = true
 
 const SPEED = 80
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
+func _init():
 	GameManager.emit_signal("add_air_depletion",-1)
 	GameManager.emit_signal("add_pressure_value",1)
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
 	GameManager.connect("lights_switch",lights_switch)
 	$Sprite2D.rotation_degrees = randf_range(0,360)
 	$Sprite2D.scale = Vector2(randf_range(1,1.2),randf_range(1,1.2))

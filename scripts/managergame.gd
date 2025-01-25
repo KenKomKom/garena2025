@@ -36,27 +36,22 @@ var zone_now = ZONE.EPIPELAGIC :
 		emit_signal("zone_reached", zone_now)
 
 func play_audio(file_path, pitch=1.0, volume = 0):
-	print(file_path)
 	if not audiostream1.playing :
-		print(1)
 		audiostream1.volume_db=volume
 		audiostream1.pitch_scale = pitch
 		audiostream1.stream = load(file_path)
 		audiostream1.play()
 	elif not audiostream2.playing:
-		print(2)
 		audiostream2.volume_db=volume
 		audiostream2.pitch_scale = pitch
 		audiostream2.stream = load(file_path)
 		audiostream2.play()
 	elif not audiostream3.playing:
-		print(3)
 		audiostream3.volume_db=volume
 		audiostream3.pitch_scale = pitch
 		audiostream3.stream = load(file_path)
 		audiostream3.play()
 	elif not audiostream4.playing:
-		print(4)
 		audiostream4.volume_db=volume
 		audiostream4.pitch_scale = pitch
 		audiostream4.stream = load(file_path)

@@ -19,7 +19,7 @@ func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
-	GameManager.emit_signal("zone_reached", GameManager.ZONE.MESOPELAGIC)
+	GameManager.emit_signal("zone_reached", GameManager.ZONE.EPIPELAGIC)
 	GameManager.play_audio("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",1,-10)
 	
 func bocor_mulai(zone):
@@ -74,14 +74,16 @@ func _on_bocor_timer_timeout():
 
 func _on_meltdown_timer_timeout():
 	if can_meltdown:
+		%SubmarineMain.is_meltdown = true
 		GameManager.emit_signal("start_meltdown")
+		$menltdown_kill.start()
 		GameManager.play_audio("res://audio/BOATSub_Submarine Sonar Beep Blips.wav")
-		$meltdown_timer.wait_time = 3
 
 func _on_menltdown_kill_timeout():
-	GameManager.emit_signal("gameover", GameManager.DEATH_REASON.MELTDOWN)
+	GameManager.emit_signal("game_over", GameManager.DEATH_REASON.MELTDOWN)
 
 func meltdown_done():
+	%SubmarineMain.is_meltdown = false
 	$menltdown_kill.stop()
 	$meltdown_timer.stop()
 	$meltdown_timer.start()

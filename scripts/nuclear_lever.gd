@@ -17,7 +17,7 @@ signal button_hit()
 var count = 0
 var can_take_input = true
 var player_idx
-var can_trigger = false
+var can_trigger = true
 
 var is_ready = false
 
@@ -122,7 +122,7 @@ func _on_area_2d_body_exited(body):
 		elif body.player_number==1:
 			player1_triggerer = null
 			p1_entered = false
-			%p2_control.visible =true
+			%p1_control.visible = false
 
 func _on_next_lever_button_hit():
 	if is_leader:
