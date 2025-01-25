@@ -3,12 +3,15 @@ extends Control
 var value = 3
 var emittable = true
 @onready var o2bar = %ProgressBar
-
+@onready var bg_color = o2bar.get_theme_stylebox("background").bg_color
+@onready var fill_color = o2bar.get_theme_stylebox("fill").bg_color
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.connect("add_air_depletion", add_air_depletion)
 	GameManager.connect("game_over", end)
+	o2bar.get_theme_stylebox("background").bg_color = bg_color
+	o2bar.get_theme_stylebox("fill").bg_color = fill_color
 
 func add_air_depletion(value):
 	self.value = self.value + value

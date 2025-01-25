@@ -1,29 +1,126 @@
-[gd_scene load_steps=2 format=3 uid="uid://cq1g456qxh1sb"]
+[gd_scene load_steps=14 format=3 uid="uid://cq1g456qxh1sb"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_o2ouy"]
+[ext_resource type="Texture2D" uid="uid://ckx7ldjob3ld3" path="res://assets/IMG_8217.jpg" id="2_srpgd"]
+[ext_resource type="Texture2D" uid="uid://b4up1sowh7xvp" path="res://assets/Untitled_Artwork 5.png" id="3_hjsf2"]
+[ext_resource type="Texture2D" uid="uid://dhefmm81pw22k" path="res://assets/Untitled_Artwork 6.png" id="4_0rfea"]
+[ext_resource type="Texture2D" uid="uid://chq0bm2o10r76" path="res://assets/Untitled_Artwork 7.png" id="5_yhco0"]
+[ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="6_ygwga"]
+[ext_resource type="PackedScene" uid="uid://c82oduutg0qhw" path="res://scenes/credits.tscn" id="7_cc6dk"]
+
+[sub_resource type="Curve" id="Curve_c8ty4"]
+_data = [Vector2(0.00520834, 0.813187), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fseru"]
+curve = SubResource("Curve_c8ty4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2u7p1"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 81.82
+initial_velocity_max = 227.27
+angular_velocity_min = -52.36
+angular_velocity_max = 52.36
+radial_velocity_min = -40.0
+radial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_fseru")
+
+[sub_resource type="Curve" id="Curve_i88a4"]
+_data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_81xeb"]
+curve = SubResource("Curve_i88a4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ymtru"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 0, 1)
+direction = Vector3(-1, -1, 0)
+spread = 5.0
+initial_velocity_min = 100.0
+initial_velocity_max = 481.81
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 100.0
+scale_min = 0.05
+scale_curve = SubResource("CurveTexture_81xeb")
 
 [node name="mainmenu" type="CanvasLayer"]
 script = ExtResource("1_o2ouy")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-alignment = 1
+texture = ExtResource("2_srpgd")
 
-[node name="Label" type="Label" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 128
-text = "CHALLENGER DEEP"
-horizontal_alignment = 1
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1019, 1114)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_2u7p1")
+texture = ExtResource("3_hjsf2")
+lifetime = 20.0
 
-[node name="start" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-focus_mode = 0
-theme_override_font_sizes/font_size = 48
-text = "Start Game"
-flat = true
+[node name="start" type="TextureButton" parent="."]
+offset_left = 294.0
+offset_top = 646.0
+offset_right = 728.0
+offset_bottom = 851.0
+texture_normal = ExtResource("4_0rfea")
 
-[connection signal="button_up" from="VBoxContainer/start" to="." method="_on_start_button_up"]
+[node name="credits" type="TextureButton" parent="."]
+offset_left = 727.0
+offset_top = 646.0
+offset_right = 1161.0
+offset_bottom = 851.0
+texture_normal = ExtResource("5_yhco0")
+
+[node name="explodingfish" type="GPUParticles2D" parent="."]
+position = Vector2(1440, 1024)
+process_material = SubResource("ParticleProcessMaterial_ymtru")
+texture = ExtResource("6_ygwga")
+lifetime = 25.0
+preprocess = 10.0
+speed_scale = 1.2
+explosiveness = 1.0
+randomness = 1.0
+interpolate = false
+
+[node name="explodingfish2" type="GPUParticles2D" parent="."]
+position = Vector2(451, 1164)
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_ymtru")
+texture = ExtResource("6_ygwga")
+lifetime = 20.0
+preprocess = 10.0
+speed_scale = 1.2
+explosiveness = 1.0
+randomness = 1.0
+interpolate = false
+
+[node name="explodingfish3" type="GPUParticles2D" parent="."]
+position = Vector2(2079, 615)
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_ymtru")
+texture = ExtResource("6_ygwga")
+lifetime = 20.0
+preprocess = 10.0
+speed_scale = 1.2
+explosiveness = 1.0
+randomness = 1.0
+interpolate = false
+
+[node name="credits2" parent="." instance=ExtResource("7_cc6dk")]
+visible = false
+
+[connection signal="button_up" from="start" to="." method="_on_start_button_up"]
+[connection signal="button_up" from="credits" to="." method="_on_credits_button_up"]

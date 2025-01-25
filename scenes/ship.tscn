@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=52 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 [ext_resource type="Texture2D" uid="uid://gvnp4qcxctw0" path="res://assets/senter.png" id="6_x54mt"]
-[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://clgf8cinhemr6" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
@@ -33,13 +33,13 @@
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="20_7urvd"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="21_plvay"]
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="22_k0lnr"]
-[ext_resource type="PackedScene" path="res://player_2.tscn" id="22_qb8wm"]
+[ext_resource type="PackedScene" uid="uid://b8jfrw0n4fo3s" path="res://player_2.tscn" id="22_qb8wm"]
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_qdu3f"]
+[sub_resource type="CurveTexture" id="CurveTexture_uicl0"]
 curve = SubResource("Curve_wjsnp")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_47u78"]
@@ -57,7 +57,14 @@ gravity = Vector3(0, 0, 0)
 radial_accel_max = 100.0
 scale_min = 0.05
 scale_max = 0.2
-scale_curve = SubResource("CurveTexture_qdu3f")
+scale_curve = SubResource("CurveTexture_uicl0")
+
+[sub_resource type="Curve" id="Curve_xf7uo"]
+_data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qdu3f"]
+curve = SubResource("Curve_xf7uo")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6tsco"]
 particle_flag_rotate_y = true

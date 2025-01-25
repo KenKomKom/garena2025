@@ -27,11 +27,13 @@ func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
 	if ((p1_entered and p1_temp) or (p2_entered and p2_temp)) and can_trigger:
-		if player1_triggerer and player1_triggerer.is_tanky and p1_temp:
+		if player1_triggerer and player1_triggerer.is_tanky and p1_temp\
+		and not p2_entered:
 			player1_triggerer.set_is_tanky(false)
 			player1_triggerer.can_move = false
 			start_minigame()
-		if player2_triggerer and player2_triggerer.is_tanky and p2_temp:
+		if player2_triggerer and player2_triggerer.is_tanky and p2_temp\
+		and not p1_entered:
 			player2_triggerer.set_is_tanky(false)
 			player2_triggerer.can_move = false
 			start_minigame()

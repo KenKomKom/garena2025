@@ -1,8 +1,56 @@
-[gd_scene load_steps=4 format=3 uid="uid://clgf8cinhemr6"]
+[gd_scene load_steps=14 format=3 uid="uid://clgf8cinhemr6"]
 
 [ext_resource type="Script" path="res://scripts/gameoverscreen.gd" id="1_nk60o"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="2_26mtb"]
+[ext_resource type="FontFile" uid="uid://chfeteve2ct6o" path="res://font/PhantomIsles.ttf" id="2_krkut"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="3_l3err"]
+[ext_resource type="FontFile" uid="uid://cn0isg2ngqae4" path="res://font/Courier New Bold Italic font.ttf" id="3_s4abb"]
+[ext_resource type="Texture2D" uid="uid://b4up1sowh7xvp" path="res://assets/Untitled_Artwork 5.png" id="6_fvqnm"]
+[ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="7_e306u"]
+
+[sub_resource type="Curve" id="Curve_xvaca"]
+_data = [Vector2(0.00520834, 0.813187), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_osxep"]
+curve = SubResource("Curve_xvaca")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o3iwc"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 81.82
+initial_velocity_max = 227.27
+angular_velocity_min = -52.36
+angular_velocity_max = 52.36
+radial_velocity_min = -40.0
+radial_velocity_max = 40.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.6
+scale_max = 1.4
+scale_curve = SubResource("CurveTexture_osxep")
+
+[sub_resource type="Curve" id="Curve_xf7uo"]
+_data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qdu3f"]
+curve = SubResource("Curve_xf7uo")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vmivi"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(500, 0, 1)
+direction = Vector3(-1, -1, 0)
+spread = 2.0
+initial_velocity_min = 100.0
+initial_velocity_max = 481.81
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 100.0
+scale_min = 0.05
+scale_curve = SubResource("CurveTexture_qdu3f")
 
 [node name="gameoverscreen" type="CanvasLayer"]
 script = ExtResource("1_nk60o")
@@ -21,19 +69,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = -40
 alignment = 1
 
 [node name="title" type="Label" parent="VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 128
+theme_override_fonts/font = ExtResource("2_krkut")
+theme_override_font_sizes/font_size = 300
 text = "GAME OVER"
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
 [node name="reason" type="Label" parent="VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("3_s4abb")
+theme_override_font_sizes/font_size = 58
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="VBoxContainer"]
@@ -42,14 +93,16 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/h_separation = 50
+theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 20
 columns = 2
 
 [node name="BackToLastCheckpoint" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_s4abb")
 theme_override_font_sizes/font_size = 58
 text = "Play Again?"
 horizontal_alignment = 1
@@ -58,6 +111,7 @@ vertical_alignment = 1
 [node name="BackToMainMenu" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_s4abb")
 theme_override_font_sizes/font_size = 58
 text = "Main Menu"
 horizontal_alignment = 1
@@ -82,3 +136,22 @@ custom_minimum_size = Vector2(140, 100)
 layout_mode = 2
 texture = ExtResource("3_l3err")
 expand_mode = 4
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(1019, 1114)
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_o3iwc")
+texture = ExtResource("6_fvqnm")
+lifetime = 20.0
+
+[node name="explodingfish2" type="GPUParticles2D" parent="."]
+position = Vector2(451, 1164)
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_vmivi")
+texture = ExtResource("7_e306u")
+lifetime = 20.0
+preprocess = 10.0
+speed_scale = 1.2
+explosiveness = 1.0
+randomness = 1.0
+interpolate = false
