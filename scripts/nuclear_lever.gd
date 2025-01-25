@@ -24,6 +24,8 @@ var boolean_fuck_you = true
 
 var default : Vector2
 
+var isp1
+
 func _ready():
 	GameManager.connect("start_meltdown", _set_up)
 	GameManager.connect("lights_switch", lights_switch)
@@ -54,9 +56,11 @@ func _process(delta):
 			if (p1_entered and not p2_entered):
 				GameManager.reset_p1()
 				player1_triggerer.can_move = false
+				isp1 = true
 			elif (not p1_entered and p2_entered):
 				GameManager.reset_p2()
 				player2_triggerer.can_move = false
+				isp1 = false
 			is_ready = true
 			return
 	
@@ -96,7 +100,7 @@ func _process(delta):
 			if count>=5 and not is_leader:
 				is_minigaming = false
 				is_ready = false
-				if p1_entered:
+				if isp1:
 					player1_triggerer.can_move = true
 				else:
 					player2_triggerer.can_move = true
@@ -104,6 +108,7 @@ func _process(delta):
 				$AnimatedSprite2D.play("down")
 				$Area2D/CollisionShape2D.shape.size = default
 				boolean_fuck_you = true
+			
 
 func choose_left_right():
 	return randi_range(1,2)

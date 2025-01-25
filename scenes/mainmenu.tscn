@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="5_k8sq3"]
 [ext_resource type="Texture2D" uid="uid://chq0bm2o10r76" path="res://assets/Untitled_Artwork 7.png" id="5_yhco0"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="6_ygwga"]
-[ext_resource type="PackedScene" path="res://scenes/credits.tscn" id="7_cc6dk"]
+[ext_resource type="PackedScene" uid="uid://c82oduutg0qhw" path="res://scenes/credits.tscn" id="7_cc6dk"]
 
 [sub_resource type="Curve" id="Curve_c8ty4"]
 _data = [Vector2(0.00520834, 0.813187), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]

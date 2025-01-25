@@ -88,5 +88,5 @@ func _on_spinny_thing_success():
 func spawn_radar():
 	$Radar.visible = true
 	await get_tree().create_timer(15).timeout
-	$Radar.visible = true
+	$Radar.visible = false
 	

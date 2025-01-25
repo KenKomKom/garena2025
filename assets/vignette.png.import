@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://birxt1tpn2tu2"
-path="res://.godot/imported/crack.png-edfa2cbd6358371cceaa57055dc499eb.ctex"
+uid="uid://c83emtskkqt6c"
+path="res://.godot/imported/vignette.png-616bd0f74b406d55d24cc11a1e977d54.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/crack.png"
-dest_files=["res://.godot/imported/crack.png-edfa2cbd6358371cceaa57055dc499eb.ctex"]
+source_file="res://assets/vignette.png"
+dest_files=["res://.godot/imported/vignette.png-616bd0f74b406d55d24cc11a1e977d54.ctex"]
 
 [params]
 

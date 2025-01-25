@@ -10,7 +10,7 @@ var sudut = [[46,76],[-72,-40],[-30,-1],[0,30]]
 const TOLERANCE = 5
 var can_take_input = false
 var dir = 1
-var SPEED = 200
+var SPEED = 300
 @onready var segitiga = $Segitiga
 
 var player_id : int
@@ -31,9 +31,9 @@ func _process(delta):
 	if can_take_input:
 		segitiga.rotation_degrees += SPEED*delta*dir
 		if segitiga.rotation_degrees>90:
-			dir = -100 * delta
+			dir = -1
 		elif segitiga.rotation_degrees<-90:
-			dir = 100 * delta
+			dir = 1
 		
 		if str(player_id) == "1" and GameManager.get_leftp1() and GameManager.get_rightp1() or \
 			str(player_id) == "2" and GameManager.get_leftp2() and GameManager.get_rightp2():

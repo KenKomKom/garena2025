@@ -142,6 +142,7 @@ func _on_attacked_fish_timer_timeout():
 	if can_attacked_fish:
 		# spawn fish
 		%Camera2D.shake()
+		GameManager.emit_signal("spawn_radar")
 		$attacked_fish_timer.stop()
 		
 		var tween = get_tree().create_tween()
