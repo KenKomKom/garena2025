@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=49 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="3_hu48s"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="4_0abr6"]
 [ext_resource type="Texture2D" uid="uid://ctah36csvmvwe" path="res://assets/bg.png" id="4_27y15"]
-[ext_resource type="Script" path="res://scripts/AggresiveFish.gd" id="4_pij8j"]
-[ext_resource type="Texture2D" uid="uid://cx0xkqxalhwey" path="res://assets/fish.png" id="4_ptbs8"]
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="Script" path="res://scripts/water_display.gd" id="5_arokv"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
@@ -35,30 +33,6 @@
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="20_7urvd"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="21_plvay"]
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="22_k0lnr"]
-
-[sub_resource type="Curve" id="Curve_bkyyh"]
-_data = [Vector2(0.0260417, 0.714286), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ggsr8"]
-curve = SubResource("Curve_bkyyh")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h42xr"]
-particle_flag_rotate_y = true
-particle_flag_disable_z = true
-emission_shape = 3
-emission_box_extents = Vector3(500, 0, 1)
-angle_min = -40.0
-angle_max = -20.0
-direction = Vector3(-1, -1, 0)
-spread = 20.0
-initial_velocity_min = 200.0
-initial_velocity_max = 481.81
-gravity = Vector3(0, 0, 0)
-radial_accel_max = 100.0
-scale_min = 0.03
-scale_max = 0.2
-scale_curve = SubResource("CurveTexture_ggsr8")
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -100,10 +74,6 @@ radial_accel_max = 100.0
 scale_min = 0.05
 scale_max = 0.2
 scale_curve = SubResource("CurveTexture_qdu3f")
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojtcg"]
-radius = 114.52
-height = 658.55
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obvxh"]
 radius = 243.52
@@ -188,20 +158,10 @@ metadata/_edit_vertical_guides_ = [730.0, 1544.0]
 modulate = Color(0.0128434, 0.0308231, 0.216842, 1)
 light_mask = 2
 visibility_layer = 2
+z_index = -2
 position = Vector2(1142, 649)
 scale = Vector2(100, 100)
 texture = ExtResource("17_hs2jj")
-
-[node name="fish" type="GPUParticles2D" parent="."]
-visible = false
-position = Vector2(1534, 977)
-amount = 7
-process_material = SubResource("ParticleProcessMaterial_h42xr")
-texture = ExtResource("3_hu48s")
-lifetime = 7.0
-speed_scale = 1.2
-randomness = 1.0
-interpolate = false
 
 [node name="explodingfish" type="GPUParticles2D" parent="."]
 position = Vector2(1534, 977)
@@ -251,19 +211,6 @@ randomness = 1.0
 interpolate = false
 
 [node name="Fishes" type="Node2D" parent="."]
-
-[node name="Fish" type="Area2D" parent="Fishes"]
-position = Vector2(2928, 481)
-script = ExtResource("4_pij8j")
-
-[node name="Sprite2D" type="Sprite2D" parent="Fishes/Fish"]
-texture = ExtResource("4_ptbs8")
-flip_h = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Fishes/Fish"]
-position = Vector2(-12, -42)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_ojtcg")
 
 [node name="TheDeathArea" type="Area2D" parent="Fishes"]
 position = Vector2(962, 496)
@@ -627,9 +574,6 @@ position = Vector2(-134, -108)
 occluder = SubResource("OccluderPolygon2D_mfdjc")
 occluder_light_mask = 2
 
-[connection signal="area_entered" from="Fishes/Fish" to="Fishes/Fish" method="_on_area_entered"]
-[connection signal="area_exited" from="Fishes/Fish" to="Fishes/Fish" method="_on_area_exited"]
-[connection signal="body_entered" from="Fishes/Fish" to="Fishes/Fish" method="_on_body_entered"]
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="body_entered" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_entered"]
 [connection signal="body_exited" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_exited"]
