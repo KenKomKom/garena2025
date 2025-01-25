@@ -13,6 +13,7 @@ var default : Vector2
 
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
+	GameManager.connect("spawn_radar", spawn_radar)
 	$Sprite2D.play("default")
 
 func lights_switch(status):
@@ -83,3 +84,9 @@ func _on_spinny_thing_success():
 	$CollisionShape2D.shape.size = default
 	await get_tree().create_timer(0.1).timeout
 	can_take_input = true
+
+func spawn_radar():
+	$Radar.visible = true
+	await get_tree().create_timer(8).timeout
+	$Radar.visible = true
+	

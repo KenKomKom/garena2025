@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cp6q6gl14njn7"]
+[gd_scene load_steps=15 format=3 uid="uid://cp6q6gl14njn7"]
 
 [ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
 [ext_resource type="PackedScene" uid="uid://byuo3pffa5pbd" path="res://scenes/spinny_thing.tscn" id="3_o7nyx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="6_dscv4"]
 [ext_resource type="Texture2D" uid="uid://c8i63e17nuduv" path="res://assets/control panel.png" id="7_45bxu"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="7_wrwqh"]
+[ext_resource type="Texture2D" uid="uid://w72k54dou4gp" path="res://assets/radar.png" id="8_tyav0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fybwp"]
 atlas = ExtResource("7_45bxu")
@@ -98,6 +99,11 @@ texture = ExtResource("7_wrwqh")
 position = Vector2(12, 44)
 sprite_frames = SubResource("SpriteFrames_sp55b")
 frame_progress = 0.456838
+
+[node name="Radar" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.580392, 0.109804, 1)
+position = Vector2(58, -28)
+texture = ExtResource("8_tyav0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 27)
