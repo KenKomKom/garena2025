@@ -10,3 +10,7 @@ script = ExtResource("1_uhvrh")
 [node name="audio1" type="AudioStreamPlayer" parent="."]
 
 [node name="audio2" type="AudioStreamPlayer" parent="."]
+
+[node name="audio3" type="AudioStreamPlayer" parent="."]
+
+[node name="audio4" type="AudioStreamPlayer" parent="."]

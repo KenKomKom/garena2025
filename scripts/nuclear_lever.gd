@@ -93,6 +93,7 @@ func _process(delta):
 					player1_triggerer.can_move = true
 				else:
 					player2_triggerer.can_move = true
+				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
 
 func choose_left_right():
 	return randi_range(1,2)

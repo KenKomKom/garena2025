@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7pmhe8awn5f5"
+path="res://.godot/imported/BOATSub_Submarine Sonar Beep Blips.wav-3969f13ea01d856005981040c825d42d.sample"
+
+[deps]
+
+source_file="res://audio/BOATSub_Submarine Sonar Beep Blips.wav"
+dest_files=["res://.godot/imported/BOATSub_Submarine Sonar Beep Blips.wav-3969f13ea01d856005981040c825d42d.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

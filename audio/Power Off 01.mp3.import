@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nbjqja6k6isg"
+path="res://.godot/imported/Power Off 01.mp3-f5196f1065f80b308ff7fe2fac1fe039.mp3str"
+
+[deps]
+
+source_file="res://audio/Power Off 01.mp3"
+dest_files=["res://.godot/imported/Power Off 01.mp3-f5196f1065f80b308ff7fe2fac1fe039.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

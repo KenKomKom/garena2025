@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnn2k8adfc1rb"]
+[gd_scene load_steps=5 format=3 uid="uid://cnn2k8adfc1rb"]
 
 [ext_resource type="Script" path="res://scripts/o_2_bar.gd" id="1_4uqsw"]
+[ext_resource type="Texture2D" uid="uid://dubnsy8lwt7bm" path="res://assets/o2_bar.png" id="2_pfvv1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8f7s"]
 bg_color = Color(0.168627, 0.337255, 0.584314, 1)
@@ -30,32 +31,28 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4uqsw")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+autostart = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/separation = 60
-alignment = 1
+texture = ExtResource("2_pfvv1")
 
-[node name="Label" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 1
-text = "O2 meter"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer"]
+[node name="ProgressBar" type="ProgressBar" parent="TextureRect"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(500, 30)
+show_behind_parent = true
 layout_mode = 2
+offset_left = 67.0
+offset_top = 25.0
+offset_right = 337.0
+offset_bottom = 50.0
 size_flags_vertical = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_g8f7s")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iggbo")
 value = 100.0
 show_percentage = false
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.7
-autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

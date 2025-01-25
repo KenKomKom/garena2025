@@ -15,6 +15,8 @@ var next_level
 @onready var background_player = $background
 @onready var audiostream1 = $audio1
 @onready var audiostream2 = $audio2
+@onready var audiostream3 = $audio3
+@onready var audiostream4 = $audio4
 
 signal zone_reached(zona)
 signal tutorial_start()
@@ -31,16 +33,31 @@ var zone_now = ZONE.EPIPELAGIC :
 		emit_signal("zone_reached", zone_now)
 
 func play_audio(file_path, pitch=1.0, volume = 0):
+	print(file_path)
 	if not audiostream1.playing :
+		print(1)
 		audiostream1.volume_db=volume
 		audiostream1.pitch_scale = pitch
 		audiostream1.stream = load(file_path)
 		audiostream1.play()
-	else :
+	elif not audiostream2.playing:
+		print(2)
 		audiostream2.volume_db=volume
 		audiostream2.pitch_scale = pitch
 		audiostream2.stream = load(file_path)
 		audiostream2.play()
+	elif not audiostream3.playing:
+		print(3)
+		audiostream3.volume_db=volume
+		audiostream3.pitch_scale = pitch
+		audiostream3.stream = load(file_path)
+		audiostream3.play()
+	elif not audiostream4.playing:
+		print(4)
+		audiostream4.volume_db=volume
+		audiostream4.pitch_scale = pitch
+		audiostream4.stream = load(file_path)
+		audiostream4.play()
 
 func play_audio_background(file_path, volume_db=0):
 	if background_player.playing:

@@ -14,6 +14,8 @@ func _ready():
 	GameManager.emit_signal("add_air_depletion",-1)
 	GameManager.emit_signal("add_pressure_value",1)
 	GameManager.connect("lights_switch",lights_switch)
+	$Sprite2D.rotation_degrees = randf_range(0,360)
+	$Sprite2D.scale = Vector2(randf_range(1,1.2),randf_range(1,1.2))
 
 func lights_switch(status):
 	can_trigger = status
