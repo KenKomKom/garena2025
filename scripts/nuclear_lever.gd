@@ -62,8 +62,8 @@ func _process(delta):
 	if is_ready and next_lever.is_ready:
 		%p2_control.visible = false
 		%p1_control.visible = false
-		default = $CollisionShape2D.shape.size
-		$CollisionShape2D.shape.size.x = $CollisionShape2D.shape.size.x+20
+		default = $Area2D/CollisionShape2D.shape.size
+		$Area2D/CollisionShape2D.shape.size.x = $Area2D/CollisionShape2D.shape.size.x+20
 		is_minigaming = true
 	
 	if is_minigaming:
@@ -99,7 +99,7 @@ func _process(delta):
 					player2_triggerer.can_move = true
 				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
 				$AnimatedSprite2D.play("down")
-				$CollisionShape2D.shape.size = default
+				$Area2D/CollisionShape2D.shape.size = default
 
 func choose_left_right():
 	return randi_range(1,2)
@@ -147,6 +147,6 @@ func _on_next_lever_button_hit():
 			is_minigaming = false
 			is_ready = false
 			GameManager.emit_signal("meltdown_done")
-			$CollisionShape2D.shape.size = default
+			$Area2D/CollisionShape2D.shape.size = default
 	else:
 		can_take_input = true

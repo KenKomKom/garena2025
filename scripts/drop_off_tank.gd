@@ -72,6 +72,7 @@ func _process(delta):
 		$valve.material = null
 		$"tank filled".material = null
 		$"tank empty".material = null
+	
 
 func _on_body_entered(body):
 	if body is Player:
