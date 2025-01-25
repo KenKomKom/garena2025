@@ -23,14 +23,25 @@ func _ready():
 
 func bocor_mulai(zone):
 	match zone:
+		GameManager.ZONE.EPIPELAGIC:
+			var p = %manual as Manual
+			p.add_text(p.EVENTS.TANK)
+			p.add_text(p.EVENTS.MONITOR)
+			p.animate_in()
 		GameManager.ZONE.MESOPELAGIC:
 			can_bocor = true
-			can_meltdown = true # TODO: HAPUS
 			$bocor_timer.start()
+			var p = %manual as Manual
+			p.add_text(p.EVENTS.LEAKS)
+			p.add_text(p.EVENTS.PREDATOR_FISH)
+			p.animate_in()
 		GameManager.ZONE.BATHYPELAGIC:
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
+			var p = %manual as Manual
+			p.add_text(p.EVENTS.NUCLEAR_MELTDOWN)
+			p.animate_in()
 
 func instantiate_bocor():
 	var temp = bocor_preload.instantiate()

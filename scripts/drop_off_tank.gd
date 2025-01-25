@@ -11,10 +11,10 @@ var hits = 0
 var done = false
 var status = false
 @onready var button_mash_bar = %ProgressBar
-@export var target_hits:=7
+@export var target_hits:=10
 
 func _ready():
-	$Timer.wait_time = randi_range(5,10) - GameManager.zone_now
+	$Timer.wait_time = randi_range(12,40) - GameManager.zone_now
 	$Timer.start()
 	button_mash_bar.max_value = target_hits
 	%ProgressBar.visible = false
@@ -22,8 +22,7 @@ func _ready():
 func _process(delta):
 	var p1_temp = Input.is_action_just_pressed("leftp1") and Input.is_action_just_pressed("rightp1")
 	var p2_temp = Input.is_action_just_pressed("leftp2") and Input.is_action_just_pressed("rightp2")
-	if (p1_entered and p1_temp) or \
-	(p2_entered and p2_temp):
+	if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 		if player1_triggerer and player1_triggerer.is_tanky and p1_temp:
 			player1_triggerer.set_is_tanky(false)
 			player1_triggerer.can_move = false
@@ -40,6 +39,7 @@ func _process(delta):
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 			hits+=1
 			button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
+			$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees +10,0.5)
 			if hits==target_hits:
 				button_mash_bar.value=target_hits
 				is_minigaming=false
@@ -61,11 +61,13 @@ func _on_body_entered(body):
 		if body.player_number==2:
 			p2_entered = true
 			player2_triggerer = body
-			%p2_control.visible = true
+			if player2_triggerer.is_tanky:
+				%p2_control.visible = true
 		elif body.player_number==1:
 			player1_triggerer = body
 			p1_entered = true
-			%p1_control.visible = true
+			if player1_triggerer.is_tanky:
+				%p1_control.visible = true
 
 func _on_body_exited(body):
 	if body is Player:
@@ -83,7 +85,7 @@ func set_status(boolean):
 		if not status:
 			GameManager.emit_signal("add_air_depletion",3)
 		status = boolean
-		$Timer.wait_time = randi_range(30,40) - (GameManager.zone_now*2)
+		$Timer.wait_time = randi_range(10,40) - (GameManager.zone_now*2)
 		$Timer.start()
 		return
 	else:
@@ -109,4 +111,5 @@ func _on_minus_timer_timeout():
 	if is_minigaming:
 		hits=max(0,hits-1)
 		button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
+		$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees - 10,0.5)
 		$minus_timer.start()

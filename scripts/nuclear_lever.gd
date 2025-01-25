@@ -38,15 +38,16 @@ func _set_up():
 	player_idx = null
 
 func _process(delta):
-	var p1_temp = Input.is_action_just_pressed("leftp1") and Input.is_action_just_pressed("rightp1")
-	var p2_temp = Input.is_action_just_pressed("leftp2") and Input.is_action_just_pressed("rightp2")
-	if (p1_entered and p1_temp) or (p2_entered and p2_temp):
-		if p1_entered:
-			player1_triggerer.can_move = false
-		else:
-			player2_triggerer.can_move = false
-		is_ready = true
-		return
+	if $alert.visible:
+		var p1_temp = Input.is_action_just_pressed("leftp1") and Input.is_action_just_pressed("rightp1")
+		var p2_temp = Input.is_action_just_pressed("leftp2") and Input.is_action_just_pressed("rightp2")
+		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
+			if p1_entered:
+				player1_triggerer.can_move = false
+			else:
+				player2_triggerer.can_move = false
+			is_ready = true
+			return
 	
 	if is_ready and next_lever.is_ready:
 		%p2_control.visible = false
@@ -64,8 +65,6 @@ func _process(delta):
 		var strr = ("kiri" if going_to_show==1 else "kanan")+str(player_idx)
 		if can_take_input:
 			get_node(strr).visible = true
-		
-		print(is_leader, count)
 		
 		if can_take_input and (p1_entered and ((p1_left and going_to_show==1) or (p1_right and going_to_show==2))) or \
 		(p2_entered and ((p2_left and going_to_show==1) or (p2_right and going_to_show==2))):
@@ -89,24 +88,26 @@ func _on_area_2d_body_entered(body):
 		if body.player_number==2:
 			p2_entered = true
 			player2_triggerer = body
-			%p2_control.visible = true
 			player_idx = 2
+			if $alert.visible:
+				%p2_control.visible =true
 		elif body.player_number==1:
 			player1_triggerer = body
 			p1_entered = true
-			%p1_control.visible = true
 			player_idx = 1
+			if $alert.visible:
+				%p1_control.visible =true
 
 func _on_area_2d_body_exited(body):
 	if body is Player:
 		if body.player_number==2:
 			p2_entered = false
 			player2_triggerer = null
-			%p2_control.visible = false
+			%p2_control.visible =false
 		elif body.player_number==1:
 			player1_triggerer = null
 			p1_entered = false
-			%p1_control.visible = false
+			%p2_control.visible =true
 
 func _on_next_lever_button_hit():
 	if is_leader:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=29 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -8,14 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
-[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
-[ext_resource type="PackedScene" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
+[ext_resource type="PackedScene" uid="uid://dvyoa6ctkyn4b" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
 [ext_resource type="PackedScene" uid="uid://br0oecw3gpeef" path="res://scenes/camera_2d.tscn" id="12_2w4m7"]
 [ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
 [ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
 [ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
+[ext_resource type="PackedScene" uid="uid://c8hhgm3cvlaeq" path="res://scenes/manual.tscn" id="15_akuct"]
 [ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="17_hs2jj"]
 [ext_resource type="Script" path="res://scripts/SubmarineMainLight.gd" id="18_e7lqm"]
 
@@ -170,13 +171,13 @@ shape = SubResource("RectangleShape2D_s75dw")
 position = Vector2(557, 937)
 
 [node name="player2" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(499, 461)
+position = Vector2(471, 484)
 collision_mask = 2
 script = ExtResource("3_cq5im")
 player_number = 2
 
 [node name="player" parent="." instance=ExtResource("2_4b3cq")]
-position = Vector2(421, 998)
+position = Vector2(378, 1038)
 collision_mask = 2
 
 [node name="floor_changer" parent="." node_paths=PackedStringArray("next_floor") instance=ExtResource("4_wyh5w")]
@@ -198,6 +199,7 @@ position = Vector2(1797, 938)
 
 [node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
 position = Vector2(237, 951)
+scale = Vector2(-1, 1)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -205,10 +207,10 @@ position = Vector2(237, 951)
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -141.0
-offset_top = 48.0
+offset_left = -323.0
+offset_top = 88.0
 offset_right = -48.0
-offset_bottom = 71.0
+offset_bottom = 136.0
 grow_horizontal = 0
 
 [node name="o2bar" parent="CanvasLayer" instance=ExtResource("8_p8u8m")]
@@ -225,6 +227,9 @@ offset_bottom = 127.0
 
 [node name="gameoverscreen" parent="CanvasLayer" instance=ExtResource("10_hj736")]
 visible = false
+
+[node name="manual" parent="CanvasLayer" instance=ExtResource("15_akuct")]
+unique_name_in_owner = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
