@@ -214,9 +214,9 @@ offset_bottom = 136.0
 grow_horizontal = 0
 
 [node name="o2bar" parent="CanvasLayer" instance=ExtResource("8_p8u8m")]
-offset_left = 54.0
+offset_left = 34.0
 offset_top = 57.0
-offset_right = 54.0
+offset_right = 34.0
 offset_bottom = 57.0
 
 [node name="pressurebar" parent="CanvasLayer" instance=ExtResource("9_o8ebk")]
@@ -255,7 +255,7 @@ position = Vector2(85, 998)
 next_lever = NodePath("../nuclear_lever")
 
 [node name="switch" parent="." instance=ExtResource("14_6nbof")]
-position = Vector2(1362, 339)
+position = Vector2(1346, 339)
 
 [node name="Node2D" type="Node2D" parent="."]
 
@@ -327,7 +327,7 @@ texture_scale = 45.0
 
 [node name="SeaLight" type="PointLight2D" parent="Lightnings"]
 visibility_layer = 2
-position = Vector2(1014, 313)
+position = Vector2(978, 313)
 energy = 0.21
 range_item_cull_mask = 3
 shadow_enabled = true
