@@ -11,7 +11,7 @@ var is_enable = false
 @export var emergency_color : Color
 
 var is_on = true
-var is_meltdown = true
+var is_meltdown = false
 
 const FREQ = 0.6
 

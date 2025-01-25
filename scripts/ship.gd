@@ -66,7 +66,7 @@ func _on_explode_fish_timeout():
 	$explodingfish.emitting = true
 
 func lights_switch(nyala):
-	# @Kenichi TODO selesaikan ini, light harusnya tidak on off ketika player gantian klik switch
+	%SubmarineMain.is_on = nyala
 	status_lampu = nyala
 
 

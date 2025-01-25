@@ -7,12 +7,14 @@ var player1_triggerer : Player
 var player2_triggerer : Player
 
 func _process(delta):
-	var p1_temp = Input.is_action_pressed("leftp1") and Input.is_action_pressed("rightp1")
-	var p2_temp = Input.is_action_pressed("leftp2") and Input.is_action_pressed("rightp2")
+	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
+	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
 	if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 		if player1_triggerer and p1_temp:
+			GameManager.reset_p1()
 			player1_triggerer.set_is_tanky(true)
 		if player2_triggerer and p2_temp:
+			GameManager.reset_p2()
 			player2_triggerer.set_is_tanky(true)
 
 func _on_body_entered(body):

@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="5_2ipcu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lqhc"]
-size = Vector2(20, 89)
+size = Vector2(76.865, 89)
 
 [node name="switch" type="Node2D"]
 script = ExtResource("1_rgfxr")

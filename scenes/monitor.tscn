@@ -21,6 +21,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Monitor" type="Sprite2D" parent="."]
+scale = Vector2(0.433214, 0.525448)
 texture = ExtResource("2_i5fg5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
