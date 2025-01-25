@@ -1,14 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://c03tl6n7esv2t"]
+[gd_scene load_steps=21 format=3 uid="uid://c03tl6n7esv2t"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_vai4p"]
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="2_0ab8e"]
 [ext_resource type="Texture2D" uid="uid://bx0qwtxxic4qn" path="res://assets/p1_walking.png" id="3_6kyl6"]
+[ext_resource type="Texture2D" uid="uid://b76vqxug3pskk" path="res://assets/spritesheet_11.png" id="3_ssr3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6li"]
 size = Vector2(51, 228)
 
-[sub_resource type="Animation" id="Animation_8yujs"]
-resource_name = "p1_idle"
+[sub_resource type="Animation" id="Animation_7slkm"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -21,6 +21,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_8yujs"]
+resource_name = "p1_idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001, 0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_wxu64"]
@@ -42,9 +59,26 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1xqgj"]
 _data = {
+"RESET": SubResource("Animation_7slkm"),
 "p1_idle": SubResource("Animation_8yujs"),
 "p1_walk": SubResource("Animation_wxu64")
 }
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g8ukf"]
+atlas = ExtResource("3_ssr3x")
+region = Rect2(0, 0, 106, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fxik"]
+atlas = ExtResource("3_ssr3x")
+region = Rect2(106, 0, 106, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrgqg"]
+atlas = ExtResource("3_ssr3x")
+region = Rect2(212, 0, 106, 281)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv0up"]
+atlas = ExtResource("3_ssr3x")
+region = Rect2(318, 0, 106, 281)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1f7sp"]
 atlas = ExtResource("3_6kyl6")
@@ -72,6 +106,23 @@ region = Rect2(890, 0, 178, 283)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t3bxi"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g8ukf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fxik")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrgqg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv0up")
+}],
+"loop": true,
+"name": &"p1_idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1f7sp")
@@ -115,7 +166,7 @@ shape = SubResource("RectangleShape2D_uj6li")
 libraries = {
 "": SubResource("AnimationLibrary_1xqgj")
 }
-autoplay = "p1_walk"
+autoplay = "p1_idle"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -138)
