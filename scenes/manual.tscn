@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8hhgm3cvlaeq"]
+
+[ext_resource type="Script" path="res://scripts/manual.gd" id="1_kjoqn"]
+[ext_resource type="Texture2D" uid="uid://r26r1r4050d4" path="res://assets/Frame 1171275453.png" id="1_spbuo"]
+[ext_resource type="FontFile" uid="uid://5rhi3fj8rm1q" path="res://font/Courier New.ttf" id="3_l4j1g"]
+
+[node name="manual" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kjoqn")
+
+[node name="background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -617.0
+offset_top = 14.0
+offset_right = 617.0
+offset_bottom = 728.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("1_spbuo")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="background"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 116.0
+offset_top = 291.0
+offset_right = 1116.0
+offset_bottom = 691.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_l4j1g")
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 1

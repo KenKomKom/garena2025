@@ -1,7 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp6q6gl14njn7"]
+[gd_scene load_steps=8 format=3 uid="uid://cp6q6gl14njn7"]
 
 [ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
-[ext_resource type="Texture2D" uid="uid://beh2hd8ri7vkh" path="res://monitor.png" id="2_i5fg5"]
 [ext_resource type="PackedScene" uid="uid://byuo3pffa5pbd" path="res://scenes/spinny_thing.tscn" id="3_o7nyx"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="4_ht1cu"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="5_jl754"]
@@ -19,10 +18,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="Monitor" type="Sprite2D" parent="."]
-scale = Vector2(0.433214, 0.525448)
-texture = ExtResource("2_i5fg5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-7, 27)

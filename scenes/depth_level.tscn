@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b55xmufhhmnqf"]
+[gd_scene load_steps=3 format=3 uid="uid://b55xmufhhmnqf"]
 
 [ext_resource type="Script" path="res://scripts/depth_level.gd" id="1_eties"]
+[ext_resource type="FontFile" uid="uid://cn0isg2ngqae4" path="res://font/Courier New Bold Italic font.ttf" id="1_k4ocx"]
 
 [node name="depth_level" type="Label"]
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_k4ocx")
+theme_override_font_sizes/font_size = 42
 text = "DEPTH : 0 m"
 script = ExtResource("1_eties")
 
