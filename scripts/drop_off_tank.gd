@@ -14,7 +14,7 @@ var can_trigger = true
 var default : Vector2
 
 @onready var button_mash_bar = %ProgressBar
-@export var target_hits:=45
+@export var target_hits:=15
 
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
@@ -45,7 +45,7 @@ func _process(delta):
 			#GameManager.play_audio("res://audio/wheel-spin-on-gravel-106641.ogg", 1, -30)
 			hits+=1
 			button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
-			$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees +10,0.5)
+			$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees +45,0.5)
 			if hits==target_hits:
 				button_mash_bar.value=target_hits
 				is_minigaming=false
