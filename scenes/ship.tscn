@@ -311,6 +311,7 @@ offset_top = 88.0
 offset_right = -48.0
 offset_bottom = 136.0
 grow_horizontal = 0
+value = null
 
 [node name="o2bar" parent="CanvasLayer" instance=ExtResource("8_p8u8m")]
 offset_left = 34.0

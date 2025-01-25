@@ -2,6 +2,12 @@ extends Node
 
 enum ZONE {EPIPELAGIC, MESOPELAGIC, BATHYPELAGIC, ABYSSOPELAGIC, HADAL}
 enum ZONE_DURATION {EPIPELAGIC=1, MESOPELAGIC=2, BATHYPELAGIC=3, ABYSSOPELAGIC=3, HADAL=3}
+var ZONE_CUMULATIVE_DURATION = { \
+	ZONE.EPIPELAGIC:0, \
+	ZONE.MESOPELAGIC:1, \
+	ZONE.BATHYPELAGIC:3, \
+	ZONE.ABYSSOPELAGIC:5, \
+	ZONE.HADAL:8} # SETIAP KALI UBAH ZONE_DURATION, HARUS UBAH CUMULATIVE JUGA
 enum DEATH_REASON {AIR, PRESSURE, MELTDOWN, BIG_FISH}
 
 var next_level
@@ -14,13 +20,12 @@ signal zone_reached(zona)
 signal tutorial_start()
 signal add_air_depletion(value)
 signal game_over(why)
-signal return_to_checkpoint()
 signal add_pressure_value()
 signal start_meltdown()
 signal meltdown_done()
 signal lights_switch(nyala)
 
-var zone_now = ZONE.EPIPELAGIC :
+var zone_now = ZONE.MESOPELAGIC :
 	set(value):
 		zone_now = value
 		emit_signal("zone_reached", zone_now)

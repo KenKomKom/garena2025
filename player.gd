@@ -9,8 +9,10 @@ var is_climbing = false
 var target_floor = null
 
 var is_tanky = false
+var initial_pos
 
 func _ready():
+	initial_pos = position
 	GameManager.connect("game_over", end)
 
 func _physics_process(delta):
