@@ -19,7 +19,7 @@ func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
-	GameManager.emit_signal("zone_reached", GameManager.ZONE.EPIPELAGIC)
+	GameManager.emit_signal("zone_reached", GameManager.zone_now)
 	GameManager.play_audio("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",1,-10)
 	
 func bocor_mulai(zone):
@@ -48,14 +48,21 @@ func bocor_mulai(zone):
 			p.animate_in()
 		GameManager.ZONE.ABYSSOPELAGIC:
 			# Level 4
+			print("lvl4")
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
+			var p = %manual as Manual
+			p.add_text2(GameManager.zone_now)
+			p.animate_in()
 		GameManager.ZONE.HADAL:
 			# Level 5
 			can_meltdown = true
 			can_attacked_fish = true
 			$meltdown_timer.start()
+			var p = %manual as Manual
+			p.add_text2(GameManager.zone_now)
+			p.animate_in()
 
 func instantiate_bocor():
 	var temp = bocor_preload.instantiate()
@@ -132,6 +139,3 @@ func _on_attacked_fish_timer_timeout():
 		tween.tween_property($Fishes/Fish, "position", Vector2(mid - Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim), duration).set_trans(Tween.TRANS_LINEAR)
 		#tween.tween_callback($Fishes/Fish.queue_free)
 		
-func return_to_checkpoint():
-	GameManager.emit_signal("zone_reached")
-	lights_switch(true)
