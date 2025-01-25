@@ -36,8 +36,7 @@ signal lights_switch(nyala)
 var station_outline = preload("res://shaders/stations/outline.tres")
 var station_silhouette = preload("res://shaders/stations/silhouette.tres")
 
-# {EPIPELAGIC, MESOPELAGIC, BATHYPELAGIC, ABYSSOPELAGIC, HADAL}
-var zone_now = ZONE.BATHYPELAGIC :
+var zone_now = ZONE.EPIPELAGIC :
 	set(value):
 		zone_now = value
 		emit_signal("zone_reached", zone_now)

@@ -4,7 +4,12 @@ var SPEED = 500.0
 var direction = Vector2.ZERO
 @export var player_number=1
 
-var can_move = true
+var can_move = true:
+	set(val):
+		if is_dead:
+			can_move = false
+		else:
+			can_move = val
 var is_climbing = false
 var target_floor = null
 
@@ -13,6 +18,8 @@ var is_tanky = false:
 		is_tanky = val
 		$tanky.visible=val
 var initial_pos
+
+var is_dead = false
 
 func _ready():
 	initial_pos = position
@@ -62,6 +69,7 @@ func set_is_tanky(boolean):
 		pass
 
 func end(_why=null):
+	is_dead = true
 	can_move = false
 	is_climbing = false
 	velocity = Vector2.ZERO

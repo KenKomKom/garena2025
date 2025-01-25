@@ -8,6 +8,7 @@ extends Label
 var depth_meter:=0
 
 func _ready():
+	GameManager.connect("game_over", end)
 	depth_meter = 13 * 60 * GameManager.ZONE_CUMULATIVE_DURATION[GameManager.zone_now]
 	depth_timer.wait_time = GameManager.ZONE_DURATION[GameManager.zone_now]*60
 	$ProgressBar.max_value = GameManager.ZONE_DURATION[GameManager.zone_now]*60
@@ -33,3 +34,5 @@ func _on_count_timer_timeout():
 
 func end(_why):
 	value = 0
+	$depth_timer.stop()
+	$count_Timer.stop()

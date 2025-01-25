@@ -351,6 +351,7 @@ scale = Vector2(1.285, 1.285)
 texture = ExtResource("15_cppqj")
 
 [node name="tank empty" type="Sprite2D" parent="drop_off_tank3"]
+visible = false
 position = Vector2(28.12, -16)
 scale = Vector2(1.285, 1.285)
 texture = ExtResource("16_nea4x")

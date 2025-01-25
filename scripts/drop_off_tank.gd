@@ -9,7 +9,7 @@ var player2_triggerer : Player
 var is_minigaming = false
 var hits = 0
 var done = false
-var status = false
+var status = true
 var can_trigger = true
 
 @onready var button_mash_bar = %ProgressBar
@@ -25,7 +25,7 @@ func _ready():
 func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
-	if (p1_entered and p1_temp) or (p2_entered and p2_temp) and can_trigger:
+	if ((p1_entered and p1_temp) or (p2_entered and p2_temp)) and can_trigger:
 		if player1_triggerer and player1_triggerer.is_tanky and p1_temp:
 			player1_triggerer.set_is_tanky(false)
 			player1_triggerer.can_move = false
@@ -109,7 +109,7 @@ func set_status(boolean):
 		
 		return
 	else:
-		if not status:
+		if status:
 			GameManager.emit_signal("add_air_depletion",-3)
 			pass
 		status = boolean
