@@ -101,6 +101,7 @@ sprite_frames = SubResource("SpriteFrames_sp55b")
 frame_progress = 0.456838
 
 [node name="Radar" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(0.0784314, 0.580392, 0.109804, 1)
 position = Vector2(58, -28)
 texture = ExtResource("8_tyav0")

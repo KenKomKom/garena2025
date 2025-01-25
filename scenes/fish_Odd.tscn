@@ -18,24 +18,25 @@ script = ExtResource("1_aa8dt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(363, -53)
+position = Vector2(-22, 545)
 texture = ExtResource("2_4dlp7")
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(369, -605)
+position = Vector2(-14, -51)
 shape = SubResource("CapsuleShape2D_ojtcg")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 light_mask = 2
 visibility_layer = 2
+position = Vector2(-385, 598)
 occluder = SubResource("OccluderPolygon2D_wd4ae")
 occluder_light_mask = 2
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(298, -956)
+position = Vector2(-87, -358)
 color = Color(1, 1, 0.478431, 1)
 texture = ExtResource("3_mrfm5")
 texture_scale = 3.25
@@ -43,7 +44,7 @@ texture_scale = 3.25
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(448, -951)
+position = Vector2(63, -353)
 color = Color(1, 1, 0.478431, 1)
 texture = ExtResource("3_mrfm5")
 texture_scale = 3.25
