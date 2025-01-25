@@ -141,7 +141,7 @@ func _on_attacked_fish_timer_timeout():
 	if can_attacked_fish:
 		# spawn fish
 		%Camera2D.shake()
-		$attacked_fish_timer.wait_time = randi_range(50,80) - GameManager.zone_now*2
+		$attacked_fish_timer.stop()
 		
 		var tween = get_tree().create_tween()
 		const mid = Vector2(960, 540)
@@ -181,5 +181,8 @@ func _on_attacked_fish_timer_timeout():
 		a.position = mid + Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim
 			
 		tween.tween_property(a, "position", Vector2(mid - Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim), duration).set_trans(Tween.TRANS_LINEAR)
-		tween.tween_callback(a.queue_free)
-		
+		tween.tween_callback(func(): 
+			a.queue_free
+			$attacked_fish_timer.wait_time = randi_range(50,80) - GameManager.zone_now*2
+			$attacked_fish_timer.start()
+		)
