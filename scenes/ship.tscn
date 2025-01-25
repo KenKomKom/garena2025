@@ -493,15 +493,6 @@ rotation = 3.1299
 scale = Vector2(0.444, 0.444)
 texture = ExtResource("22_k0lnr")
 
-[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(16, 460)
-next_lever = NodePath("../nuclear_lever2")
-is_leader = true
-
-[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(14, 998)
-next_lever = NodePath("../nuclear_lever")
-
 [node name="switch" parent="." instance=ExtResource("14_6nbof")]
 position = Vector2(1349, 317)
 
@@ -514,6 +505,15 @@ player_number = 2
 [node name="player" parent="." instance=ExtResource("2_4b3cq")]
 position = Vector2(378, 1038)
 collision_mask = 2
+
+[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(16, 460)
+next_lever = NodePath("../nuclear_lever2")
+is_leader = true
+
+[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(14, 998)
+next_lever = NodePath("../nuclear_lever")
 
 [node name="Cover" type="Sprite2D" parent="."]
 position = Vector2(1585, 511)
