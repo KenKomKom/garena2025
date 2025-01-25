@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://svtdbpv3febx"]
+[gd_scene load_steps=18 format=3 uid="uid://svtdbpv3febx"]
 
 [ext_resource type="Script" path="res://scripts/drop_off_tank.gd" id="1_0syjc"]
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="2_ey5pk"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="4_w84yi"]
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="5_av04e"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="6_8e7eq"]
+[ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="6_kdt46"]
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="7_nn04f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwwoa"]
@@ -84,10 +85,16 @@ scale = Vector2(1.285, 1.285)
 texture = ExtResource("3_ptuto")
 
 [node name="tank empty" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(-34, -16)
 scale = Vector2(1.285, 1.285)
 texture = ExtResource("4_1ob1d")
+
+[node name="PointLight2D" type="PointLight2D" parent="tank empty"]
+position = Vector2(-14.0078, -65.3697)
+scale = Vector2(0.77821, 0.77821)
+color = Color(1, 0, 0, 1)
+energy = 3.0
+texture = ExtResource("6_kdt46")
 
 [node name="Timer" type="Timer" parent="."]
 

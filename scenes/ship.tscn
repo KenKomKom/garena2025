@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=55 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -12,19 +12,29 @@
 [ext_resource type="Script" path="res://scripts/water_display.gd" id="5_arokv"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
-[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://clgf8cinhemr6" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
 [ext_resource type="PackedScene" uid="uid://br0oecw3gpeef" path="res://scenes/camera_2d.tscn" id="12_2w4m7"]
 [ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
 [ext_resource type="Texture2D" uid="uid://cng2edw271hod" path="res://assets/cover.png" id="12_ek5i2"]
+[ext_resource type="Script" path="res://scripts/drop_off_tank.gd" id="13_bkb1i"]
 [ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
 [ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
+[ext_resource type="Texture2D" uid="uid://d2sf1achrkn01" path="res://assets/valve.png" id="14_h0kgl"]
 [ext_resource type="PackedScene" uid="uid://c8hhgm3cvlaeq" path="res://scenes/manual.tscn" id="15_akuct"]
+[ext_resource type="Texture2D" uid="uid://cd04q7ao0kvlk" path="res://assets/tank_station_filled.png" id="15_cppqj"]
 [ext_resource type="Texture2D" uid="uid://c1avbie1i2s7l" path="res://assets/wires.png" id="16_clamp"]
+[ext_resource type="Texture2D" uid="uid://ohofx4cen3yi" path="res://assets/tank_station_empty.png" id="16_nea4x"]
 [ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="17_hs2jj"]
+[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="17_r2gc1"]
 [ext_resource type="Script" path="res://scripts/SubmarineMainLight.gd" id="18_e7lqm"]
+[ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="18_m6wpv"]
+[ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="19_v76c6"]
+[ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="20_7urvd"]
+[ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="21_plvay"]
+[ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="22_k0lnr"]
 
 [sub_resource type="Curve" id="Curve_bkyyh"]
 _data = [Vector2(0.0260417, 0.714286), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -106,10 +116,65 @@ shader_parameter/frequency = 5.0
 shader_parameter/amplitude = 0.01
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
-size = Vector2(1950, 104)
+size = Vector2(2119, 104)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s75dw"]
 size = Vector2(69, 717.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iwwoa"]
+size = Vector2(147, 119)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cflc4"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vl8yr"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_ix7ey"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("panah animasi:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3.00002, -286)]
+}
+
+[sub_resource type="Animation" id="Animation_ecnvk"]
+resource_name = "naik_turun"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("panah animasi:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(-3.00002, -286), Vector2(-3, -251), Vector2(-3, -286)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jl387"]
+_data = {
+"RESET": SubResource("Animation_ix7ey"),
+"naik_turun": SubResource("Animation_ecnvk")
+}
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mfdjc"]
 polygon = PackedVector2Array(1191, 928, 1317, 713, 1453, 739, 1428, 905)
@@ -226,11 +291,11 @@ autostart = true
 position = Vector2(0, 948)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1"]
-position = Vector2(965, 106)
+position = Vector2(943.5, 106)
 shape = SubResource("RectangleShape2D_qgx55")
 
 [node name="tembok_kiri" type="StaticBody2D" parent="lantai1"]
-position = Vector2(-19, 0)
+position = Vector2(-64, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1/tembok_kiri"]
@@ -238,7 +303,7 @@ position = Vector2(0.5, -190)
 shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="tembok_kanan" type="StaticBody2D" parent="lantai1"]
-position = Vector2(1978, 0)
+position = Vector2(2007, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai1/tembok_kanan"]
@@ -253,7 +318,7 @@ position = Vector2(965, 177)
 shape = SubResource("RectangleShape2D_qgx55")
 
 [node name="tembok_kiri" type="StaticBody2D" parent="lantai2"]
-position = Vector2(-19, 0)
+position = Vector2(-48, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2/tembok_kiri"]
@@ -265,7 +330,7 @@ position = Vector2(1978, 0)
 collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="lantai2/tembok_kanan"]
-position = Vector2(-12, -231.5)
+position = Vector2(13, -231.5)
 shape = SubResource("RectangleShape2D_s75dw")
 
 [node name="Monitor" parent="." instance=ExtResource("12_a5rk3")]
@@ -320,9 +385,125 @@ position = Vector2(1776, 255)
 [node name="drop_off_tank2" parent="." instance=ExtResource("6_spgnf")]
 position = Vector2(1772, 815)
 
-[node name="drop_off_tank3" parent="." instance=ExtResource("6_spgnf")]
-position = Vector2(182, 828)
-scale = Vector2(-1, 1)
+[node name="drop_off_tank3" type="Area2D" parent="."]
+position = Vector2(191, 783)
+script = ExtResource("13_bkb1i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="drop_off_tank3"]
+position = Vector2(2.5, 1.5)
+shape = SubResource("RectangleShape2D_iwwoa")
+
+[node name="valve" type="Sprite2D" parent="drop_off_tank3"]
+position = Vector2(-62, -6)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("14_h0kgl")
+
+[node name="tank filled" type="Sprite2D" parent="drop_off_tank3"]
+position = Vector2(28.12, -16)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("15_cppqj")
+
+[node name="tank empty" type="Sprite2D" parent="drop_off_tank3"]
+position = Vector2(28.12, -16)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("16_nea4x")
+
+[node name="PointLight2D" type="PointLight2D" parent="drop_off_tank3/tank empty"]
+position = Vector2(-14.0078, -65.3697)
+scale = Vector2(0.77821, 0.77821)
+color = Color(1, 0, 0, 1)
+energy = 3.0
+texture = ExtResource("17_hs2jj")
+
+[node name="Timer" type="Timer" parent="drop_off_tank3"]
+
+[node name="allert" type="Sprite2D" parent="drop_off_tank3/Timer"]
+visible = false
+position = Vector2(0, -203)
+texture = ExtResource("17_r2gc1")
+
+[node name="ProgressBar" type="ProgressBar" parent="drop_off_tank3"]
+unique_name_in_owner = true
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -123.0
+offset_right = 131.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/background = SubResource("StyleBoxFlat_cflc4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_vl8yr")
+step = 1.0
+show_percentage = false
+
+[node name="minus_timer" type="Timer" parent="drop_off_tank3"]
+wait_time = 2.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="drop_off_tank3"]
+offset_left = -50.0
+offset_top = -204.0
+offset_right = 45.0
+offset_bottom = -110.0
+alignment = 1
+
+[node name="p1_control" type="HBoxContainer" parent="drop_off_tank3/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="drop_off_tank3/VBoxContainer/p1_control"]
+layout_mode = 2
+texture = ExtResource("18_m6wpv")
+
+[node name="TextureRect2" type="TextureRect" parent="drop_off_tank3/VBoxContainer/p1_control"]
+layout_mode = 2
+texture = ExtResource("19_v76c6")
+
+[node name="p2_control" type="HBoxContainer" parent="drop_off_tank3/VBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+
+[node name="TextureRect3" type="TextureRect" parent="drop_off_tank3/VBoxContainer/p2_control"]
+layout_mode = 2
+texture = ExtResource("20_7urvd")
+
+[node name="TextureRect4" type="TextureRect" parent="drop_off_tank3/VBoxContainer/p2_control"]
+layout_mode = 2
+texture = ExtResource("21_plvay")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="drop_off_tank3"]
+libraries = {
+"": SubResource("AnimationLibrary_jl387")
+}
+autoplay = "naik_turun"
+speed_scale = 10.0
+
+[node name="panah animasi" type="Sprite2D" parent="drop_off_tank3"]
+visible = false
+position = Vector2(-3.00002, -286)
+rotation = 3.1299
+scale = Vector2(0.444, 0.444)
+texture = ExtResource("22_k0lnr")
+
+[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(16, 460)
+next_lever = NodePath("../nuclear_lever2")
+is_leader = true
+
+[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(14, 998)
+next_lever = NodePath("../nuclear_lever")
+
+[node name="switch" parent="." instance=ExtResource("14_6nbof")]
+position = Vector2(1338, 316)
 
 [node name="player2" parent="." instance=ExtResource("2_4b3cq")]
 position = Vector2(471, 484)
@@ -385,18 +566,6 @@ wait_time = 30.0
 
 [node name="attacked_fish_timer" type="Timer" parent="."]
 wait_time = 20.0
-
-[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(94, 460)
-next_lever = NodePath("../nuclear_lever2")
-is_leader = true
-
-[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(85, 998)
-next_lever = NodePath("../nuclear_lever")
-
-[node name="switch" parent="." instance=ExtResource("14_6nbof")]
-position = Vector2(1338, 316)
 
 [node name="Camera2D" parent="." instance=ExtResource("12_2w4m7")]
 unique_name_in_owner = true
@@ -462,6 +631,10 @@ occluder_light_mask = 2
 [connection signal="area_exited" from="Fishes/Fish" to="Fishes/Fish" method="_on_area_exited"]
 [connection signal="body_entered" from="Fishes/Fish" to="Fishes/Fish" method="_on_body_entered"]
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
+[connection signal="body_entered" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_entered"]
+[connection signal="body_exited" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_exited"]
+[connection signal="timeout" from="drop_off_tank3/Timer" to="drop_off_tank3" method="_on_timer_timeout"]
+[connection signal="timeout" from="drop_off_tank3/minus_timer" to="drop_off_tank3" method="_on_minus_timer_timeout"]
 [connection signal="timeout" from="bocor_timer" to="." method="_on_bocor_timer_timeout"]
 [connection signal="timeout" from="meltdown_timer" to="." method="_on_meltdown_timer_timeout"]
 [connection signal="timeout" from="menltdown_kill" to="." method="_on_menltdown_kill_timeout"]

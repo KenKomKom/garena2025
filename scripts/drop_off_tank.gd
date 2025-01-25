@@ -34,6 +34,7 @@ func _process(delta):
 			player2_triggerer.set_is_tanky(false)
 			player2_triggerer.can_move = false
 			start_minigame()
+			
 	if is_minigaming:
 		if p1_entered:
 			%p1_control.visible = true
@@ -60,7 +61,6 @@ func _process(delta):
 				if p2_entered:
 					%p2_control.visible = false
 				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
-					
 	if (p1_entered and player1_triggerer.is_tanky and can_trigger) or \
 		(p2_entered and player2_triggerer.is_tanky and can_trigger):
 		$valve.material = GameManager.station_outline
@@ -99,6 +99,7 @@ func set_status(boolean):
 	if boolean:
 		if not status:
 			GameManager.emit_signal("add_air_depletion",3)
+			pass
 		status = boolean
 		$Timer.wait_time = randi_range(10,40) - (GameManager.zone_now*2)
 		$Timer.start()
@@ -110,6 +111,7 @@ func set_status(boolean):
 	else:
 		if not status:
 			GameManager.emit_signal("add_air_depletion",-3)
+			pass
 		status = boolean
 		# TODO: masukin ALLERT sprite
 		$"tank empty".visible = true
@@ -126,6 +128,7 @@ func start_minigame():
 	hits = 0
 	%ProgressBar.visible = true
 	$"panah animasi".visible = true
+	button_mash_bar.value = 0
 
 func _on_minus_timer_timeout():
 	if is_minigaming:

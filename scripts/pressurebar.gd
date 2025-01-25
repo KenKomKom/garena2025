@@ -1,6 +1,6 @@
 extends Control
 
-var value=-1
+var value=-2
 var change_direction = -1
 var emittable = true
 @onready var pressure_bar = %ProgressBar

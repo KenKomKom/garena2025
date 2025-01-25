@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://k313cue1elx3"]
+[gd_scene load_steps=13 format=3 uid="uid://k313cue1elx3"]
 
 [ext_resource type="Script" path="res://scripts/nuclear_lever.gd" id="1_vg1tw"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="2_xaa14"]
@@ -6,9 +6,39 @@
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="4_h3rgh"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="5_6auth"]
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="6_7sk62"]
+[ext_resource type="Texture2D" uid="uid://ocaeimktot6p" path="res://assets/lever_sprite.png" id="7_3vlg6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kwgln"]
 size = Vector2(60, 119)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7py5"]
+atlas = ExtResource("7_3vlg6")
+region = Rect2(0, 0, 78, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ogxn"]
+atlas = ExtResource("7_3vlg6")
+region = Rect2(78, 0, 78, 122)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqx47"]
+atlas = ExtResource("7_3vlg6")
+region = Rect2(156, 0, 78, 122)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_la4n3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7py5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ogxn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqx47")
+}],
+"loop": false,
+"name": &"down",
+"speed": 5.0
+}]
 
 [node name="nuclear_lever" type="Node2D"]
 script = ExtResource("1_vg1tw")
@@ -77,6 +107,11 @@ texture = ExtResource("4_h3rgh")
 [node name="TextureRect4" type="TextureRect" parent="VBoxContainer/p2_control"]
 layout_mode = 2
 texture = ExtResource("5_6auth")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(3, -91)
+sprite_frames = SubResource("SpriteFrames_la4n3")
+animation = &"down"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
