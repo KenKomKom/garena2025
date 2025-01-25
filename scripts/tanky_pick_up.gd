@@ -20,11 +20,10 @@ func _process(delta):
 			player2_triggerer.set_is_tanky(true)
 		$AnimationPlayer.play("interact")
 		
-	if not $AnimationPlayer.is_playing():
-		if p1_entered or p2_entered:
-			material = GameManager.station_outline
-		else:
-			material = null
+	if p1_entered or p2_entered:
+		$Sprite2D.material = GameManager.station_outline
+	else:
+		$Sprite2D.material = null
 			
 
 func _on_body_entered(body):

@@ -1,8 +1,11 @@
-[gd_scene load_steps=14 format=3 uid="uid://svtdbpv3febx"]
+[gd_scene load_steps=17 format=3 uid="uid://svtdbpv3febx"]
 
 [ext_resource type="Script" path="res://scripts/drop_off_tank.gd" id="1_0syjc"]
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="2_ey5pk"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="3_lvlv5"]
+[ext_resource type="Texture2D" uid="uid://cd04q7ao0kvlk" path="res://assets/tank_station_filled.png" id="3_ptuto"]
+[ext_resource type="Texture2D" uid="uid://d2sf1achrkn01" path="res://assets/valve.png" id="3_xnmun"]
+[ext_resource type="Texture2D" uid="uid://ohofx4cen3yi" path="res://assets/tank_station_empty.png" id="4_1ob1d"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="4_w84yi"]
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="5_av04e"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="6_8e7eq"]
@@ -71,8 +74,19 @@ position = Vector2(2.5, 1.5)
 shape = SubResource("RectangleShape2D_iwwoa")
 
 [node name="valve" type="Sprite2D" parent="."]
-position = Vector2(67, -131)
-texture = ExtResource("2_ey5pk")
+position = Vector2(78, -6)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("3_xnmun")
+
+[node name="tank filled" type="Sprite2D" parent="."]
+position = Vector2(-34, -16)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("3_ptuto")
+
+[node name="tank empty" type="Sprite2D" parent="."]
+position = Vector2(-34, -16)
+scale = Vector2(1.285, 1.285)
+texture = ExtResource("4_1ob1d")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -83,16 +97,15 @@ texture = ExtResource("2_ey5pk")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
-offset_top = -114.0
-offset_right = 200.0
-offset_bottom = -87.0
+offset_left = -21.0
+offset_top = -123.0
+offset_right = 131.0
+offset_bottom = -98.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -106,10 +119,10 @@ show_percentage = false
 wait_time = 2.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_left = -47.0
-offset_top = -241.0
-offset_right = 48.0
-offset_bottom = -147.0
+offset_left = -50.0
+offset_top = -229.0
+offset_right = 45.0
+offset_bottom = -135.0
 alignment = 1
 
 [node name="p1_control" type="HBoxContainer" parent="VBoxContainer"]

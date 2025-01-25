@@ -59,6 +59,16 @@ func _process(delta):
 					%p1_control.visible = false
 				if p2_entered:
 					%p2_control.visible = false
+					
+	if (p1_entered and player1_triggerer.is_tanky and can_trigger) or \
+		(p2_entered and player2_triggerer.is_tanky and can_trigger):
+		$valve.material = GameManager.station_outline
+		$"tank filled".material = GameManager.station_outline
+		$"tank empty".material = GameManager.station_outline
+	else:
+		$valve.material = null
+		$"tank filled".material = null
+		$"tank empty".material = null
 
 func _on_body_entered(body):
 	if body is Player:
@@ -91,12 +101,18 @@ func set_status(boolean):
 		status = boolean
 		$Timer.wait_time = randi_range(10,40) - (GameManager.zone_now*2)
 		$Timer.start()
+		
+		$"tank empty".visible = false
+		$"tank filled".visible = true
+		
 		return
 	else:
 		if not status:
 			GameManager.emit_signal("add_air_depletion",-3)
 		status = boolean
 		# TODO: masukin ALLERT sprite
+		$"tank empty".visible = true
+		$"tank filled".visible = false
 		$Timer/allert.visible = true
 		%ProgressBar.visible = true
 		%ProgressBar.value = 0
