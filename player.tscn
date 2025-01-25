@@ -9,61 +9,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6li"]
 size = Vector2(51, 228)
 
-[sub_resource type="Animation" id="Animation_7slkm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_5mbow"]
+atlas = ExtResource("3_40yi2")
+region = Rect2(0, 0, 93, 309)
 
-[sub_resource type="Animation" id="Animation_8yujs"]
-resource_name = "p1_idle"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.001, 0.2, 0.5, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_wxu64"]
-resource_name = "p1_walk"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_1xqgj"]
-_data = {
-"RESET": SubResource("Animation_7slkm"),
-"p1_idle": SubResource("Animation_8yujs"),
-"p1_walk": SubResource("Animation_wxu64")
-}
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uul2"]
+atlas = ExtResource("3_40yi2")
+region = Rect2(93, 0, 93, 309)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g8ukf"]
 atlas = ExtResource("3_ssr3x")
