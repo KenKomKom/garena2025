@@ -6,15 +6,13 @@
 [ext_resource type="Texture2D" uid="uid://ceac8ihv0er3x" path="res://assets/nutup.png" id="4_rtfwi"]
 
 [node name="spinny_thing" type="Node2D"]
-scale = Vector2(1.535, 1.535)
 script = ExtResource("1_d2hog")
 
 [node name="spinny_half_circle" type="Sprite2D" parent="."]
-position = Vector2(-1, -14.5)
 texture = ExtResource("2_g5bcf")
 
 [node name="Segitiga" type="Node2D" parent="."]
-position = Vector2(-1, 11.5)
+position = Vector2(0, 26)
 rotation = 0.527089
 
 [node name="Sprite2D" type="Sprite2D" parent="Segitiga"]
@@ -22,5 +20,5 @@ position = Vector2(0, -24.1)
 texture = ExtResource("3_rwnhw")
 
 [node name="Nutup" type="Sprite2D" parent="."]
-position = Vector2(-1, -11.5)
+position = Vector2(0, 3)
 texture = ExtResource("4_rtfwi")
