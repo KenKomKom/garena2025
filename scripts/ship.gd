@@ -17,9 +17,9 @@ var is_aggresive_fish_in_death_area = 0
 
 const sea_color = ["#9bf1de","#4174a7","#2c3884","#231760","#100838"]
 
-@onready var fish_ok = preload("res://scenes/fish_Ok.tscn")
-@onready var fish_odd = preload("res://scenes/fish_Odd.tscn")
-@onready var fish_big = preload("res://scenes/fish_Big.tscn")
+@onready var fish_ok = preload("res://scenes/fish_ok.tscn")
+@onready var fish_odd = preload("res://scenes/fish_odd.tscn")
+@onready var fish_big = preload("res://scenes/fish_big.tscn")
 
 
 func _ready():
@@ -159,7 +159,7 @@ func _on_attacked_fish_timer_timeout():
 		if GameManager.zone_now == GameManager.ZONE.ABYSSOPELAGIC:
 			# pengecualian abyssopelagic, aggresive fish swim dari bawah ke atas
 			rand_angle -= PI/2
-			
+			a.get_node("Sprite2D").flip_h = randi() % 2 == 1
 		else:
 			if randi() % 2 == 1:
 				# dari ke kiri mau ke kanan

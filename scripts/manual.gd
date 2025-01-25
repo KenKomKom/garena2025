@@ -38,6 +38,8 @@ func add_text2(type):
 			%congrats.text += "BATHYPELAGIC"
 		GameManager.ZONE.ABYSSOPELAGIC:
 			%congrats.text += "ABYSSOPELAGIC"
+		GameManager.ZONE.HADAL:
+			%congrats.text += "HADAL"
 
 func _clear_text():
 	_count = 0
