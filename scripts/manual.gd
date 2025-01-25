@@ -46,7 +46,7 @@ func _clear_text():
 func animate_in():
 	var tween = get_tree().create_tween()
 	tween.tween_property($background, "position", Vector2($background.position.x,1094-100-(_count*120)), 1)
-	await get_tree().create_timer(7*_count).timeout
+	await get_tree().create_timer(6*_count).timeout
 	_animate_out()
 
 func _animate_out():

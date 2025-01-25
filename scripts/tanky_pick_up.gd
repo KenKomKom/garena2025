@@ -10,6 +10,7 @@ func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
 	if (p1_entered and p1_temp) or (p2_entered and p2_temp):
+		GameManager.play_audio("res://audio/metal-moving-81780.mp3", 1,-10)
 		if player1_triggerer and p1_temp:
 			GameManager.reset_p1()
 			player1_triggerer.set_is_tanky(true)

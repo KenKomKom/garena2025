@@ -8,7 +8,10 @@ var can_move = true
 var is_climbing = false
 var target_floor = null
 
-var is_tanky = false
+var is_tanky = false:
+	set(val):
+		is_tanky = val
+		$tanky.visible=val
 var initial_pos
 
 func _ready():

@@ -10,11 +10,13 @@ var depth_meter:=0
 func _ready():
 	depth_meter = 13 * 60 * GameManager.ZONE_CUMULATIVE_DURATION[GameManager.zone_now]
 	depth_timer.wait_time = GameManager.ZONE_DURATION.EPIPELAGIC*60
+	$ProgressBar.max_value = GameManager.ZONE_DURATION.EPIPELAGIC*60
 	GameManager.zone_now = GameManager.ZONE.EPIPELAGIC
 	depth_timer.start()
 	count_timer.start()
 
 func _on_depth_timer_timeout():
+	$ProgressBar.value = 0
 	match GameManager.zone_now:
 		GameManager.ZONE.EPIPELAGIC:
 			GameManager.zone_now = GameManager.ZONE.MESOPELAGIC

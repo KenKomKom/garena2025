@@ -117,9 +117,9 @@ collision_mask = 0
 up_direction = Vector2(0, 1)
 script = ExtResource("1_vai4p")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="tanky" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(0, -65)
+position = Vector2(0, -417)
 texture = ExtResource("2_0ab8e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

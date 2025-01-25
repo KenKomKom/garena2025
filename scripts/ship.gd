@@ -19,7 +19,7 @@ func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
-	GameManager.connect("return_to_checkpoint", return_to_checkpoint)
+	GameManager.emit_signal("zone_reached", GameManager.ZONE.MESOPELAGIC)
 	
 func bocor_mulai(zone):
 	match zone:

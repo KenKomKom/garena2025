@@ -38,6 +38,7 @@ func _process(delta):
 		if p2_entered:
 			%p2_control.visible = true
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
+			GameManager.play_audio("res://audio/wheel-spin-on-gravel-106641.ogg", 1, -30)
 			hits+=1
 			button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
 			$valve.rotation_degrees = lerp($valve.rotation_degrees, $valve.rotation_degrees +10,0.5)

@@ -25,7 +25,7 @@ signal start_meltdown()
 signal meltdown_done()
 signal lights_switch(nyala)
 
-var zone_now = ZONE.MESOPELAGIC :
+var zone_now = ZONE.EPIPELAGIC :
 	set(value):
 		zone_now = value
 		emit_signal("zone_reached", zone_now)
