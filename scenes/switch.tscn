@@ -1,13 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://cme66b2aa4w52"]
+[gd_scene load_steps=12 format=3 uid="uid://cme66b2aa4w52"]
 
 [ext_resource type="Script" path="res://scripts/switch.gd" id="1_rgfxr"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="2_aki0j"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="3_85346"]
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="4_5iq2p"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="5_2ipcu"]
+[ext_resource type="Texture2D" uid="uid://dfexfb08bcwkj" path="res://assets/switch_sprite.png" id="6_t0v3g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2lqhc"]
 size = Vector2(76.865, 89)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nf2s7"]
+atlas = ExtResource("6_t0v3g")
+region = Rect2(0, 0, 59, 174)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qftv"]
+atlas = ExtResource("6_t0v3g")
+region = Rect2(59, 0, 59, 174)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7a0i"]
+atlas = ExtResource("6_t0v3g")
+region = Rect2(118, 0, 59, 174)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pk4st"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nf2s7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qftv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7a0i")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="switch" type="Node2D"]
 script = ExtResource("1_rgfxr")
@@ -51,6 +81,9 @@ texture = ExtResource("4_5iq2p")
 [node name="TextureRect4" type="TextureRect" parent="VBoxContainer/p2_control"]
 layout_mode = 2
 texture = ExtResource("5_2ipcu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_pk4st")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

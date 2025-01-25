@@ -36,7 +36,6 @@ func _process(delta):
 			start_minigame()
 			
 	if is_minigaming:
-		
 		if p1_entered:
 			%p1_control.visible = true
 		if p2_entered:
@@ -62,7 +61,6 @@ func _process(delta):
 				if p2_entered:
 					%p2_control.visible = false
 				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
-					
 	if (p1_entered and player1_triggerer.is_tanky and can_trigger) or \
 		(p2_entered and player2_triggerer.is_tanky and can_trigger):
 		$valve.material = GameManager.station_outline
