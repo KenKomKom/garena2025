@@ -1,12 +1,49 @@
-[gd_scene load_steps=9 format=3 uid="uid://cp6q6gl14njn7"]
+[gd_scene load_steps=15 format=3 uid="uid://cp6q6gl14njn7"]
 
 [ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
 [ext_resource type="PackedScene" uid="uid://byuo3pffa5pbd" path="res://scenes/spinny_thing.tscn" id="3_o7nyx"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="4_ht1cu"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="5_jl754"]
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="6_dscv4"]
-[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="7_8iphc"]
+[ext_resource type="Texture2D" uid="uid://c8i63e17nuduv" path="res://assets/control panel.png" id="7_45bxu"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="7_wrwqh"]
+[ext_resource type="Texture2D" uid="uid://w72k54dou4gp" path="res://assets/radar.png" id="8_tyav0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fybwp"]
+atlas = ExtResource("7_45bxu")
+region = Rect2(0, 0, 471, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1gbs"]
+atlas = ExtResource("7_45bxu")
+region = Rect2(471, 0, 471, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gm0c"]
+atlas = ExtResource("7_45bxu")
+region = Rect2(942, 0, 471, 236)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iwed"]
+atlas = ExtResource("7_45bxu")
+region = Rect2(1413, 0, 471, 236)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sp55b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fybwp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u1gbs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gm0c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iwed")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ori3e"]
 size = Vector2(148, 170)
@@ -19,10 +56,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 27)
-shape = SubResource("RectangleShape2D_ori3e")
 
 [node name="spinny_thing" parent="." instance=ExtResource("3_o7nyx")]
 visible = false
@@ -62,8 +95,19 @@ texture = ExtResource("6_dscv4")
 layout_mode = 2
 texture = ExtResource("7_wrwqh")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("7_8iphc")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(12, 44)
+sprite_frames = SubResource("SpriteFrames_sp55b")
+frame_progress = 0.456838
+
+[node name="Radar" type="Sprite2D" parent="."]
+modulate = Color(0.0784314, 0.580392, 0.109804, 1)
+position = Vector2(58, -28)
+texture = ExtResource("8_tyav0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 27)
+shape = SubResource("RectangleShape2D_ori3e")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

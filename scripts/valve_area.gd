@@ -13,6 +13,8 @@ var default : Vector2
 
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
+	GameManager.connect("spawn_radar", spawn_radar)
+	$Sprite2D.play("default")
 
 func lights_switch(status):
 	can_trigger = status
@@ -22,6 +24,7 @@ func _process(delta):
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
 	if can_take_input and ((p1_entered and p1_temp and not player1_triggerer.is_tanky) or\
 	(p2_entered and p2_temp and not player2_triggerer.is_tanky)) and can_trigger:
+		
 		if player1_triggerer and p1_temp:
 			GameManager.reset_p1()
 			player1_triggerer.can_move = false
@@ -32,6 +35,15 @@ func _process(delta):
 			player2_triggerer.can_move = false
 			start_minigame(2)
 			can_take_input = false
+		
+	if can_take_input and ((p1_entered and not player1_triggerer.is_tanky) or\
+	(p2_entered and not player2_triggerer.is_tanky)) and can_trigger:
+		
+		
+		$Sprite2D.material = GameManager.station_outline
+	else:
+		$Sprite2D.material = null
+		
 
 func _on_body_entered(body):
 	if body is Player:
@@ -72,3 +84,9 @@ func _on_spinny_thing_success():
 	$CollisionShape2D.shape.size = default
 	await get_tree().create_timer(0.1).timeout
 	can_take_input = true
+
+func spawn_radar():
+	$Radar.visible = true
+	await get_tree().create_timer(8).timeout
+	$Radar.visible = true
+	

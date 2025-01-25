@@ -1,35 +1,47 @@
-[gd_scene load_steps=5 format=3 uid="uid://6oumufnovahp"]
+[gd_scene load_steps=6 format=3 uid="uid://6oumufnovahp"]
 
 [ext_resource type="Script" path="res://scripts/AggresiveFish.gd" id="1_qkcsu"]
 [ext_resource type="Texture2D" uid="uid://bc7pu86rgsqf" path="res://assets/Fish_OK_2.png" id="2_jylmo"]
+[ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="3_sp5ri"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojtcg"]
 radius = 86.9999
-height = 934.0
+height = 694.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7jsg7"]
 polygon = PackedVector2Array(-644, -23, -593, -115, -548, -186, -349, -235, -178, -238, -134, -237, 158, -188, 459, -65, 675, 59, 804, 191, 718, 132, 497, 61, 231, 16, -101, 24, -246, 76, -304, 117, -392, 136, -443, 176, -510, 200, -590, 190, -638, 171, -609, 167, -571, 104, -561, 45, -571, -7, -590, -41, -602, -52, -625, -16, -615, 29)
 
 [node name="Fish Ok" type="Area2D"]
+z_index = -1
 position = Vector2(2928, 481)
 script = ExtResource("1_qkcsu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
 z_index = -1
-position = Vector2(36, 145)
+position = Vector2(-40, 151)
 texture = ExtResource("2_jylmo")
-flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-12, -42)
+position = Vector2(128, -66)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ojtcg")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 light_mask = 2
 visibility_layer = 2
+scale = Vector2(-1, 1)
 occluder = SubResource("OccluderPolygon2D_7jsg7")
 occluder_light_mask = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(393, -68)
+color = Color(1, 1, 0.478431, 1)
+texture = ExtResource("3_sp5ri")
+texture_scale = 3.25
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

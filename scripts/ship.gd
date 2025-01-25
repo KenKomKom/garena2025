@@ -10,7 +10,7 @@ var can_bocor = false
 var can_meltdown = false
 var can_attacked_fish = false
 
-var status_lampu = false
+var status_lampu = true
 var is_aggresive_fish_in_death_area = 0
 
 @onready var list_of_available_bocor_spot := $Node2D
@@ -96,9 +96,9 @@ func instantiate_bocor():
 
 func _on_bocor_timer_timeout():
 	if can_bocor:
-		for i in range(randi_range(3,5)):
+		for i in range(randi_range(1,3)):
 			instantiate_bocor()
-		$bocor_timer.wait_time = randi_range(15,25)
+		$bocor_timer.wait_time = randi_range(20, 25) - GameManager.zone_now
 
 func _on_meltdown_timer_timeout():
 	if can_meltdown:
@@ -115,8 +115,6 @@ func meltdown_done():
 	$menltdown_kill.stop()
 	$meltdown_timer.stop()
 	$meltdown_timer.start()
-	if Input.is_key_label_pressed(KEY_T):
-		%Camera2D.shake()
 
 func _on_explode_fish_timeout():
 	$explodingfish.emitting = true
@@ -135,10 +133,15 @@ func _process(delta):
 	# check if fish is in death area
 	if is_aggresive_fish_in_death_area>0 and status_lampu:
 		GameManager.emit_signal("game_over",GameManager.DEATH_REASON.BIG_FISH)
+	
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_attacked_fish_timer_timeout()
 
 func _on_attacked_fish_timer_timeout():
 	if can_attacked_fish:
-		$attacked_fish_timer.wait_time = randi_range(20,30) - GameManager.zone_now*2
+		# spawn fish
+		%Camera2D.shake()
+		$attacked_fish_timer.wait_time = randi_range(50,80) - GameManager.zone_now*2
 		
 		var tween = get_tree().create_tween()
 		const mid = Vector2(960, 540)
@@ -160,16 +163,19 @@ func _on_attacked_fish_timer_timeout():
 		if GameManager.zone_now == GameManager.ZONE.ABYSSOPELAGIC:
 			# pengecualian abyssopelagic, aggresive fish swim dari bawah ke atas
 			rand_angle -= PI/2
-			a.get_node("Sprite2D").flip_h = randi() % 2 == 1
+			if randi() % 2 == 1:
+				a.scale.x = -1
+			else:
+				a.scale.x = 1
 		else:
 			if randi() % 2 == 1:
 				# dari ke kiri mau ke kanan
 				a.rotation = rand_angle
-				a.get_node("Sprite2D").flip_h = false
+				a.scale.x = 1
 			else:
 				# dari kanan mau ke kiri
 				a.rotation = rand_angle
-				a.get_node("Sprite2D").flip_h = true
+				a.scale.x = -1
 				rand_angle += PI
 				
 		a.position = mid + Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim
