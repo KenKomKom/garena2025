@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://c03tl6n7esv2t"]
+[gd_scene load_steps=20 format=3 uid="uid://c03tl6n7esv2t"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_vai4p"]
 [ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="2_0ab8e"]
 [ext_resource type="Texture2D" uid="uid://bx0qwtxxic4qn" path="res://assets/p1_walking.png" id="3_6kyl6"]
+[ext_resource type="Texture2D" uid="uid://bh5qajtdetfqk" path="res://assets/spritesheet_12.png" id="3_40yi2"]
 [ext_resource type="Texture2D" uid="uid://b76vqxug3pskk" path="res://assets/spritesheet_11.png" id="3_ssr3x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uj6li"]
@@ -108,6 +109,17 @@ region = Rect2(890, 0, 178, 283)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5mbow")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uul2")
+}],
+"loop": true,
+"name": &"p1_climb",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_g8ukf")
 }, {
 "duration": 1.0,
@@ -162,13 +174,7 @@ texture = ExtResource("2_0ab8e")
 position = Vector2(0, -116)
 shape = SubResource("RectangleShape2D_uj6li")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_1xqgj")
-}
-autoplay = "p1_idle"
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -138)
 sprite_frames = SubResource("SpriteFrames_t3bxi")
-animation = &"p1_walk"
+animation = &"p1_idle"

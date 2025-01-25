@@ -13,11 +13,13 @@ func _on_area_2d_body_entered(body):
 		if body.player_number==2:
 			p2_entered = true
 			player2_triggerer = body
-			%p2_control.visible = true
+			if not body.is_tanky:
+				%p2_control.visible = true
 		elif body.player_number==1:
 			player1_triggerer = body
 			p1_entered = true
-			%p1_control.visible = true
+			if not body.is_tanky:
+				%p1_control.visible = true
 
 func _on_area_2d_body_exited(body):
 	if body is Player:
@@ -33,7 +35,7 @@ func _on_area_2d_body_exited(body):
 func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
-	if (p1_entered and p1_temp) or (p2_entered and p2_temp):
+	if (p1_entered and p1_temp and not player1_triggerer.is_tanky) or (p2_entered and p2_temp and not player2_triggerer.is_tanky):
 		if p1_temp:
 			GameManager.reset_p1()
 		else:

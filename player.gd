@@ -17,14 +17,15 @@ func _physics_process(delta):
 	if can_move:
 		direction = Input.get_axis("leftp1", "rightp1")
 		if direction:
-			$AnimationPlayer.play("p1_walk")
+			$AnimatedSprite2D.play("p1_walk")
 			$AnimatedSprite2D.flip_h = true if direction<0	 else false
 			velocity.x = direction * SPEED
 		else:
-			$AnimationPlayer.play("p1_idle")
+			$AnimatedSprite2D.play("p1_idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	elif not can_move and is_climbing:
 		if direction:
+			$AnimatedSprite2D.play('p1_climb')
 			velocity.y = direction.y * SPEED
 			velocity.x = direction.x * SPEED
 		else:
@@ -56,4 +57,5 @@ func set_is_tanky(boolean):
 
 func end(_why=null):
 	can_move = false
+	is_climbing = false
 	velocity = Vector2.ZERO

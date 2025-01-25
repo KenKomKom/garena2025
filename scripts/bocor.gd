@@ -6,7 +6,7 @@ var p2_entered = false
 var player1_triggerer : Player
 var player2_triggerer : Player
 
-const SPEED = 100
+const SPEED = 80
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,7 +14,7 @@ func _ready():
 	GameManager.emit_signal("add_pressure_value",1)
 
 func _process(delta):
-	if p1_entered or p2_entered:
+	if (p1_entered and not player1_triggerer.is_tanky) or (p2_entered and not player2_triggerer.is_tanky) :
 		$ProgressBar.value+=delta*SPEED
 	else:
 		$ProgressBar.value=0

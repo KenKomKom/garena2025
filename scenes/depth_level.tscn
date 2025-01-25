@@ -1,7 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://b55xmufhhmnqf"]
+[gd_scene load_steps=5 format=3 uid="uid://b55xmufhhmnqf"]
 
 [ext_resource type="Script" path="res://scripts/depth_level.gd" id="1_eties"]
 [ext_resource type="FontFile" uid="uid://cn0isg2ngqae4" path="res://font/Courier New Bold Italic font.ttf" id="1_k4ocx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4keie"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w27yx"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="depth_level" type="Label"]
 offset_right = 40.0
@@ -14,6 +37,16 @@ script = ExtResource("1_eties")
 [node name="depth_timer" type="Timer" parent="."]
 
 [node name="count_Timer" type="Timer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 52.0
+offset_right = 284.0
+offset_bottom = 79.0
+theme_override_styles/background = SubResource("StyleBoxFlat_4keie")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w27yx")
+show_percentage = false
 
 [connection signal="timeout" from="depth_timer" to="." method="_on_depth_timer_timeout"]
 [connection signal="timeout" from="count_Timer" to="." method="_on_count_timer_timeout"]

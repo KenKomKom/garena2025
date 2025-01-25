@@ -22,8 +22,11 @@ position = Vector2(2, -7)
 shape = SubResource("RectangleShape2D_7jmr7")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_right = 4.0
-offset_bottom = 27.0
+offset_left = -108.0
+offset_top = -166.0
+offset_right = 107.0
+offset_bottom = -153.0
+show_percentage = false
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_body_exited"]

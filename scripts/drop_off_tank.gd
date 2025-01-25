@@ -11,7 +11,7 @@ var hits = 0
 var done = false
 var status = false
 @onready var button_mash_bar = %ProgressBar
-@export var target_hits:=10
+@export var target_hits:=15
 
 func _ready():
 	$Timer.wait_time = randi_range(12,40) - GameManager.zone_now
