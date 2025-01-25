@@ -86,7 +86,7 @@ func _process(delta):
 			emit_signal("button_hit")
 			can_take_input = false
 			count+=1
-			if count==5 and not is_leader:
+			if count>=5 and not is_leader:
 				is_minigaming = false
 				is_ready = false
 				if p1_entered:
@@ -133,7 +133,7 @@ func _on_next_lever_button_hit():
 		self.going_to_show = this
 		next_lever.going_to_show = that
 		can_take_input = true
-		if count==5:
+		if count>=5:
 			count=0
 			if p1_entered:
 				player1_triggerer.can_move = true
