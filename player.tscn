@@ -129,4 +129,4 @@ shape = SubResource("RectangleShape2D_uj6li")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -138)
 sprite_frames = SubResource("SpriteFrames_t3bxi")
-animation = &"p1_idle"
+animation = &"p1_walk"

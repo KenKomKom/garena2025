@@ -14,9 +14,6 @@ var _count = 0
 
 func _ready():
 	GameManager.connect("zone_reached", add_text2)
-	add_text(0)
-	add_text(4)
-	animate_in()
 
 const DESC = [
 	"In event of an OXYGEN TANK being empty, REPLACE it with one of the tanks piled in the second floor",
