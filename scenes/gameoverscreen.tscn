@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://clgf8cinhemr6"]
+[gd_scene load_steps=4 format=3 uid="uid://clgf8cinhemr6"]
 
 [ext_resource type="Script" path="res://scripts/gameoverscreen.gd" id="1_nk60o"]
 [ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="2_26mtb"]
 [ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="3_l3err"]
-[ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="4_wfven"]
-[ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="5_aqep2"]
 
 [node name="gameoverscreen" type="CanvasLayer"]
 script = ExtResource("1_nk60o")
@@ -42,38 +40,45 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="title2" type="Label" parent="VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 20
+columns = 2
+
+[node name="BackToLastCheckpoint" type="Label" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 58
 text = "Play Again?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 120)
+[node name="BackToMainMenu" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
-alignment = 1
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 58
+text = "Main Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="A" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="A" type="TextureRect" parent="VBoxContainer/GridContainer/CenterContainer"]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 texture = ExtResource("2_26mtb")
-expand_mode = 3
+expand_mode = 4
 
-[node name="D" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="D" type="TextureRect" parent="VBoxContainer/GridContainer/CenterContainer2"]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 texture = ExtResource("3_l3err")
-expand_mode = 3
-
-[node name="Space" type="Control" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
-[node name="left" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_wfven")
-expand_mode = 3
-
-[node name="right" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("5_aqep2")
-expand_mode = 3
+expand_mode = 4

@@ -19,6 +19,7 @@ func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
+	GameManager.connect("return_to_checkpoint", return_to_checkpoint)
 	
 func bocor_mulai(zone):
 	match zone:
@@ -127,4 +128,6 @@ func _on_attacked_fish_timer_timeout():
 		tween.tween_property($Fishes/Fish, "position", Vector2(mid - Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim), duration).set_trans(Tween.TRANS_LINEAR)
 		#tween.tween_callback($Fishes/Fish.queue_free)
 		
-		
+func return_to_checkpoint():
+	GameManager.emit_signal("zone_reached")
+	lights_switch(true)

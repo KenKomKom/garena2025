@@ -19,7 +19,12 @@ func end(why):
 			reason.text = "THE SHIP CRASHED DUE TO UNFORSEEN CIRCUMSTENCES"
 
 func _process(delta):
-	if Input.is_key_pressed(KEY_A):
-		$VBoxContainer/HBoxContainer/A.modulate = Color.GREEN_YELLOW
-	if Input.is_key_pressed(KEY_D):
-		$VBoxContainer/HBoxContainer/D.modulate = Color.GREEN_YELLOW
+	if Input.is_key_pressed(KEY_A) and visible:
+		# back to checkpoint
+		visible = false
+		get_tree().reload_current_scene()
+		
+	if Input.is_key_pressed(KEY_D) and visible:
+		# go to main menu
+		get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
+		

@@ -8,6 +8,7 @@ extends Label
 var depth_meter:=0
 
 func _ready():
+	depth_meter = 13 * 60 * GameManager.ZONE_CUMULATIVE_DURATION[GameManager.zone_now]
 	depth_timer.wait_time = GameManager.ZONE_DURATION.EPIPELAGIC*60
 	GameManager.zone_now = GameManager.ZONE.EPIPELAGIC
 	depth_timer.start()
