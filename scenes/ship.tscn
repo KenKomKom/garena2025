@@ -99,15 +99,6 @@ speed_scale = 1.2
 randomness = 1.0
 interpolate = false
 
-[node name="Submarine" type="Sprite2D" parent="."]
-position = Vector2(986.301, 549.25)
-scale = Vector2(1.63216, 1.63216)
-texture = ExtResource("3_bh5y7")
-
-[node name="explode_fish" type="Timer" parent="."]
-wait_time = 17.0
-autostart = true
-
 [node name="explodingfish" type="GPUParticles2D" parent="."]
 position = Vector2(1534, 977)
 emitting = false
@@ -119,6 +110,15 @@ speed_scale = 1.2
 explosiveness = 1.0
 randomness = 1.0
 interpolate = false
+
+[node name="Submarine" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+scale = Vector2(1.63216, 1.63216)
+texture = ExtResource("3_bh5y7")
+
+[node name="explode_fish" type="Timer" parent="."]
+wait_time = 17.0
+autostart = true
 
 [node name="lantai1" type="StaticBody2D" parent="."]
 position = Vector2(0, 948)
@@ -336,7 +336,8 @@ visible = false
 position = Vector2(213, -188)
 occluder = SubResource("OccluderPolygon2D_mfdjc")
 
-[node name="TesObjSea" type="LightOccluder2D" parent="Lightnings"]
+[node name="TesObjSea (like a fish)" type="LightOccluder2D" parent="Lightnings"]
+visible = false
 light_mask = 2
 visibility_layer = 2
 position = Vector2(-134, -108)
