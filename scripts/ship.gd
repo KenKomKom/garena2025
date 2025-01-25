@@ -20,13 +20,10 @@ func _ready():
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
 	
-	bocor_mulai(GameManager.ZONE.BATHYPELAGIC) # TODO: HAPUS, DEBUGGING PURPOSES
-
 func bocor_mulai(zone):
 	match zone:
 		GameManager.ZONE.EPIPELAGIC:
 			# Level 1
-			can_attacked_fish = true # TODO: HAPUS
 			var p = %manual as Manual
 			p.add_text(p.EVENTS.TANK)
 			p.add_text(p.EVENTS.MONITOR)

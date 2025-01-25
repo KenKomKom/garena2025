@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvyoa6ctkyn4b"]
+[gd_scene load_steps=6 format=3 uid="uid://clgf8cinhemr6"]
 
 [ext_resource type="Script" path="res://scripts/gameoverscreen.gd" id="1_nk60o"]
+[ext_resource type="Texture2D" uid="uid://bsiqqpj48aj1j" path="res://assets/A.png" id="2_26mtb"]
+[ext_resource type="Texture2D" uid="uid://c7tl8ta5scb41" path="res://assets/D.png" id="3_l3err"]
+[ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="4_wfven"]
+[ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="5_aqep2"]
 
 [node name="gameoverscreen" type="CanvasLayer"]
 script = ExtResource("1_nk60o")
@@ -33,3 +37,43 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="title2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 58
+text = "Play Again?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+alignment = 1
+
+[node name="A" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_26mtb")
+expand_mode = 3
+
+[node name="D" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("3_l3err")
+expand_mode = 3
+
+[node name="Space" type="Control" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="left" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_wfven")
+expand_mode = 3
+
+[node name="right" type="TextureRect" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_aqep2")
+expand_mode = 3

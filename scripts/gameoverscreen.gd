@@ -17,3 +17,9 @@ func end(why):
 			reason.text = "YOU DIED OF RADIATION POISONING"
 		GameManager.DEATH_REASON.BIG_FISH:
 			reason.text = "THE SHIP CRASHED DUE TO UNFORSEEN CIRCUMSTENCES"
+
+func _process(delta):
+	if Input.is_key_pressed(KEY_A):
+		$VBoxContainer/HBoxContainer/A.modulate = Color.GREEN_YELLOW
+	if Input.is_key_pressed(KEY_D):
+		$VBoxContainer/HBoxContainer/D.modulate = Color.GREEN_YELLOW

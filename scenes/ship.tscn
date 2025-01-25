@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
 [ext_resource type="PackedScene" uid="uid://k313cue1elx3" path="res://scenes/nuclear_lever.tscn" id="13_wms07"]
 [ext_resource type="PackedScene" uid="uid://cme66b2aa4w52" path="res://scenes/switch.tscn" id="14_6nbof"]
-[ext_resource type="PackedScene" path="res://scenes/manual.tscn" id="15_akuct"]
+[ext_resource type="PackedScene" uid="uid://c8hhgm3cvlaeq" path="res://scenes/manual.tscn" id="15_akuct"]
 [ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="17_hs2jj"]
 [ext_resource type="Script" path="res://scripts/SubmarineMainLight.gd" id="18_e7lqm"]
 
