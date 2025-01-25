@@ -39,7 +39,6 @@ func _process(delta):
 	if can_take_input and ((p1_entered and not player1_triggerer.is_tanky) or\
 	(p2_entered and not player2_triggerer.is_tanky)) and can_trigger:
 		
-		
 		$Sprite2D.material = GameManager.station_outline
 	else:
 		$Sprite2D.material = null
@@ -87,6 +86,7 @@ func _on_spinny_thing_success():
 
 func spawn_radar():
 	$Radar.visible = true
+	GameManager.play_audio("res://audio/BOATSub_Submarine Sonar Beep Blips.wav")
 	await get_tree().create_timer(15).timeout
-	$Radar.visible = true
+	$Radar.visible = false
 	

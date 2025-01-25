@@ -34,10 +34,14 @@ func _process(delta):
 	if timer <= 0:
 		if Input.is_key_pressed(KEY_A) and visible:
 			# back to checkpoint
+			GameManager.play_audio("res://audio/buttons-67224.ogg")
+			await get_tree().create_timer(0.2).timeout
 			visible = false
 			get_tree().reload_current_scene()
 			
 		if Input.is_key_pressed(KEY_D) and visible:
 			# go to main menu
+			GameManager.play_audio("res://audio/buttons-67224.ogg")
+			await get_tree().create_timer(0.2).timeout
 			get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 		

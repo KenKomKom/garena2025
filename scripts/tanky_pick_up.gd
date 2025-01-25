@@ -19,7 +19,7 @@ func _process(delta):
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
 	if ((p1_entered and p1_temp) or (p2_entered and p2_temp)) and nyala:
 		# picked up by player
-		GameManager.play_audio("res://audio/metal-moving-81780.mp3", 1,-10)
+		GameManager.play_audio("res://audio/metal-moving-81780.mp3", 1,0)
 		
 		
 		if player1_triggerer and p1_temp:

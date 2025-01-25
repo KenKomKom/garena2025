@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=54 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 [ext_resource type="Texture2D" uid="uid://gvnp4qcxctw0" path="res://assets/senter.png" id="6_x54mt"]
+[ext_resource type="Texture2D" uid="uid://c83emtskkqt6c" path="res://assets/vignette.png" id="7_aas6q"]
 [ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
@@ -34,7 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://2qy18lrnk6fs" path="res://assets/L.png" id="20_7urvd"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="21_plvay"]
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="22_k0lnr"]
-[ext_resource type="PackedScene" uid="uid://b8jfrw0n4fo3s" path="res://player_2.tscn" id="22_qb8wm"]
+[ext_resource type="PackedScene" uid="uid://digcdwiywuag2" path="res://player_2.tscn" id="22_qb8wm"]
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -245,6 +246,12 @@ modulate = Color(1, 1, 1, 0.0980392)
 position = Vector2(933, 533)
 scale = Vector2(1.135, 1.135)
 texture = ExtResource("6_x54mt")
+
+[node name="Vignette" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.101961)
+position = Vector2(954, 589)
+scale = Vector2(1.50215, 1.88668)
+texture = ExtResource("7_aas6q")
 
 [node name="Submarine" type="Sprite2D" parent="."]
 position = Vector2(960, 540)

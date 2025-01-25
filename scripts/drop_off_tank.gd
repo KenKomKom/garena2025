@@ -111,6 +111,7 @@ func set_status(boolean):
 		if not status:
 			GameManager.emit_signal("add_air_depletion",3)
 		status = boolean
+		GameManager.play_audio("res://audio/metal-squeak-2-91858.ogg")
 		$Timer.wait_time = randi_range(10,40) - (GameManager.zone_now*2)
 		$Timer.start()
 		$"tank empty".visible = false
@@ -119,6 +120,7 @@ func set_status(boolean):
 	else:
 		if status:
 			GameManager.emit_signal("add_air_depletion",-3)
+		GameManager.play_audio("res://audio/short-gas-leak-98286.mp3")
 		status = boolean
 		# TODO: masukin ALLERT sprite
 		$"tank empty".visible = true

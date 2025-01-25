@@ -21,7 +21,7 @@ func stop_all():
 func add_air_depletion(value):
 	if emittable:
 		self.value = self.value + value
-		print_debug(self.value)
+		#print_debug(self.value)
 
 func _on_timer_timeout():
 	o2bar.value = min(100,o2bar.value+value)

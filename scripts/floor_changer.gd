@@ -10,12 +10,12 @@ var player2_triggerer = null
 func _process(delta):
 	var p1_temp = GameManager.get_leftp1() and GameManager.get_rightp1()
 	var p2_temp = GameManager.get_leftp2() and GameManager.get_rightp2()
-	if (p1_entered and p1_temp) or \
-	(p2_entered and p2_temp):
+	if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 		if player1_triggerer and p1_temp:
 			player1_triggerer.set_move_to_target(next_floor)
 		if player2_triggerer and p2_temp:
 			player2_triggerer.set_move_to_target(next_floor)
+		GameManager.play_audio("res://audio/stairs-44770.ogg")
 
 func _on_area_2d_body_entered(body):
 	if body is Player:

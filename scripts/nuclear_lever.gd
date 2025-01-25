@@ -24,6 +24,8 @@ var boolean_fuck_you = true
 
 var default : Vector2
 
+var isp1
+
 func _ready():
 	GameManager.connect("start_meltdown", _set_up)
 	GameManager.connect("lights_switch", lights_switch)
@@ -54,9 +56,11 @@ func _process(delta):
 			if (p1_entered and not p2_entered):
 				GameManager.reset_p1()
 				player1_triggerer.can_move = false
+				isp1 = true
 			elif (not p1_entered and p2_entered):
 				GameManager.reset_p2()
 				player2_triggerer.can_move = false
+				isp1 = false
 			is_ready = true
 			return
 	
@@ -71,32 +75,32 @@ func _process(delta):
 	
 	if is_minigaming:
 		$alert.visible = false
-		var p1_left = GameManager.get_leftp1()
-		var p1_right = GameManager.get_rightp1()
+		var p1_left = Input.is_action_just_pressed("leftp1")
+		var p1_right = Input.is_action_just_pressed("rightp1")
 		
-		var p2_left = GameManager.get_leftp2()
-		var p2_right = GameManager.get_rightp2()
+		var p2_left = Input.is_action_just_pressed("leftp2")
+		var p2_right =  Input.is_action_just_pressed("rightp2")
 		
 		var strr = ("kiri" if going_to_show==1 else "kanan")+str(player_idx)
 		if can_take_input:
 			get_node(strr).visible = true
 		
-		if can_take_input and (p1_entered and ((p1_left and going_to_show==1) or (p1_right and going_to_show==2))) or \
-		(p2_entered and ((p2_left and going_to_show==1) or (p2_right and going_to_show==2))):
+		if can_take_input and ((p1_entered and ((p1_left and going_to_show==1) or (p1_right and going_to_show==2))) or \
+		(p2_entered and ((p2_left and going_to_show==1) or (p2_right and going_to_show==2)))):
 			count+=1
+			can_take_input = false
 			if p1_entered:
 				GameManager.reset_p1()
-				player1_triggerer.can_move = false
 			else:
 				GameManager.reset_p2()
-				player2_triggerer.can_move = false
 			get_node(("kiri" if going_to_show==1 else "kanan")+str(player_idx)).visible = false
-			can_take_input = false
+			await get_tree().create_timer(0.1).timeout
+			print("counting",self.name, count)
 			emit_signal("button_hit")
 			if count>=5 and not is_leader:
 				is_minigaming = false
 				is_ready = false
-				if p1_entered:
+				if isp1:
 					player1_triggerer.can_move = true
 				else:
 					player2_triggerer.can_move = true
@@ -104,6 +108,7 @@ func _process(delta):
 				$AnimatedSprite2D.play("down")
 				$Area2D/CollisionShape2D.shape.size = default
 				boolean_fuck_you = true
+			
 
 func choose_left_right():
 	return randi_range(1,2)
@@ -135,8 +140,8 @@ func _on_area_2d_body_exited(body):
 			%p1_control.visible = false
 
 func _on_next_lever_button_hit():
+	print(self.name, is_leader, count)
 	if is_leader:
-		print(is_leader, count)
 		var this = choose_left_right()
 		var that = 1 if this==2 else 2
 		self.going_to_show = this

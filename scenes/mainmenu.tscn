@@ -1,14 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cq1g456qxh1sb"]
+[gd_scene load_steps=14 format=3 uid="uid://cq1g456qxh1sb"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_o2ouy"]
 [ext_resource type="Texture2D" uid="uid://ckx7ldjob3ld3" path="res://assets/IMG_8217.jpg" id="2_srpgd"]
 [ext_resource type="Texture2D" uid="uid://b4up1sowh7xvp" path="res://assets/Untitled_Artwork 5.png" id="3_hjsf2"]
-[ext_resource type="Texture2D" uid="uid://dhefmm81pw22k" path="res://assets/Untitled_Artwork 6.png" id="4_0rfea"]
-[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="5_k8sq3"]
-[ext_resource type="Texture2D" uid="uid://chq0bm2o10r76" path="res://assets/Untitled_Artwork 7.png" id="5_yhco0"]
+[ext_resource type="Texture2D" uid="uid://b1uml6h12oc1j" path="res://assets/Untitled_Artwork 8.png" id="4_yk3ml"]
+[ext_resource type="Texture2D" uid="uid://clwx0upkddu00" path="res://assets/Untitled_Artwork 9.png" id="5_c24jl"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="6_ygwga"]
 [ext_resource type="PackedScene" uid="uid://c82oduutg0qhw" path="res://scenes/credits.tscn" id="7_cc6dk"]
-[ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="9_1yyjf"]
 
 [sub_resource type="Curve" id="Curve_c8ty4"]
 _data = [Vector2(0.00520834, 0.813187), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -77,15 +75,14 @@ offset_left = 294.0
 offset_top = 646.0
 offset_right = 728.0
 offset_bottom = 851.0
-texture_normal = ExtResource("4_0rfea")
-texture_pressed = ExtResource("5_k8sq3")
+texture_normal = ExtResource("5_c24jl")
 
 [node name="credits" type="TextureButton" parent="."]
 offset_left = 727.0
 offset_top = 646.0
 offset_right = 1161.0
 offset_bottom = 851.0
-texture_normal = ExtResource("5_yhco0")
+texture_normal = ExtResource("4_yk3ml")
 
 [node name="explodingfish" type="GPUParticles2D" parent="."]
 position = Vector2(1440, 1024)
@@ -124,8 +121,6 @@ interpolate = false
 
 [node name="credits2" parent="." instance=ExtResource("7_cc6dk")]
 visible = false
-
-[node name="o2bar" parent="." instance=ExtResource("9_1yyjf")]
 
 [connection signal="button_up" from="start" to="." method="_on_start_button_up"]
 [connection signal="button_up" from="credits" to="." method="_on_credits_button_up"]

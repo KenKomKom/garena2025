@@ -38,7 +38,6 @@ func _physics_process(delta):
 			$AnimatedSprite2D.flip_h = true if direction<0	 else false
 			velocity.x = direction * SPEED
 		else:
-			
 			$AnimatedSprite2D.play("p1_idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	elif not can_move and is_climbing:
@@ -73,3 +72,4 @@ func end(_why=null):
 	is_climbing = false
 	velocity = Vector2.ZERO
 	$AnimatedSprite2D.play("p1_idle")
+

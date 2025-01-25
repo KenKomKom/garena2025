@@ -18,7 +18,6 @@ func _physics_process(delta):
 		else:
 			velocity.y = move_toward(velocity.y, 0, SPEED)
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-		#print((target_floor.global_position-global_position).length())
 		if (target_floor.global_position-global_position).length()<10:
 			global_position = target_floor.global_position
 			target_floor = null

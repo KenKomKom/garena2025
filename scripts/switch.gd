@@ -48,9 +48,9 @@ func _process(delta):
 			GameManager.reset_p2()
 		nyala = not nyala
 		$"../Camera2D".shake()
+		GameManager.play_audio("res://audio/Power Off 01.mp3")
 		if not nyala:
 			$AnimatedSprite2D.play("default")
-			GameManager.play_audio("res://audio/Power Off 01.mp3")
 		else:
 			$AnimatedSprite2D.play_backwards("default")
 		GameManager.emit_signal("lights_switch",nyala)

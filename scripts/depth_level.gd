@@ -33,6 +33,7 @@ func _on_count_timer_timeout():
 	$ProgressBar.value +=1
 
 func end(_why):
+	visible = false
 	value = 0
 	$depth_timer.stop()
 	$count_Timer.stop()

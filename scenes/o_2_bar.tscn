@@ -44,6 +44,7 @@ texture = ExtResource("2_pfvv1")
 [node name="ProgressBar" type="ProgressBar" parent="TextureRect"]
 unique_name_in_owner = true
 show_behind_parent = true
+layout_mode = 0
 offset_left = 67.0
 offset_top = 25.0
 offset_right = 337.0

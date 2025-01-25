@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b8jfrw0n4fo3s"]
+[gd_scene load_steps=22 format=3 uid="uid://digcdwiywuag2"]
 
 [ext_resource type="Script" path="res://player2.gd" id="1_a2etl"]
 [ext_resource type="Texture2D" uid="uid://cxdh55q8dxkdb" path="res://assets/spritesheet_14.png" id="2_df2lq"]
@@ -68,7 +68,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"p1_climb",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -85,7 +85,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"p1_idle",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -142,7 +142,7 @@ shape = SubResource("RectangleShape2D_f3341")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -138)
 sprite_frames = SubResource("SpriteFrames_t3y51")
-animation = &"p1_climb"
+animation = &"p1_idle"
 autoplay = "p1_idle"
 speed_scale = 2.0
 

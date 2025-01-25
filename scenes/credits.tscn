@@ -54,7 +54,7 @@ theme_override_constants/margin_bottom = 60
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 30
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -91,6 +91,15 @@ layout_mode = 2
 theme_override_fonts/font = ExtResource("3_erp2q")
 theme_override_font_sizes/font_size = 36
 text = "Sound Effect by freesound_community from Pixabay"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label5" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_erp2q")
+theme_override_font_sizes/font_size = 36
+text = "Sound Effect by u_go9pkxdnu9 from Pixabay"
 horizontal_alignment = 1
 autowrap_mode = 2
 

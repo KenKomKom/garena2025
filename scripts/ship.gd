@@ -21,14 +21,14 @@ const sea_color = ["#89d9c7","#345885","#212a64","#120d36","#07041f"]
 @onready var fish_odd = preload("res://scenes/fish_odd.tscn")
 @onready var fish_big = preload("res://scenes/fish_big.tscn")
 
-
 func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
 	GameManager.emit_signal("zone_reached", GameManager.zone_now)
+	GameManager.emit_signal("start_meltdown")
 	$glass.visible = false
-	GameManager.play_audio("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",1,-10)
+	GameManager.play_audio_background("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",-3)
 	
 func bocor_mulai(zone):
 	var tween = get_tree().create_tween()
@@ -106,7 +106,7 @@ func _on_meltdown_timer_timeout():
 		%SubmarineMain.is_meltdown = true
 		GameManager.emit_signal("start_meltdown")
 		$menltdown_kill.start()
-		GameManager.play_audio("res://audio/BOATSub_Submarine Sonar Beep Blips.wav")
+		GameManager.play_audio("res://audio/Emergency_siren_loop.wav")
 
 func _on_menltdown_kill_timeout():
 	GameManager.emit_signal("game_over", GameManager.DEATH_REASON.MELTDOWN)
@@ -142,6 +142,7 @@ func _on_attacked_fish_timer_timeout():
 	if can_attacked_fish:
 		# spawn fish
 		%Camera2D.shake()
+		GameManager.emit_signal("spawn_radar")
 		$attacked_fish_timer.stop()
 		
 		var tween = get_tree().create_tween()
