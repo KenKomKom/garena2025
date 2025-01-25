@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/manual.gd" id="1_kjoqn"]
 [ext_resource type="Texture2D" uid="uid://r26r1r4050d4" path="res://assets/Frame 1171275453.png" id="1_spbuo"]
-[ext_resource type="FontFile" uid="uid://5rhi3fj8rm1q" path="res://font/Courier New.ttf" id="3_l4j1g"]
+[ext_resource type="FontFile" uid="uid://cn0isg2ngqae4" path="res://font/Courier New Bold Italic font.ttf" id="3_7d0by"]
 
 [node name="manual" type="Control"]
 layout_mode = 3
@@ -38,7 +38,7 @@ offset_top = 43.0
 offset_bottom = 66.0
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_l4j1g")
+theme_override_fonts/font = ExtResource("3_7d0by")
 theme_override_font_sizes/font_size = 48
 text = "ZONE REACHED"
 horizontal_alignment = 1
@@ -47,11 +47,11 @@ horizontal_alignment = 1
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = 116.0
-offset_top = 80.0
+offset_top = 91.0
 offset_right = 1116.0
-offset_bottom = 480.0
+offset_bottom = 491.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_l4j1g")
+theme_override_fonts/font = ExtResource("3_7d0by")
 theme_override_font_sizes/font_size = 24
 autowrap_mode = 2
 justification_flags = 139

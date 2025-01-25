@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="6_g6b53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p76t0"]
-size = Vector2(139, 76)
+size = Vector2(24, 76)
 
 [node name="floor_changer" type="Node2D"]
 script = ExtResource("1_g88n3")
@@ -15,7 +15,7 @@ script = ExtResource("1_g88n3")
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, -28)
+position = Vector2(0, -28)
 shape = SubResource("RectangleShape2D_p76t0")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]

@@ -1,6 +1,6 @@
 class_name  Player extends CharacterBody2D
 
-var SPEED = 600.0
+var SPEED = 500.0
 var direction = Vector2.ZERO
 @export var player_number=1
 
@@ -17,11 +17,11 @@ func _physics_process(delta):
 	if can_move:
 		direction = Input.get_axis("leftp1", "rightp1")
 		if direction:
-			if not $AnimatedSprite2D.is_playing():
-				$AnimatedSprite2D.play("p1_walk")
+			$AnimatedSprite2D.play("p1_walk")
 			$AnimatedSprite2D.flip_h = true if direction<0	 else false
 			velocity.x = direction * SPEED
 		else:
+			
 			$AnimatedSprite2D.play("p1_idle")
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	elif not can_move and is_climbing:
