@@ -11,6 +11,7 @@ var hits = 0
 var done = false
 var status = true
 var can_trigger = true
+var default : Vector2
 
 @onready var button_mash_bar = %ProgressBar
 @export var target_hits:=45
@@ -34,7 +35,7 @@ func _process(delta):
 			player2_triggerer.set_is_tanky(false)
 			player2_triggerer.can_move = false
 			start_minigame()
-			
+	
 	if is_minigaming:
 		if p1_entered:
 			%p1_control.visible = true
@@ -61,6 +62,7 @@ func _process(delta):
 				if p2_entered:
 					%p2_control.visible = false
 				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
+				$CollisionShape2D.shape.size = default
 	if (p1_entered and player1_triggerer.is_tanky and can_trigger) or \
 		(p2_entered and player2_triggerer.is_tanky and can_trigger):
 		$valve.material = GameManager.station_outline
@@ -106,7 +108,6 @@ func set_status(boolean):
 		
 		$"tank empty".visible = false
 		$"tank filled".visible = true
-		
 		return
 	else:
 		if status:
@@ -124,6 +125,8 @@ func _on_timer_timeout():
 	$Timer.stop()
 
 func start_minigame():
+	default = $CollisionShape2D.shape.size
+	$CollisionShape2D.shape.size.x = $CollisionShape2D.shape.size.x+40
 	is_minigaming = true
 	hits = 0
 	%ProgressBar.visible = true
