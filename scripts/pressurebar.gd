@@ -4,11 +4,11 @@ var value=-2
 var change_direction = -1
 var emittable = true
 @onready var pressure_bar = %ProgressBar
-@export var change_rate := 3
 
 func _ready():
 	GameManager.connect("add_pressure_value", add_pressure_value)
 	GameManager.connect("game_over", end)
+	value = -2
 
 func add_pressure_value(value):
 	self.value += value

@@ -83,6 +83,7 @@ func _process(delta):
 		
 		if can_take_input and (p1_entered and ((p1_left and going_to_show==1) or (p1_right and going_to_show==2))) or \
 		(p2_entered and ((p2_left and going_to_show==1) or (p2_right and going_to_show==2))):
+			count+=1
 			if p1_entered:
 				GameManager.reset_p1()
 				player1_triggerer.can_move = false
@@ -90,9 +91,8 @@ func _process(delta):
 				GameManager.reset_p2()
 				player2_triggerer.can_move = false
 			get_node(("kiri" if going_to_show==1 else "kanan")+str(player_idx)).visible = false
-			emit_signal("button_hit")
 			can_take_input = false
-			count+=1
+			emit_signal("button_hit")
 			if count>=5 and not is_leader:
 				is_minigaming = false
 				is_ready = false

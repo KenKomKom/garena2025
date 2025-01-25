@@ -1,6 +1,6 @@
 extends Control
 
-var value = 3
+var value = 6
 var emittable = true
 @onready var o2bar = %ProgressBar
 @onready var bg_color = o2bar.get_theme_stylebox("background").bg_color
@@ -12,6 +12,7 @@ func _ready():
 	GameManager.connect("game_over", end)
 	o2bar.get_theme_stylebox("background").bg_color = bg_color
 	o2bar.get_theme_stylebox("fill").bg_color = fill_color
+	value = 6
 
 func add_air_depletion(value):
 	self.value = self.value + value
