@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=55 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 [ext_resource type="Texture2D" uid="uid://gvnp4qcxctw0" path="res://assets/senter.png" id="6_x54mt"]
 [ext_resource type="Texture2D" uid="uid://c83emtskkqt6c" path="res://assets/vignette.png" id="7_aas6q"]
-[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://clgf8cinhemr6" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
@@ -36,6 +36,7 @@
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="21_plvay"]
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="22_k0lnr"]
 [ext_resource type="PackedScene" uid="uid://digcdwiywuag2" path="res://player_2.tscn" id="22_qb8wm"]
+[ext_resource type="Script" path="res://scripts/Jellyfish spawner.gd" id="37_slloy"]
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -589,7 +590,7 @@ texture_scale = 45.0
 
 [node name="SeaLight" type="PointLight2D" parent="Lightnings"]
 visibility_layer = 2
-position = Vector2(961, 24)
+position = Vector2(970, 24)
 energy = 0.21
 range_item_cull_mask = 2
 shadow_enabled = true
@@ -614,6 +615,39 @@ occluder_light_mask = 2
 [node name="ikan_death" type="AnimatedSprite2D" parent="."]
 visible = false
 
+[node name="Jellyfish spawner" type="Node2D" parent="."]
+script = ExtResource("37_slloy")
+
+[node name="Timer" type="Timer" parent="Jellyfish spawner"]
+wait_time = 20.0
+
+[node name="Marker2D" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(294, 999)
+
+[node name="Marker2D2" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(462, 1003)
+
+[node name="Marker2D3" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(651, 999)
+
+[node name="Marker2D4" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(813, 988)
+
+[node name="Marker2D5" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(941, 995)
+
+[node name="Marker2D6" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(1085, 988)
+
+[node name="Marker2D7" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(1262, 992)
+
+[node name="Marker2D8" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(1426, 988)
+
+[node name="Marker2D9" type="Marker2D" parent="Jellyfish spawner"]
+position = Vector2(1567, 988)
+
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="body_entered" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_entered"]
 [connection signal="body_exited" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_exited"]
@@ -623,3 +657,4 @@ visible = false
 [connection signal="timeout" from="meltdown_timer" to="." method="_on_meltdown_timer_timeout"]
 [connection signal="timeout" from="menltdown_kill" to="." method="_on_menltdown_kill_timeout"]
 [connection signal="timeout" from="attacked_fish_timer" to="." method="_on_attacked_fish_timer_timeout"]
+[connection signal="timeout" from="Jellyfish spawner/Timer" to="Jellyfish spawner" method="_on_timer_timeout"]
