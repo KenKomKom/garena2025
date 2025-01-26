@@ -50,6 +50,7 @@ func _process(delta):
 			%p1_control.visible = true
 		if p2_entered:
 			%p2_control.visible = true
+		print(p1_entered, p1_temp, p2_entered, p2_temp) 
 		if (p1_entered and p1_temp) or (p2_entered and p2_temp):
 			hits+=1
 			button_mash_bar.value=lerp(button_mash_bar.value,hits/1.0,0.5)
@@ -122,7 +123,6 @@ func set_status(boolean):
 			GameManager.emit_signal("add_air_depletion",-3)
 		GameManager.play_audio("res://audio/short-gas-leak-98286.mp3")
 		status = boolean
-		# TODO: masukin ALLERT sprite
 		$"tank empty".visible = true
 		$"tank filled".visible = false
 		$Timer/allert.visible = true
@@ -149,4 +149,5 @@ func _on_minus_timer_timeout():
 		$minus_timer.start()
 
 func lights_switch(status):
+	print(status)
 	can_trigger = status

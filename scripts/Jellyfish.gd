@@ -23,11 +23,8 @@ func _physics_process(delta):
 		velocity = Vector2.ZERO
 
 func _on_animated_sprite_2d_frame_changed():
-	print("hallo")
-	print($AnimatedSprite2D.frame)
 	if $AnimatedSprite2D.frame == 5:
 		velocity = -transform.y * SWIM_POWER
-
 
 func _on_animated_sprite_2d_sprite_frames_changed():
 	pass
