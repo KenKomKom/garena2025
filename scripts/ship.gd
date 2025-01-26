@@ -25,6 +25,7 @@ const sea_color = ["#89d9c7","#345885","#212a64","#120d36","#07041f"]
 @onready var fish_big = preload("res://scenes/fish_big.tscn")
 
 func _ready():
+	print("game startedd")
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)

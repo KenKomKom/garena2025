@@ -43,9 +43,16 @@ animations = [{
 }]
 
 [node name="Jellyfish" type="Node2D"]
+modulate = Color(0, 0, 0, 0.537255)
+z_index = -1
 script = ExtResource("1_iivxq")
+lifetime = 15
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_ybugq")
 autoplay = "default"
 frame_progress = 0.469552
+
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[connection signal="sprite_frames_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_sprite_frames_changed"]

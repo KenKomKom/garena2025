@@ -1,9 +1,12 @@
 extends Node2D
 
 @export var lifetime = 10
-const SWIM_POWER = 10
+const SWIM_POWER = 300
+const DRAG = 200
+
+
+
 var velocity = Vector2.ZERO
-const DRAG = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,13 +15,19 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	position += velocity
-	if velocity.length_squared() <= DRAG*DRAG:
-		velocity = velocity - velocity.normalized() * DRAG
+func _physics_process(delta):
+	position += velocity * delta
+	if velocity.length_squared() > DRAG*DRAG*delta:
+		velocity = velocity - velocity.normalized() * DRAG*delta
 	else:
 		velocity = Vector2.ZERO
 
 func _on_animated_sprite_2d_frame_changed():
+	print("hallo")
+	print($AnimatedSprite2D.frame)
 	if $AnimatedSprite2D.frame == 5:
-		velocity = transform.y * SWIM_POWER
+		velocity = -transform.y * SWIM_POWER
+
+
+func _on_animated_sprite_2d_sprite_frames_changed():
+	pass

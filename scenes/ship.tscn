@@ -791,34 +791,35 @@ occluder_light_mask = 2
 script = ExtResource("37_slloy")
 
 [node name="Timer" type="Timer" parent="Jellyfish spawner"]
-wait_time = 20.0
+wait_time = 5.0
+autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(294, 999)
+position = Vector2(320, 1106)
 
 [node name="Marker2D2" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(462, 1003)
+position = Vector2(488, 1110)
 
 [node name="Marker2D3" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(651, 999)
+position = Vector2(677, 1106)
 
 [node name="Marker2D4" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(813, 988)
+position = Vector2(839, 1095)
 
 [node name="Marker2D5" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(941, 995)
+position = Vector2(967, 1102)
 
 [node name="Marker2D6" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(1085, 988)
+position = Vector2(1111, 1095)
 
 [node name="Marker2D7" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(1262, 992)
+position = Vector2(1288, 1099)
 
 [node name="Marker2D8" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(1426, 988)
+position = Vector2(1452, 1095)
 
 [node name="Marker2D9" type="Marker2D" parent="Jellyfish spawner"]
-position = Vector2(1567, 988)
+position = Vector2(1593, 1095)
 
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="body_entered" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_entered"]
