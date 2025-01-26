@@ -18,7 +18,7 @@ func _ready():
 	count_timer.start() # counter 1 detik
 
 func _process(delta):
-	if Input.is_action_just_pressed("ui_accept"):
+	if Input.is_action_just_pressed("ui_end"):
 		_on_depth_timer_timeout() # TODO: remove this cheat code
 
 func _on_depth_timer_timeout():

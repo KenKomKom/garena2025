@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cq1g456qxh1sb"]
+[gd_scene load_steps=15 format=3 uid="uid://cq1g456qxh1sb"]
 
 [ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_o2ouy"]
 [ext_resource type="Texture2D" uid="uid://ckx7ldjob3ld3" path="res://assets/IMG_8217.jpg" id="2_srpgd"]
@@ -38,18 +38,34 @@ point_count = 2
 [sub_resource type="CurveTexture" id="CurveTexture_81xeb"]
 curve = SubResource("Curve_i88a4")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ymtru"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5ur2o"]
 particle_flag_rotate_y = true
 particle_flag_disable_z = true
 emission_shape = 3
-emission_box_extents = Vector3(500, 0, 1)
-direction = Vector3(-1, -1, 0)
-spread = 5.0
-initial_velocity_min = 100.0
-initial_velocity_max = 481.81
+emission_box_extents = Vector3(1, 300, 1)
+direction = Vector3(-1, 0, 0)
+spread = 10.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
 gravity = Vector3(0, 0, 0)
 radial_accel_max = 100.0
 scale_min = 0.05
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_81xeb")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wqyt0"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 300, 1)
+direction = Vector3(-1, 0, 0)
+spread = 10.0
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 100.0
+scale_min = 0.05
+scale_max = 0.4
 scale_curve = SubResource("CurveTexture_81xeb")
 
 [node name="mainmenu" type="CanvasLayer"]
@@ -63,6 +79,20 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_srpgd")
 
+[node name="start" type="TextureButton" parent="."]
+offset_left = 294.0
+offset_top = 646.0
+offset_right = 762.0
+offset_bottom = 880.0
+texture_normal = ExtResource("5_c24jl")
+
+[node name="credits" type="TextureButton" parent="."]
+offset_left = 727.0
+offset_top = 646.0
+offset_right = 1195.0
+offset_bottom = 880.0
+texture_normal = ExtResource("4_yk3ml")
+
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 position = Vector2(1019, 1114)
 amount = 30
@@ -70,54 +100,41 @@ process_material = SubResource("ParticleProcessMaterial_2u7p1")
 texture = ExtResource("3_hjsf2")
 lifetime = 20.0
 
-[node name="start" type="TextureButton" parent="."]
-offset_left = 294.0
-offset_top = 646.0
-offset_right = 728.0
-offset_bottom = 851.0
-texture_normal = ExtResource("5_c24jl")
-
-[node name="credits" type="TextureButton" parent="."]
-offset_left = 727.0
-offset_top = 646.0
-offset_right = 1161.0
-offset_bottom = 851.0
-texture_normal = ExtResource("4_yk3ml")
-
 [node name="explodingfish" type="GPUParticles2D" parent="."]
-position = Vector2(1440, 1024)
-process_material = SubResource("ParticleProcessMaterial_ymtru")
+position = Vector2(2087, 271)
+process_material = SubResource("ParticleProcessMaterial_5ur2o")
 texture = ExtResource("6_ygwga")
-lifetime = 15.0
+lifetime = 10.0
 preprocess = 10.0
 speed_scale = 1.2
 explosiveness = 1.0
 randomness = 1.0
 interpolate = false
+visibility_rect = Rect2(-1000, -100, 200, 200)
 
 [node name="explodingfish2" type="GPUParticles2D" parent="."]
-position = Vector2(451, 1164)
+position = Vector2(2044, 481)
 amount = 12
-process_material = SubResource("ParticleProcessMaterial_ymtru")
+process_material = SubResource("ParticleProcessMaterial_5ur2o")
 texture = ExtResource("6_ygwga")
-lifetime = 15.0
+lifetime = 10.0
 preprocess = 10.0
 speed_scale = 1.2
-explosiveness = 1.0
 randomness = 1.0
 interpolate = false
+visibility_rect = Rect2(-1000, -100, 200, 200)
 
 [node name="explodingfish3" type="GPUParticles2D" parent="."]
-position = Vector2(2079, 615)
+position = Vector2(2102, 891)
 amount = 10
-process_material = SubResource("ParticleProcessMaterial_ymtru")
+process_material = SubResource("ParticleProcessMaterial_wqyt0")
 texture = ExtResource("6_ygwga")
-lifetime = 15.0
+lifetime = 10.0
 preprocess = 10.0
 speed_scale = 1.2
-explosiveness = 1.0
 randomness = 1.0
 interpolate = false
+visibility_rect = Rect2(-1000, -100, 200, 200)
 
 [node name="credits2" parent="." instance=ExtResource("7_cc6dk")]
 visible = false

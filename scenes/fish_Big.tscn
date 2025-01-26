@@ -6,7 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojtcg"]
 radius = 215.0
-height = 904.0
+height = 694.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_233gk"]
 closed = false
@@ -23,7 +23,7 @@ position = Vector2(21, -42)
 texture = ExtResource("2_p2w6s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(988, -31)
+position = Vector2(1154, 5)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_ojtcg")
 

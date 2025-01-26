@@ -211,7 +211,7 @@ func _on_attacked_fish_timer_timeout():
 		tween.tween_callback(func(): 
 			if is_instance_valid(a):
 				a.queue_free
-			$attacked_fish_timer.wait_time = randi_range(50,80) - GameManager.zone_now*2
+			$attacked_fish_timer.wait_time = randi_range(50,80) - GameManager.zone_now*5
 			$attacked_fish_timer.start()
 		)
 
@@ -245,7 +245,6 @@ func set_up_death_by_fish():
 
 func win():
 	%Camera2D.shake()
-	$glass.visible = true
 	var fucks = $Node2D2.get_children()
 	for f in fucks:
 		f.run()
