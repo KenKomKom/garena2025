@@ -87,6 +87,7 @@ func _process(delta):
 		
 		if can_take_input and ((p1_entered and ((p1_left and going_to_show==1) or (p1_right and going_to_show==2))) or \
 		(p2_entered and ((p2_left and going_to_show==1) or (p2_right and going_to_show==2)))):
+			GameManager.play_audio("res://audio/metal-moving-81780.mp3", 1,0)
 			count+=1
 			can_take_input = false
 			if p1_entered:

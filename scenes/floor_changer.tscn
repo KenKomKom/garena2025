@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="6_g6b53"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p76t0"]
-size = Vector2(24, 76)
+size = Vector2(82, 76)
 
 [node name="floor_changer" type="Node2D"]
 script = ExtResource("1_g88n3")

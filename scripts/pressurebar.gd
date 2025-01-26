@@ -8,8 +8,8 @@ var emittable = true
 func _ready():
 	visible = true
 	GameManager.connect("add_pressure_value", add_pressure_value)
+	GameManager.connect("increase_pressure_bar", increase)
 	GameManager.connect("game_over", end)
-	value = -2
 	GameManager.connect("stop_all", stop_all)
 	GameManager.connect("win", end)
 
@@ -24,6 +24,11 @@ func _on_timer_timeout():
 	pressure_bar.value += value
 	if pressure_bar.value>=100 and emittable:
 		GameManager.emit_signal("game_over", GameManager.DEATH_REASON.PRESSURE)
+	if pressure_bar.value < 0:
+		pressure_bar.value = 0
+		
+func increase():
+	pressure_bar.value -= 30
 
 func end(_why=null):
 	emittable = false
