@@ -27,6 +27,7 @@ position = Vector2(-14, -51)
 shape = SubResource("CapsuleShape2D_ojtcg")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 light_mask = 2
 visibility_layer = 2
 position = Vector2(-385, 598)
@@ -38,6 +39,7 @@ light_mask = 2
 visibility_layer = 2
 position = Vector2(-87, -358)
 color = Color(1, 1, 0.478431, 1)
+energy = 0.6
 texture = ExtResource("3_mrfm5")
 texture_scale = 3.25
 
@@ -46,6 +48,7 @@ light_mask = 2
 visibility_layer = 2
 position = Vector2(63, -353)
 color = Color(1, 1, 0.478431, 1)
+energy = 0.6
 texture = ExtResource("3_mrfm5")
 texture_scale = 3.25
 
