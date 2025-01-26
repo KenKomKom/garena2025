@@ -12,6 +12,7 @@ const SPEED = 80
 func _init():
 	GameManager.emit_signal("add_air_depletion",-1)
 	GameManager.emit_signal("add_pressure_value",2)
+	GameManager.play_audio("res://audio/GlassBreakCracksG PE1050903.wav")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,7 +24,7 @@ func lights_switch(status):
 	can_trigger = status
 
 func _process(delta):
-	if (p1_entered and not player1_triggerer.is_tanky) or (p2_entered and not player2_triggerer.is_tanky) and can_trigger:
+	if ((p1_entered and not player1_triggerer.is_tanky) or (p2_entered and not player2_triggerer.is_tanky)) and can_trigger:
 		$ProgressBar.value+=delta*SPEED
 	else:
 		$ProgressBar.value=0
