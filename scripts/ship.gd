@@ -26,10 +26,11 @@ func _ready():
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
 	GameManager.connect("win", win)
+	GameManager.emit_signal("win")
 	#GameManager.emit_signal("zone_reached", GameManager.zone_now)
 	$ikan_death.visible = false
 	$glass.visible = false
-	set_up_death_by_fish()
+	#set_up_death_by_fish()
 	GameManager.play_audio_background("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",-3)
 	
 func bocor_mulai(zone):

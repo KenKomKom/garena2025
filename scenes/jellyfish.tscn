@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://bau5ulcolsd0p"]
+
+[ext_resource type="Script" path="res://scripts/Jellyfish.gd" id="1_iivxq"]
+[ext_resource type="Texture2D" uid="uid://d0x7iv07i13yt" path="res://assets/jellyfish0009.png" id="2_sgl8s"]
+[ext_resource type="Texture2D" uid="uid://csvpybuq3lvbm" path="res://assets/jellyfish0010.png" id="3_3dosq"]
+[ext_resource type="Texture2D" uid="uid://gkt2oc1kg44f" path="res://assets/jellyfish0011.png" id="4_lb42w"]
+[ext_resource type="Texture2D" uid="uid://boesnufi8icy2" path="res://assets/jellyfish0012.png" id="5_iu0xm"]
+[ext_resource type="Texture2D" uid="uid://dqr6ke22r47pr" path="res://assets/jellyfish0013.png" id="6_d4lau"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ybugq"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("2_sgl8s")
+}, {
+"duration": 2.0,
+"texture": ExtResource("3_3dosq")
+}, {
+"duration": 2.0,
+"texture": ExtResource("4_lb42w")
+}, {
+"duration": 2.0,
+"texture": ExtResource("5_iu0xm")
+}, {
+"duration": 5.0,
+"texture": ExtResource("6_d4lau")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iu0xm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lb42w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3dosq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sgl8s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="Jellyfish" type="Node2D"]
+script = ExtResource("1_iivxq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ybugq")
+autoplay = "default"
+frame_progress = 0.469552
