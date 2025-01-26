@@ -69,7 +69,7 @@ func _process(delta):
 					%p1_control.visible = false
 				if p2_entered:
 					%p2_control.visible = false
-				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
+				GameManager.play_audio("res://audio/Success.mp3",1,0)
 				$CollisionShape2D.shape.size = default
 	if (p1_entered and player1_triggerer.is_tanky and can_trigger) or \
 		(p2_entered and player2_triggerer.is_tanky and can_trigger):

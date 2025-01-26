@@ -104,7 +104,7 @@ func _process(delta):
 					player1_triggerer.can_move = true
 				else:
 					player2_triggerer.can_move = true
-				GameManager.play_audio("res://audio/Whoosh Star.mp3",1,0)
+				GameManager.play_audio("res://audio/Success.mp3",1,0)
 				$AnimatedSprite2D.play("down")
 				$Area2D/CollisionShape2D.shape.size = default
 				boolean_fuck_you = true

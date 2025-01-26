@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://br3gjyycdxu26"
+path="res://.godot/imported/GlassBreakCracksG PE1050903.wav-3e0ecfb6ae8032ee13587aabd278126e.sample"
+
+[deps]
+
+source_file="res://audio/GlassBreakCracksG PE1050903.wav"
+dest_files=["res://.godot/imported/GlassBreakCracksG PE1050903.wav-3e0ecfb6ae8032ee13587aabd278126e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

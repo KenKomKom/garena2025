@@ -9,6 +9,7 @@ var depth_meter:=0
 
 func _ready():
 	GameManager.connect("game_over", end)
+	GameManager.connect("stop_all", end)
 	GameManager.connect("win", end)
 	depth_meter = value * 60 * GameManager.ZONE_CUMULATIVE_DURATION[GameManager.zone_now]
 	depth_timer.wait_time = GameManager.ZONE_DURATION[GameManager.zone_now]*60
@@ -34,7 +35,7 @@ func _on_count_timer_timeout():
 	count_timer.start()
 	$ProgressBar.value +=1
 
-func end(_why):
+func end(_why=null):
 	visible = false
 	value = 0
 	$depth_timer.stop()
