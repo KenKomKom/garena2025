@@ -7,8 +7,11 @@ var opening_credits = false:
 			proc = 0.3
 var proc = 0.3
 
+func _ready():
+	GameManager.play_audio_background("res://audio/electric-bass-guitar-loop-4-bpm-110-43630.mp3")
+
 func _on_start_button_up():
-	#$start.texture_normal = load("res://icon.svg")
+	$start.texture_normal = load("res://assets/Untitled_Artwork 10.png")
 	GameManager.play_audio("res://audio/buttons-67224.ogg")
 	await get_tree().create_timer(0.3).timeout
 	GameManager.next_level = "res://scenes/ship.tscn"
@@ -16,7 +19,7 @@ func _on_start_button_up():
 
 func _on_credits_button_up():
 	opening_credits = true
-	#$start.texture_normal = load("res://icon.svg")
+	$start.texture_normal = load("res://assets/Untitled_Artwork 11.png")
 	GameManager.play_audio("res://audio/buttons-67224.ogg")
 	$credits2.show()
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=54 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
+[ext_resource type="Texture2D" uid="uid://bq3dmvkootd66" path="res://assets/glass_crack.png" id="3_cxbdq"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="3_hu48s"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="4_0abr6"]
 [ext_resource type="Texture2D" uid="uid://ctah36csvmvwe" path="res://assets/bg.png" id="4_27y15"]
@@ -11,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 [ext_resource type="Texture2D" uid="uid://gvnp4qcxctw0" path="res://assets/senter.png" id="6_x54mt"]
 [ext_resource type="Texture2D" uid="uid://c83emtskkqt6c" path="res://assets/vignette.png" id="7_aas6q"]
-[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
 [ext_resource type="PackedScene" uid="uid://clgf8cinhemr6" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
@@ -233,6 +234,12 @@ position = Vector2(896, 548)
 scale = Vector2(18.92, 11.96)
 texture = ExtResource("17_hs2jj")
 script = ExtResource("5_arokv")
+
+[node name="glass" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(949, 483)
+scale = Vector2(1.32454, 1.36682)
+texture = ExtResource("3_cxbdq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.0980392)
@@ -474,15 +481,6 @@ player_number = 2
 position = Vector2(378, 1038)
 collision_mask = 2
 
-[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(1, 432)
-next_lever = NodePath("../nuclear_lever2")
-is_leader = true
-
-[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
-position = Vector2(-1, 970)
-next_lever = NodePath("../nuclear_lever")
-
 [node name="Cover" type="Sprite2D" parent="."]
 position = Vector2(1585, 511)
 scale = Vector2(1.27286, 1.27286)
@@ -492,6 +490,15 @@ texture = ExtResource("12_ek5i2")
 position = Vector2(960, 540)
 scale = Vector2(1.285, 1.285)
 texture = ExtResource("16_clamp")
+
+[node name="nuclear_lever" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(1, 432)
+next_lever = NodePath("../nuclear_lever2")
+is_leader = true
+
+[node name="nuclear_lever2" parent="." node_paths=PackedStringArray("next_lever") instance=ExtResource("13_wms07")]
+position = Vector2(-1, 970)
+next_lever = NodePath("../nuclear_lever")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -522,6 +529,16 @@ visible = false
 
 [node name="manual" parent="CanvasLayer" instance=ExtResource("15_akuct")]
 unique_name_in_owner = true
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 
 [node name="bocor_timer" type="Timer" parent="."]
 wait_time = 7.0
@@ -593,6 +610,9 @@ visibility_layer = 2
 position = Vector2(-134, -108)
 occluder = SubResource("OccluderPolygon2D_mfdjc")
 occluder_light_mask = 2
+
+[node name="ikan_death" type="AnimatedSprite2D" parent="."]
+visible = false
 
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="body_entered" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_entered"]

@@ -46,12 +46,14 @@ func _clear_text():
 	%Label.text = ""
 
 func animate_in():
+	GameManager.play_audio("res://audio/paper-245786.mp3")
 	var tween = get_tree().create_tween()
 	tween.tween_property($background, "position", Vector2($background.position.x,1094-150-(_count*125)), 1)
 	await get_tree().create_timer(6*max(_count,1)).timeout
 	_animate_out()
 
 func _animate_out():
+	GameManager.play_audio("res://audio/paper-245786.mp3")
 	var tween = get_tree().create_tween()
 	tween.tween_property($background, "position", Vector2($background.position.x,1094), 1)
 	await tween.finished

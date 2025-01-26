@@ -30,6 +30,7 @@ corner_radius_bottom_left = 10
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4uqsw")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
@@ -44,7 +45,7 @@ texture = ExtResource("2_pfvv1")
 [node name="ProgressBar" type="ProgressBar" parent="TextureRect"]
 unique_name_in_owner = true
 show_behind_parent = true
-layout_mode = 2
+layout_mode = 0
 offset_left = 67.0
 offset_top = 25.0
 offset_right = 337.0
@@ -54,13 +55,5 @@ theme_override_styles/background = SubResource("StyleBoxFlat_g8f7s")
 theme_override_styles/fill = SubResource("StyleBoxFlat_iggbo")
 value = 100.0
 show_percentage = false
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 391.0
-offset_top = 22.0
-offset_right = 431.0
-offset_bottom = 45.0
-text = "hoho"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

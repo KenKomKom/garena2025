@@ -4,7 +4,7 @@ enum ZONE {EPIPELAGIC, MESOPELAGIC, BATHYPELAGIC, ABYSSOPELAGIC, HADAL}
 var ZONE_DURATION = { \
 	ZONE.EPIPELAGIC:1,\
 	ZONE.MESOPELAGIC:2,\
-	ZONE.BATHYPELAGIC:3,\
+	ZONE.BATHYPELAGIC:2,\
 	ZONE.ABYSSOPELAGIC:3,\
 	ZONE.HADAL:3\
 }
@@ -33,6 +33,8 @@ signal start_meltdown()
 signal meltdown_done()
 signal lights_switch(nyala)
 signal spawn_radar()
+signal stop_all()
+signal win()
 
 var station_outline = preload("res://shaders/stations/outline.tres")
 var station_silhouette = preload("res://shaders/stations/silhouette.tres")

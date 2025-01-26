@@ -33,6 +33,7 @@ theme_override_fonts/font = ExtResource("1_k4ocx")
 theme_override_font_sizes/font_size = 42
 text = "DEPTH : 0 m"
 script = ExtResource("1_eties")
+value = 16
 
 [node name="depth_timer" type="Timer" parent="."]
 
