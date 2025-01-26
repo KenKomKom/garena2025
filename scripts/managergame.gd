@@ -34,6 +34,7 @@ signal meltdown_done()
 signal lights_switch(nyala)
 signal spawn_radar()
 signal stop_all()
+signal win()
 
 var station_outline = preload("res://shaders/stations/outline.tres")
 var station_silhouette = preload("res://shaders/stations/silhouette.tres")

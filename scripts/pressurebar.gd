@@ -11,8 +11,10 @@ func _ready():
 	GameManager.connect("game_over", end)
 	value = -2
 	GameManager.connect("stop_all", stop_all)
+	GameManager.connect("win", end)
 
 func stop_all():
+	visible = false
 	emittable = false
 
 func add_pressure_value(value):

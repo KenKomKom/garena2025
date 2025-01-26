@@ -23,6 +23,8 @@ var is_dead = false
 
 func _ready():
 	initial_pos = position
+	is_dead = false
+	can_move = true
 	GameManager.connect("game_over", end)
 	GameManager.connect("stop_all", stop_all)
 

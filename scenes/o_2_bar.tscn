@@ -30,6 +30,7 @@ corner_radius_bottom_left = 10
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4uqsw")
+metadata/_edit_use_anchors_ = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

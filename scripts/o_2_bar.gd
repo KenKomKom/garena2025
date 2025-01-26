@@ -14,9 +14,11 @@ func _ready():
 	o2bar.get_theme_stylebox("fill").bg_color = fill_color
 	value = 6
 	GameManager.connect("stop_all", stop_all)
+	GameManager.connect("win", end)
 
 func stop_all():
 	emittable = false
+	visible = false
 
 func add_air_depletion(value):
 	if emittable:

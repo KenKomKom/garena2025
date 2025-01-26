@@ -25,9 +25,10 @@ func _ready():
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
+	GameManager.connect("win", win)
 	GameManager.emit_signal("zone_reached", GameManager.zone_now)
-	GameManager.emit_signal("start_meltdown")
 	$glass.visible = false
+	set_up_death_by_fish()
 	GameManager.play_audio_background("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",-3)
 	
 func bocor_mulai(zone):
@@ -192,5 +193,17 @@ func _on_attacked_fish_timer_timeout():
 func set_up_death_by_fish():
 	%Camera2D.shake()
 	$glass.visible = true
+	GameManager.emit_signal("stop_all")
+	GameManager.play_audio("res://audio/Power Off 01.mp3")
 	await get_tree().create_timer(0.6).timeout
+	#TODO : play animasi
+	$ikan_death.play("")
+	await $ikan_death.animation_finished
 	GameManager.emit_signal("game_over", GameManager.DEATH_REASON.BIG_FISH)
+
+func win():
+	var tween = get_tree().create_tween()
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1.0,2)
+	await tween.finished
+	#TODO : LENGKAPIN SCENE VICTORY
+	get_tree().change_scene_to_file("res://scenes/victory.tscn")

@@ -530,6 +530,16 @@ visible = false
 [node name="manual" parent="CanvasLayer" instance=ExtResource("15_akuct")]
 unique_name_in_owner = true
 
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="bocor_timer" type="Timer" parent="."]
 wait_time = 7.0
 
@@ -601,6 +611,9 @@ visibility_layer = 2
 position = Vector2(-134, -108)
 occluder = SubResource("OccluderPolygon2D_mfdjc")
 occluder_light_mask = 2
+
+[node name="ikan_death" type="AnimatedSprite2D" parent="."]
+visible = false
 
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="body_entered" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_entered"]
