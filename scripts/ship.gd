@@ -42,7 +42,10 @@ func _ready():
 	
 func bocor_mulai(zone):
 	var tween = get_tree().create_tween()
+	if zone >= 5:
+		return
 	tween.tween_property($Water, "modulate", Color(sea_color[zone]),4)
+	tween.tween_property($Godray, "modulate", Color(1, 1, 1, (4-zone)/4.0),4)
 	match zone:
 		GameManager.ZONE.EPIPELAGIC:
 			# Level 1
@@ -129,7 +132,9 @@ func meltdown_done():
 	$meltdown_timer.start()
 
 func _on_explode_fish_timeout():
-	$explodingfish.emitting = true
+	#$explodingfish.emitting = true
+	pass
+	# @ken ini buat apa
 
 func lights_switch(nyala):
 	%SubmarineMain.is_on = nyala
@@ -144,8 +149,9 @@ func _process(delta):
 	if Input.is_key_label_pressed(KEY_R):
 		get_tree().reload_current_scene()
 	
-	if Input.is_action_just_pressed("ui_accept"):
-		_on_attacked_fish_timer_timeout()
+	# fish cheatcode
+	#if Input.is_action_just_pressed("ui_accept"):
+		#_on_attacked_fish_timer_timeout()
 		
 	# check if fish is in death area
 	if is_aggresive_fish_in_death_area>0 and status_lampu:
@@ -202,7 +208,8 @@ func _on_attacked_fish_timer_timeout():
 			
 		tween.tween_property(a, "position", Vector2(mid - Vector2(-cos(rand_angle), -sin(rand_angle)) * range_anim), duration).set_trans(Tween.TRANS_LINEAR)
 		tween.tween_callback(func(): 
-			a.queue_free
+			if is_instance_valid(a):
+				a.queue_free
 			$attacked_fish_timer.wait_time = randi_range(50,80) - GameManager.zone_now*2
 			$attacked_fish_timer.start()
 		)
@@ -214,8 +221,16 @@ func set_up_death_by_fish():
 	await get_tree().create_timer(2).timeout
 	
 	GameManager.emit_signal("stop_all")
+	
+	# Delete all fishes
+	var group_nodes = get_tree().get_nodes_in_group("fish")
+	for node in group_nodes:
+		node.queue_free()
+	
 	GameManager.play_audio("res://audio/Power Off 01.mp3")
+	
 	await get_tree().create_timer(1).timeout
+	
 	%Camera2D.shake()
 	$ikan_death.visible = true
 	$ikan_death.play("pp")

@@ -166,7 +166,7 @@ libraries = {
 "": SubResource("AnimationLibrary_jl387")
 }
 autoplay = "naik_turun"
-speed_scale = 10.0
+speed_scale = 5.0
 
 [node name="panah animasi" type="Sprite2D" parent="."]
 visible = false

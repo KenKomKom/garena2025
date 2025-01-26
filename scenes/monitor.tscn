@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cp6q6gl14njn7"]
+[gd_scene load_steps=17 format=3 uid="uid://cp6q6gl14njn7"]
 
 [ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
 [ext_resource type="PackedScene" uid="uid://byuo3pffa5pbd" path="res://scenes/spinny_thing.tscn" id="3_o7nyx"]
@@ -45,8 +45,29 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_ofo5n"]
+resource_name = "radar_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Radar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ux1l3"]
+_data = {
+"radar_idle": SubResource("Animation_ofo5n")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ori3e"]
-size = Vector2(148, 170)
+size = Vector2(276, 170)
 
 [node name="Monitor" type="Area2D"]
 script = ExtResource("1_2f4ox")
@@ -101,13 +122,18 @@ sprite_frames = SubResource("SpriteFrames_sp55b")
 frame_progress = 0.456838
 
 [node name="Radar" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.0784314, 0.580392, 0.109804, 1)
-position = Vector2(58, -28)
+self_modulate = Color(0.0784314, 0.580392, 0.109804, 1)
+position = Vector2(59, -30)
 texture = ExtResource("8_tyav0")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ux1l3")
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-7, 27)
+visible = false
+position = Vector2(-24, 27)
 shape = SubResource("RectangleShape2D_ori3e")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

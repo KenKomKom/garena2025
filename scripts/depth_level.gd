@@ -17,6 +17,10 @@ func _ready():
 	depth_timer.start() # count depth in seconds
 	count_timer.start() # counter 1 detik
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		_on_depth_timer_timeout() # TODO: remove this cheat code
+
 func _on_depth_timer_timeout():
 	$ProgressBar.value = 0
 	var next_zone = GameManager.zone_now+1

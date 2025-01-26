@@ -1,10 +1,11 @@
-[gd_scene load_steps=72 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=75 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
 [ext_resource type="Texture2D" uid="uid://bq3dmvkootd66" path="res://assets/glass_crack.png" id="3_cxbdq"]
 [ext_resource type="Texture2D" uid="uid://b53myxrknym5x" path="res://assets/ikan.png" id="3_hu48s"]
 [ext_resource type="Shader" path="res://shaders/water.gdshader" id="4_0abr6"]
+[ext_resource type="Texture2D" uid="uid://b1fimdifglay4" path="res://assets/godray.png" id="4_8opw2"]
 [ext_resource type="Texture2D" uid="uid://ctah36csvmvwe" path="res://assets/bg.png" id="4_27y15"]
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="Script" path="res://scripts/water_display.gd" id="5_arokv"]
@@ -47,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://dirxcm5uswdl3" path="res://assets/spritesheet_16.png" id="37_nfbc7"]
 [ext_resource type="Script" path="res://scripts/Jellyfish spawner.gd" id="37_slloy"]
 [ext_resource type="FontFile" uid="uid://cn0isg2ngqae4" path="res://font/Courier New Bold Italic font.ttf" id="43_wg7a4"]
+[ext_resource type="Texture2D" uid="uid://cx0xkqxalhwey" path="res://assets/fish.png" id="50_gdtgo"]
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -117,7 +119,7 @@ shader = ExtResource("4_0abr6")
 shader_parameter/time = 0.0
 shader_parameter/speed = 3.0
 shader_parameter/frequency = 5.0
-shader_parameter/amplitude = 0.01
+shader_parameter/amplitude = 0.005
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uxlwj"]
 atlas = ExtResource("37_nfbc7")
@@ -247,7 +249,7 @@ position = Vector2(1142, 649)
 scale = Vector2(100, 100)
 texture = ExtResource("17_hs2jj")
 
-[node name="explodingfish" type="GPUParticles2D" parent="."]
+[node name="explodingfish" type="GPUParticles2D" parent="." groups=["fish"]]
 position = Vector2(1534, 977)
 process_material = SubResource("ParticleProcessMaterial_47u78")
 texture = ExtResource("3_hu48s")
@@ -258,7 +260,7 @@ explosiveness = 1.0
 randomness = 1.0
 interpolate = false
 
-[node name="explodingfish2" type="GPUParticles2D" parent="."]
+[node name="explodingfish2" type="GPUParticles2D" parent="." groups=["fish"]]
 position = Vector2(545, 1117)
 amount = 12
 process_material = SubResource("ParticleProcessMaterial_47u78")
@@ -270,7 +272,7 @@ explosiveness = 1.0
 randomness = 1.0
 interpolate = false
 
-[node name="explodingfish3" type="GPUParticles2D" parent="."]
+[node name="explodingfish3" type="GPUParticles2D" parent="." groups=["fish"]]
 position = Vector2(2173, 568)
 amount = 10
 process_material = SubResource("ParticleProcessMaterial_47u78")
@@ -282,7 +284,7 @@ explosiveness = 1.0
 randomness = 1.0
 interpolate = false
 
-[node name="explodingfish4" type="GPUParticles2D" parent="."]
+[node name="explodingfish4" type="GPUParticles2D" parent="." groups=["fish"]]
 position = Vector2(139, 976)
 amount = 30
 process_material = SubResource("ParticleProcessMaterial_6tsco")
@@ -301,6 +303,11 @@ position = Vector2(962, 496)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fishes/TheDeathArea"]
 shape = SubResource("CircleShape2D_obvxh")
+
+[node name="Godray" type="Sprite2D" parent="."]
+position = Vector2(1017, 425)
+scale = Vector2(0.73, 0.73)
+texture = ExtResource("4_8opw2")
 
 [node name="water_waves" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_bly08")
@@ -601,7 +608,7 @@ libraries = {
 "": SubResource("AnimationLibrary_jl387")
 }
 autoplay = "naik_turun"
-speed_scale = 10.0
+speed_scale = 5.0
 
 [node name="panah animasi" type="Sprite2D" parent="drop_off_tank3"]
 visible = false
@@ -812,7 +819,7 @@ occluder_light_mask = 2
 script = ExtResource("37_slloy")
 
 [node name="Timer" type="Timer" parent="Jellyfish spawner"]
-wait_time = 5.0
+wait_time = 15.0
 autostart = true
 
 [node name="Marker2D" type="Marker2D" parent="Jellyfish spawner"]
@@ -841,6 +848,31 @@ position = Vector2(1452, 1095)
 
 [node name="Marker2D9" type="Marker2D" parent="Jellyfish spawner"]
 position = Vector2(1593, 1095)
+
+[node name="Border" type="Node2D" parent="."]
+position = Vector2(1069, -462)
+scale = Vector2(3, 1)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Border"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("50_gdtgo")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Border"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-25.3333, 1967)
+texture = ExtResource("50_gdtgo")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Border"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(541.333, 1005)
+scale = Vector2(0.333333, 3)
+texture = ExtResource("50_gdtgo")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Border"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-581.333, 963)
+scale = Vector2(0.333333, 3)
+texture = ExtResource("50_gdtgo")
 
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="body_entered" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_entered"]

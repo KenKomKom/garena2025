@@ -36,7 +36,7 @@ func _process(delta):
 			start_minigame(2)
 			can_take_input = false
 		
-	if can_take_input and ((p1_entered and not player1_triggerer.is_tanky) or\
+	if ((p1_entered and not player1_triggerer.is_tanky) or\
 	(p2_entered and not player2_triggerer.is_tanky)) and can_trigger:
 		
 		$Sprite2D.material = GameManager.station_outline

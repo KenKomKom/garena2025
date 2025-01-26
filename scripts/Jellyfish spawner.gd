@@ -19,7 +19,7 @@ func _process(delta):
 
 func _on_timer_timeout():
 	if GameManager.zone_now >= GameManager.ZONE.BATHYPELAGIC:
-		for i in range(randi_range(1, 7)):
+		for i in range(randi_range(1, GameManager.zone_now+3)):
 			var j = jellyfish.instantiate()
 			add_child(j)
 			j.position = poses.pick_random().position

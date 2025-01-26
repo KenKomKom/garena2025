@@ -11,7 +11,7 @@ height = 694.0
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7jsg7"]
 polygon = PackedVector2Array(-644, -23, -593, -115, -548, -186, -349, -235, -178, -238, -134, -237, 158, -188, 459, -65, 675, 59, 804, 191, 718, 132, 497, 61, 231, 16, -101, 24, -246, 76, -304, 117, -392, 136, -443, 176, -510, 200, -590, 190, -638, 171, -609, 167, -571, 104, -561, 45, -571, -7, -590, -41, -602, -52, -625, -16, -615, 29)
 
-[node name="Fish Ok" type="Area2D"]
+[node name="Fish Ok" type="Area2D" groups=["fish"]]
 z_index = -1
 position = Vector2(2928, 481)
 script = ExtResource("1_qkcsu")
