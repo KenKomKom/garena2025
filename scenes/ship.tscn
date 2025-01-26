@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=72 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -9,12 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="Script" path="res://scripts/water_display.gd" id="5_arokv"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
+[ext_resource type="Shader" path="res://shaders/water_ripple.gdshader" id="6_bfwm3"]
 [ext_resource type="Texture2D" uid="uid://yng4xj45jdlm" path="res://assets/Untitled_Artwork 12.png" id="6_o525l"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 [ext_resource type="Texture2D" uid="uid://gvnp4qcxctw0" path="res://assets/senter.png" id="6_x54mt"]
 [ext_resource type="Texture2D" uid="uid://c83emtskkqt6c" path="res://assets/vignette.png" id="7_aas6q"]
 [ext_resource type="Texture2D" uid="uid://dqmrnsqxdbgyr" path="res://assets/Untitled_Artwork 13.png" id="7_r1c50"]
-[ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="PackedScene" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
 [ext_resource type="Script" path="res://scripts/paralax_unit.gd" id="7_xbtr2"]
 [ext_resource type="Texture2D" uid="uid://bo7uih6u1bmae" path="res://assets/Untitled_Artwork 14.png" id="8_of64l"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
@@ -96,6 +97,19 @@ scale_curve = SubResource("CurveTexture_qdu3f")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obvxh"]
 radius = 243.52
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bly08"]
+shader = ExtResource("6_bfwm3")
+shader_parameter/OCTAVE = 6
+shader_parameter/mulscale = 5.0
+shader_parameter/height = 0.6
+shader_parameter/tide = 1.955
+shader_parameter/foamthickness = 0.015
+shader_parameter/timescale = 0.4
+shader_parameter/waterdeep = 0.3
+shader_parameter/WATER_COL = Color(0.0392157, 0.380392, 0.878431, 0)
+shader_parameter/WATER2_COL = Color(0.0392157, 0.34902, 0.780392, 1)
+shader_parameter/FOAM_COL = Color(0.811765, 0.960784, 0.964706, 0.760784)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ecqxv"]
 shader = ExtResource("4_0abr6")
@@ -287,7 +301,13 @@ position = Vector2(962, 496)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fishes/TheDeathArea"]
 shape = SubResource("CircleShape2D_obvxh")
 
-[node name="water_display" type="Sprite2D" parent="."]
+[node name="water_waves" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bly08")
+position = Vector2(971, 554)
+scale = Vector2(14.12, 14.12)
+texture = ExtResource("17_hs2jj")
+
+[node name="water_effect" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_ecqxv")
 position = Vector2(896, 548)
 scale = Vector2(18.92, 11.96)
@@ -354,6 +374,12 @@ scale = Vector2(1.71193, 1.61964)
 sprite_frames = SubResource("SpriteFrames_grxc6")
 animation = &"pp"
 
+[node name="Vignette" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.101961)
+position = Vector2(954, 589)
+scale = Vector2(1.50215, 1.88668)
+texture = ExtResource("7_aas6q")
+
 [node name="glass" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(949, 483)
@@ -361,16 +387,11 @@ scale = Vector2(1.32454, 1.36682)
 texture = ExtResource("3_cxbdq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 modulate = Color(1, 1, 1, 0.0980392)
 position = Vector2(933, 533)
 scale = Vector2(1.135, 1.135)
 texture = ExtResource("6_x54mt")
-
-[node name="Vignette" type="Sprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.101961)
-position = Vector2(954, 589)
-scale = Vector2(1.50215, 1.88668)
-texture = ExtResource("7_aas6q")
 
 [node name="Submarine" type="Sprite2D" parent="."]
 position = Vector2(960, 540)

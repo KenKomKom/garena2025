@@ -64,17 +64,24 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.937255)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="title" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="title" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_krkut")
 theme_override_font_sizes/font_size = 300
@@ -82,25 +89,27 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 2
 
-[node name="reason" type="Label" parent="ColorRect/VBoxContainer"]
+[node name="reason" type="Label" parent="ColorRect/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_s4abb")
 theme_override_font_sizes/font_size = 58
+text = "Venturing too deep, the submarine found itself on the menu of the ocean’s apex predator"
 horizontal_alignment = 1
+autowrap_mode = 2
 
-[node name="Control" type="Control" parent="ColorRect/VBoxContainer"]
+[node name="Control" type="Control" parent="ColorRect/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="ColorRect/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/h_separation = 100
 theme_override_constants/v_separation = 20
 columns = 2
 
-[node name="BackToLastCheckpoint" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+[node name="BackToLastCheckpoint" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_s4abb")
@@ -109,7 +118,7 @@ text = "Play Again?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BackToMainMenu" type="Label" parent="ColorRect/VBoxContainer/GridContainer"]
+[node name="BackToMainMenu" type="Label" parent="ColorRect/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_s4abb")
@@ -118,21 +127,21 @@ text = "Main Menu"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="ColorRect/VBoxContainer/GridContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="ColorRect/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="A" type="TextureRect" parent="ColorRect/VBoxContainer/GridContainer/CenterContainer"]
+[node name="A" type="TextureRect" parent="ColorRect/MarginContainer/VBoxContainer/GridContainer/CenterContainer"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("2_26mtb")
 expand_mode = 4
 
-[node name="CenterContainer2" type="CenterContainer" parent="ColorRect/VBoxContainer/GridContainer"]
+[node name="CenterContainer2" type="CenterContainer" parent="ColorRect/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="D" type="TextureRect" parent="ColorRect/VBoxContainer/GridContainer/CenterContainer2"]
+[node name="D" type="TextureRect" parent="ColorRect/MarginContainer/VBoxContainer/GridContainer/CenterContainer2"]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 texture = ExtResource("3_l3err")
