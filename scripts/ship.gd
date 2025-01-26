@@ -25,7 +25,7 @@ const sea_color = ["#89d9c7","#345885","#212a64","#120d36","#07041f"]
 @onready var fish_big = preload("res://scenes/fish_big.tscn")
 
 func _ready():
-	print("game startedd")
+	print("game started")
 	GameManager.connect("zone_reached", bocor_mulai)
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
@@ -34,6 +34,7 @@ func _ready():
 	GameManager.emit_signal("zone_reached", GameManager.zone_now)
 	$ikan_death.visible = false
 	$glass.visible = false
+	has_won=false
 	once = true
 	$CanvasLayer/ColorRect.modulate.a = 0
 	#GameManager.emit_signal("win")

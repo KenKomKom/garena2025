@@ -21,7 +21,6 @@ func _process(delta):
 		# picked up by player
 		GameManager.play_audio("res://audio/metal-moving-81780.mp3", 1,0)
 		
-		
 		if player1_triggerer and p1_temp:
 			GameManager.reset_p1()
 			player1_triggerer.set_is_tanky(true)

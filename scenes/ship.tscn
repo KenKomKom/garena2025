@@ -180,7 +180,7 @@ size = Vector2(69, 717.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwwoa"]
 size = Vector2(147, 119)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cflc4"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gyfqm"]
 bg_color = Color(0, 0, 0, 1)
 border_width_left = 4
 border_width_top = 4
@@ -192,10 +192,10 @@ expand_margin_top = 8.0
 expand_margin_right = 8.0
 expand_margin_bottom = 8.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vl8yr"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sqaxm"]
 bg_color = Color(1, 1, 1, 1)
 
-[sub_resource type="Animation" id="Animation_ix7ey"]
+[sub_resource type="Animation" id="Animation_drabc"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -210,7 +210,7 @@ tracks/0/keys = {
 "values": [Vector2(-3.00002, -286)]
 }
 
-[sub_resource type="Animation" id="Animation_ecnvk"]
+[sub_resource type="Animation" id="Animation_ifeok"]
 resource_name = "naik_turun"
 loop_mode = 1
 tracks/0/type = "value"
@@ -226,10 +226,10 @@ tracks/0/keys = {
 "values": [Vector2(-3.00002, -286), Vector2(-3, -251), Vector2(-3, -286)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jl387"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_prj1u"]
 _data = {
-"RESET": SubResource("Animation_ix7ey"),
-"naik_turun": SubResource("Animation_ecnvk")
+"RESET": SubResource("Animation_drabc"),
+"naik_turun": SubResource("Animation_ifeok")
 }
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_mfdjc"]
@@ -561,8 +561,8 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_styles/background = SubResource("StyleBoxFlat_cflc4")
-theme_override_styles/fill = SubResource("StyleBoxFlat_vl8yr")
+theme_override_styles/background = SubResource("StyleBoxFlat_gyfqm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_sqaxm")
 step = 1.0
 show_percentage = false
 
@@ -605,7 +605,7 @@ texture = ExtResource("21_plvay")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="drop_off_tank3"]
 libraries = {
-"": SubResource("AnimationLibrary_jl387")
+"": SubResource("AnimationLibrary_prj1u")
 }
 autoplay = "naik_turun"
 speed_scale = 5.0

@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="7_nn04f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iwwoa"]
+resource_local_to_scene = true
 size = Vector2(147, 119)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cflc4"]
