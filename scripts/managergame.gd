@@ -3,17 +3,17 @@ extends Node
 enum ZONE {EPIPELAGIC, MESOPELAGIC, BATHYPELAGIC, ABYSSOPELAGIC, HADAL}
 var ZONE_DURATION = { \
 	ZONE.EPIPELAGIC:1,\
-	ZONE.MESOPELAGIC:2,\
+	ZONE.MESOPELAGIC:1,\
 	ZONE.BATHYPELAGIC:2,\
-	ZONE.ABYSSOPELAGIC:3,\
-	ZONE.HADAL:3\
+	ZONE.ABYSSOPELAGIC:2,\
+	ZONE.HADAL:2\
 }
 var ZONE_CUMULATIVE_DURATION = { \
 	ZONE.EPIPELAGIC:0, \
 	ZONE.MESOPELAGIC:1, \
-	ZONE.BATHYPELAGIC:3, \
-	ZONE.ABYSSOPELAGIC:5, \
-	ZONE.HADAL:8} # SETIAP KALI UBAH ZONE_DURATION, HARUS UBAH CUMULATIVE JUGA
+	ZONE.BATHYPELAGIC:2, \
+	ZONE.ABYSSOPELAGIC:4, \
+	ZONE.HADAL:6} # SETIAP KALI UBAH ZONE_DURATION, HARUS UBAH CUMULATIVE JUGA
 enum DEATH_REASON {AIR, PRESSURE, MELTDOWN, BIG_FISH}
 
 var next_level
@@ -35,6 +35,7 @@ signal lights_switch(nyala)
 signal spawn_radar()
 signal stop_all()
 signal win()
+signal increase_pressure_bar()
 
 var station_outline = preload("res://shaders/stations/outline.tres")
 var station_silhouette = preload("res://shaders/stations/silhouette.tres")

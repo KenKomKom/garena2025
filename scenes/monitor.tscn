@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cp6q6gl14njn7"]
+[gd_scene load_steps=18 format=3 uid="uid://cp6q6gl14njn7"]
 
 [ext_resource type="Script" path="res://scripts/valve_area.gd" id="1_2f4ox"]
 [ext_resource type="PackedScene" uid="uid://byuo3pffa5pbd" path="res://scenes/spinny_thing.tscn" id="3_o7nyx"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c8i63e17nuduv" path="res://assets/control panel.png" id="7_45bxu"]
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="7_wrwqh"]
 [ext_resource type="Texture2D" uid="uid://w72k54dou4gp" path="res://assets/radar.png" id="8_tyav0"]
+[ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="9_apitd"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fybwp"]
 atlas = ExtResource("7_45bxu")
@@ -126,10 +127,15 @@ self_modulate = Color(0.0784314, 0.580392, 0.109804, 1)
 position = Vector2(59, -30)
 texture = ExtResource("8_tyav0")
 
+[node name="PointLight2D" type="PointLight2D" parent="Radar"]
+energy = 0.6
+texture = ExtResource("9_apitd")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ux1l3")
 }
+autoplay = "radar_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false

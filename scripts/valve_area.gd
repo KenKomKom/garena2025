@@ -10,11 +10,14 @@ var can_take_input = true
 var can_trigger = true
 
 var default : Vector2
+const RADAR_DURATION = 15
+var timer = 0
 
 func _ready():
 	GameManager.connect("lights_switch",lights_switch)
 	GameManager.connect("spawn_radar", spawn_radar)
 	$Sprite2D.play("default")
+	$Radar.visible = false
 
 func lights_switch(status):
 	can_trigger = status
@@ -42,7 +45,12 @@ func _process(delta):
 		$Sprite2D.material = GameManager.station_outline
 	else:
 		$Sprite2D.material = null
-		
+	
+	timer -= delta
+	if timer < 0:
+		$Radar.visible = false
+	else:
+		$Radar.visible = true
 
 func _on_body_entered(body):
 	if body is Player:
@@ -74,7 +82,7 @@ func start_minigame(value):
 	$spinny_thing.set_up(value)
 
 func _on_spinny_thing_success():
-	GameManager.emit_signal("add_pressure_value",-2)
+	GameManager.emit_signal("increase_pressure_bar",-20)
 	GameManager.play_audio("res://audio/Success.mp3",1,0)
 	if player1_triggerer:
 		player1_triggerer.can_move = true
@@ -85,8 +93,6 @@ func _on_spinny_thing_success():
 	can_take_input = true
 
 func spawn_radar():
-	$Radar.visible = true
+	timer = RADAR_DURATION
 	GameManager.play_audio("res://audio/BOATSub_Submarine Sonar Beep Blips.wav")
-	await get_tree().create_timer(15).timeout
-	$Radar.visible = false
 	

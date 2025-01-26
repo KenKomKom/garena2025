@@ -9,6 +9,7 @@ var proc = 0.3
 
 func _ready():
 	GameManager.play_audio_background("res://audio/electric-bass-guitar-loop-4-bpm-110-43630.mp3")
+	GameManager.stop_meltdown()
 
 func _on_start_button_up():
 	$start.texture_normal = load("res://assets/Untitled_Artwork 10.png")

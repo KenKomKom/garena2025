@@ -1,6 +1,6 @@
 extends Control
 
-var value = 6
+var value = 4
 var emittable = true
 @onready var o2bar = %ProgressBar
 var bg_color = Color("#2b5695")
@@ -12,7 +12,6 @@ func _ready():
 	GameManager.connect("game_over", end)
 	o2bar.get_theme_stylebox("background").bg_color = bg_color
 	o2bar.get_theme_stylebox("fill").bg_color = fill_color
-	value = 6
 	GameManager.connect("stop_all", stop_all)
 	GameManager.connect("win", end)
 

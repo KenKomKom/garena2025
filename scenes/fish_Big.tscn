@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dapykj3k7g2j0"]
+[gd_scene load_steps=6 format=3 uid="uid://bjjlv8bhta0y5"]
 
 [ext_resource type="Script" path="res://scripts/AggresiveFish.gd" id="1_kpa0y"]
 [ext_resource type="Texture2D" uid="uid://c5oy5m8teu5b5" path="res://assets/Fish_Big_2.png" id="2_p2w6s"]

@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://c5ysymym45cj0" path="res://assets/white_soft.png" id="3_mrfm5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ojtcg"]
-radius = 215.0
-height = 796.0
+radius = 144.0
+height = 450.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_wd4ae"]
 polygon = PackedVector2Array(103, -851, 175, -904, 199, -1023, 298, -1095, 383, -1117, 494, -1075, 559, -1002, 590, -915, 589, -891, 656, -830, 611, -774, 557, -755, 473, -755, 508, -562, 469, -385, 385, -276, 220, -161, 148, -18, 179, 163, 276, 297, 332, 341, 300, 402, 165, 356, -5, 178, -49, 32, -39, -125, 124, -351, 233, -491, 247, -649, 228, -760, 176, -782, 114, -826)

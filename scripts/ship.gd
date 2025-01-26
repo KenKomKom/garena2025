@@ -223,16 +223,18 @@ func set_up_death_by_fish():
 	
 	GameManager.emit_signal("stop_all")
 	
-	# Delete all fishes
-	var group_nodes = get_tree().get_nodes_in_group("fish")
-	for node in group_nodes:
-		node.queue_free()
+	# Delete all
 	
 	GameManager.play_audio("res://audio/Power Off 01.mp3")
 	
 	await get_tree().create_timer(1).timeout
 	
 	%Camera2D.shake()
+	# delete fishes
+	var group_nodes = get_tree().get_nodes_in_group("fish")
+	for node in group_nodes:
+		node.queue_free()
+		
 	$ikan_death.visible = true
 	$ikan_death.play("pp")
 	var tween = get_tree().create_tween()

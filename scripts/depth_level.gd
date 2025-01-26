@@ -24,7 +24,7 @@ func _process(delta):
 func _on_depth_timer_timeout():
 	$ProgressBar.value = 0
 	var next_zone = GameManager.zone_now+1
-	if GameManager.zone_now>=5:
+	if next_zone>=5:
 		print("YOU WON")
 		GameManager.emit_signal("win")
 		return
