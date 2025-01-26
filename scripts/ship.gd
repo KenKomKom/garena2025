@@ -20,9 +20,9 @@ var once = true
 
 const sea_color = ["#89d9c7","#345885","#212a64","#120d36","#07041f"]
 
-@onready var fish_ok = preload("res://scenes/fish_ok.tscn")
-@onready var fish_odd = preload("res://scenes/fish_odd.tscn")
-@onready var fish_big = preload("res://scenes/fish_big.tscn")
+var fish_ok = preload("res://scenes/fish_ok.tscn")
+var fish_odd = preload("res://scenes/fish_odd.tscn")
+var fish_big = preload("res://scenes/fish_big.tscn")
 
 func _ready():
 	print("game started")

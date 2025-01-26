@@ -125,7 +125,6 @@ func set_status(boolean):
 		status = boolean
 		$"tank empty".visible = true
 		$"tank filled".visible = false
-		$Timer/allert.visible = true
 		%ProgressBar.value = 0
 
 func _on_timer_timeout():

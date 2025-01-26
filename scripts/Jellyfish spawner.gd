@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var jellyfish = preload("res://scenes/jellyfish.tscn")
+var jellyfish = preload("res://scenes/jellyfish.tscn")
 var poses = []
 
 # Called when the node enters the scene tree for the first time.
