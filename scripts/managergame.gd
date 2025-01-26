@@ -127,3 +127,9 @@ func reset_p1():
 func reset_p2():
 	leftp2 = 0
 	rightp2 = 0
+
+func play_meltdown():
+	$meltdown.play()
+
+func stop_meltdown():
+	$meltdown.stop()
