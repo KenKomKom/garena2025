@@ -13,6 +13,9 @@ var can_attacked_fish = false
 var status_lampu = true
 var is_aggresive_fish_in_death_area = 0
 
+var has_won = false
+var once = true
+
 @onready var list_of_available_bocor_spot := $Node2D
 
 const sea_color = ["#89d9c7","#345885","#212a64","#120d36","#07041f"]
@@ -26,10 +29,12 @@ func _ready():
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
 	GameManager.connect("win", win)
-	GameManager.emit_signal("win")
-	#GameManager.emit_signal("zone_reached", GameManager.zone_now)
+	GameManager.emit_signal("zone_reached", GameManager.zone_now)
 	$ikan_death.visible = false
 	$glass.visible = false
+	once = true
+	$CanvasLayer/ColorRect.modulate.a = 0
+	#GameManager.emit_signal("win")
 	#set_up_death_by_fish()
 	GameManager.play_audio_background("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",-3)
 	
@@ -109,12 +114,13 @@ func _on_meltdown_timer_timeout():
 		%SubmarineMain.is_meltdown = true
 		GameManager.emit_signal("start_meltdown")
 		$menltdown_kill.start()
-		GameManager.play_audio("res://audio/Emergency_siren_loop.wav")
+		GameManager.play_meltdown()
 
 func _on_menltdown_kill_timeout():
 	GameManager.emit_signal("game_over", GameManager.DEATH_REASON.MELTDOWN)
 
 func meltdown_done():
+	GameManager.stop_meltdown()
 	%SubmarineMain.is_meltdown = false
 	$menltdown_kill.stop()
 	$meltdown_timer.stop()
@@ -128,6 +134,11 @@ func lights_switch(nyala):
 	status_lampu = nyala
 
 func _process(delta):
+	
+	if has_won:
+		if Input.is_action_just_pressed("leftp1") and Input.is_action_just_pressed("rightp1"):
+			get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
+	
 	if Input.is_key_label_pressed(KEY_R):
 		get_tree().reload_current_scene()
 	
@@ -136,7 +147,9 @@ func _process(delta):
 		
 	# check if fish is in death area
 	if is_aggresive_fish_in_death_area>0 and status_lampu:
-		set_up_death_by_fish()
+		if once:
+			once = false
+			set_up_death_by_fish()
 	
 	if Input.is_action_just_pressed("ui_accept"):
 		_on_attacked_fish_timer_timeout()
@@ -213,7 +226,11 @@ func set_up_death_by_fish():
 func win():
 	%Camera2D.shake()
 	$glass.visible = true
-	#TODO : LENGKAPIN SCENE VICTORY
 	var fucks = $Node2D2.get_children()
 	for f in fucks:
 		f.run()
+	await get_tree().create_timer(1).timeout
+	var tween = get_tree().create_tween()
+	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1,3).set_ease(Tween.EASE_OUT)
+	await tween.finished
+	has_won = true

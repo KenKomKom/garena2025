@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bj5tvvlxr0rqn"]
+[gd_scene load_steps=3 format=3 uid="uid://bj5tvvlxr0rqn"]
 
 [ext_resource type="Script" path="res://scripts/managergame.gd" id="1_uhvrh"]
+[ext_resource type="AudioStream" uid="uid://xneyrhng57nf" path="res://audio/Emergency_siren_loop.wav" id="2_ru1qb"]
 
 [node name="gamemanager" type="Node2D"]
 script = ExtResource("1_uhvrh")
@@ -14,3 +15,6 @@ script = ExtResource("1_uhvrh")
 [node name="audio3" type="AudioStreamPlayer" parent="."]
 
 [node name="audio4" type="AudioStreamPlayer" parent="."]
+
+[node name="meltdown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ru1qb")

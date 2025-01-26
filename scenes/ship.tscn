@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=71 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://digcdwiywuag2" path="res://player_2.tscn" id="22_qb8wm"]
 [ext_resource type="Texture2D" uid="uid://dirxcm5uswdl3" path="res://assets/spritesheet_16.png" id="37_nfbc7"]
 [ext_resource type="Script" path="res://scripts/Jellyfish spawner.gd" id="37_slloy"]
+[ext_resource type="FontFile" uid="uid://cn0isg2ngqae4" path="res://font/Courier New Bold Italic font.ttf" id="43_wg7a4"]
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -295,47 +296,47 @@ texture = ExtResource("17_hs2jj")
 script = ExtResource("5_arokv")
 
 [node name="Node2D2" type="Node2D" parent="."]
-position = Vector2(985.505, 522.5)
+position = Vector2(985.505, 508)
 scale = Vector2(1.71193, 1.61964)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
-position = Vector2(0, 731.105)
+position = Vector2(0, 983.322)
 texture = ExtResource("6_o525l")
 script = ExtResource("7_xbtr2")
 durasi = 1.4
 
 [node name="Sprite2D2" type="Sprite2D" parent="Node2D2"]
-position = Vector2(0, 731.105)
+position = Vector2(0, 983.322)
 texture = ExtResource("7_r1c50")
 script = ExtResource("7_xbtr2")
 durasi = 1.8
 
 [node name="Sprite2D3" type="Sprite2D" parent="Node2D2"]
-position = Vector2(0, 731.105)
+position = Vector2(0, 983.322)
 texture = ExtResource("8_of64l")
 script = ExtResource("7_xbtr2")
 durasi = 2.2
 
 [node name="Sprite2D4" type="Sprite2D" parent="Node2D2"]
-position = Vector2(0, 731.105)
+position = Vector2(0, 983.322)
 texture = ExtResource("10_22xcc")
 script = ExtResource("7_xbtr2")
 durasi = 2.6
 
 [node name="Sprite2D5" type="Sprite2D" parent="Node2D2"]
-position = Vector2(0, 731.105)
+position = Vector2(0, 983.322)
 texture = ExtResource("11_xqa7v")
 script = ExtResource("7_xbtr2")
 durasi = 3.0
 
 [node name="Sprite2D6" type="Sprite2D" parent="Node2D2"]
-position = Vector2(0, 731.105)
+position = Vector2(0, 983.322)
 texture = ExtResource("12_5l48g")
 script = ExtResource("7_xbtr2")
 durasi = 3.0
 
 [node name="Sprite2D7" type="Sprite2D" parent="Node2D2"]
-position = Vector2(0, 731.105)
+position = Vector2(0, 983.322)
 texture = ExtResource("12_5l48g")
 script = ExtResource("7_xbtr2")
 durasi = 3.4
@@ -654,10 +655,66 @@ modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -117.0
+offset_top = 332.0
+offset_right = 157.0
+offset_bottom = -224.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 1)
+color = Color(0.552941, 0.552941, 0.552941, 0.796078)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("43_wg7a4")
+theme_override_font_sizes/font_size = 150
+text = "YOU WIN"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label3" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("43_wg7a4")
+theme_override_font_sizes/font_size = 48
+text = "Press"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("18_m6wpv")
+expand_mode = 2
+
+[node name="Label4" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("43_wg7a4")
+theme_override_font_sizes/font_size = 48
+text = "and"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("19_v76c6")
+expand_mode = 2
+
+[node name="Label5" type="Label" parent="CanvasLayer/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("43_wg7a4")
+theme_override_font_sizes/font_size = 48
+text = "to Close"
+horizontal_alignment = 1
 
 [node name="bocor_timer" type="Timer" parent="."]
 wait_time = 7.0
