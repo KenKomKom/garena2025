@@ -26,7 +26,8 @@ func _ready():
 	GameManager.connect("meltdown_done", meltdown_done)
 	GameManager.connect("lights_switch", lights_switch)
 	GameManager.connect("win", win)
-	GameManager.emit_signal("zone_reached", GameManager.zone_now)
+	#GameManager.emit_signal("zone_reached", GameManager.zone_now)
+	$ikan_death.visible = false
 	$glass.visible = false
 	set_up_death_by_fish()
 	GameManager.play_audio_background("res://audio/LDj_Audio - Submarine Ambience (Mp3).mp3",-3)
@@ -193,17 +194,25 @@ func _on_attacked_fish_timer_timeout():
 func set_up_death_by_fish():
 	%Camera2D.shake()
 	$glass.visible = true
+	GameManager.play_audio("res://audio/GlassBreakCracksG PE1050903.wav")
+	await get_tree().create_timer(2).timeout
+	
 	GameManager.emit_signal("stop_all")
 	GameManager.play_audio("res://audio/Power Off 01.mp3")
-	await get_tree().create_timer(0.6).timeout
-	#TODO : play animasi
-	$ikan_death.play("")
+	await get_tree().create_timer(1).timeout
+	%Camera2D.shake()
+	$ikan_death.visible = true
+	$ikan_death.play("pp")
+	var tween = get_tree().create_tween()
+	tween.tween_property($PointLight2D, "energy", 3,2).set_ease(Tween.EASE_OUT)
 	await $ikan_death.animation_finished
+	await get_tree().create_timer(2).timeout
 	GameManager.emit_signal("game_over", GameManager.DEATH_REASON.BIG_FISH)
 
 func win():
-	var tween = get_tree().create_tween()
-	tween.tween_property($CanvasLayer/ColorRect, "modulate:a", 1.0,2)
-	await tween.finished
+	%Camera2D.shake()
+	$glass.visible = true
 	#TODO : LENGKAPIN SCENE VICTORY
-	get_tree().change_scene_to_file("res://scenes/victory.tscn")
+	var fucks = $Node2D2.get_children()
+	for f in fucks:
+		f.run()

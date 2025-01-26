@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bjho0pes2mkkk"]
+[gd_scene load_steps=69 format=3 uid="uid://bjho0pes2mkkk"]
 
 [ext_resource type="Script" path="res://scripts/ship.gd" id="1_flnp7"]
 [ext_resource type="PackedScene" uid="uid://c03tl6n7esv2t" path="res://player.tscn" id="2_4b3cq"]
@@ -9,14 +9,21 @@
 [ext_resource type="PackedScene" uid="uid://dksg0hhm72jl2" path="res://scenes/floor_changer.tscn" id="4_wyh5w"]
 [ext_resource type="Script" path="res://scripts/water_display.gd" id="5_arokv"]
 [ext_resource type="PackedScene" uid="uid://cdhum33vaepwc" path="res://scenes/tanky_pick_up.tscn" id="5_kbbad"]
+[ext_resource type="Texture2D" uid="uid://yng4xj45jdlm" path="res://assets/Untitled_Artwork 12.png" id="6_o525l"]
 [ext_resource type="PackedScene" uid="uid://svtdbpv3febx" path="res://scenes/drop_off_tank.tscn" id="6_spgnf"]
 [ext_resource type="Texture2D" uid="uid://gvnp4qcxctw0" path="res://assets/senter.png" id="6_x54mt"]
 [ext_resource type="Texture2D" uid="uid://c83emtskkqt6c" path="res://assets/vignette.png" id="7_aas6q"]
+[ext_resource type="Texture2D" uid="uid://dqmrnsqxdbgyr" path="res://assets/Untitled_Artwork 13.png" id="7_r1c50"]
 [ext_resource type="PackedScene" uid="uid://b55xmufhhmnqf" path="res://scenes/depth_level.tscn" id="7_ufoe0"]
+[ext_resource type="Script" path="res://scripts/paralax_unit.gd" id="7_xbtr2"]
+[ext_resource type="Texture2D" uid="uid://bo7uih6u1bmae" path="res://assets/Untitled_Artwork 14.png" id="8_of64l"]
 [ext_resource type="PackedScene" uid="uid://cnn2k8adfc1rb" path="res://scenes/o_2_bar.tscn" id="8_p8u8m"]
 [ext_resource type="PackedScene" uid="uid://d4itx6auhrctj" path="res://scenes/pressurebar.tscn" id="9_o8ebk"]
+[ext_resource type="Texture2D" uid="uid://cotdyifh1a4hk" path="res://assets/Untitled_Artwork 16.png" id="10_22xcc"]
 [ext_resource type="PackedScene" uid="uid://clgf8cinhemr6" path="res://scenes/gameoverscreen.tscn" id="10_hj736"]
+[ext_resource type="Texture2D" uid="uid://dy2xqawf0w60c" path="res://assets/Untitled_Artwork 17.png" id="11_xqa7v"]
 [ext_resource type="PackedScene" uid="uid://br0oecw3gpeef" path="res://scenes/camera_2d.tscn" id="12_2w4m7"]
+[ext_resource type="Texture2D" uid="uid://cg4sby1wtmg5v" path="res://assets/Untitled_Artwork 18.png" id="12_5l48g"]
 [ext_resource type="PackedScene" uid="uid://cp6q6gl14njn7" path="res://scenes/monitor.tscn" id="12_a5rk3"]
 [ext_resource type="Texture2D" uid="uid://cng2edw271hod" path="res://assets/cover.png" id="12_ek5i2"]
 [ext_resource type="Script" path="res://scripts/drop_off_tank.gd" id="13_bkb1i"]
@@ -36,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://cc07hyvwd1mfi" path="res://assets/R.png" id="21_plvay"]
 [ext_resource type="Texture2D" uid="uid://cax8u3sj4reao" path="res://assets/segitga.png" id="22_k0lnr"]
 [ext_resource type="PackedScene" uid="uid://digcdwiywuag2" path="res://player_2.tscn" id="22_qb8wm"]
+[ext_resource type="Texture2D" uid="uid://dirxcm5uswdl3" path="res://assets/spritesheet_16.png" id="37_nfbc7"]
 
 [sub_resource type="Curve" id="Curve_wjsnp"]
 _data = [Vector2(0, 0.549451), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
@@ -94,6 +102,56 @@ shader_parameter/time = 0.0
 shader_parameter/speed = 3.0
 shader_parameter/frequency = 5.0
 shader_parameter/amplitude = 0.01
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxlwj"]
+atlas = ExtResource("37_nfbc7")
+region = Rect2(0, 0, 906, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5edvo"]
+atlas = ExtResource("37_nfbc7")
+region = Rect2(906, 0, 906, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e78k7"]
+atlas = ExtResource("37_nfbc7")
+region = Rect2(1812, 0, 906, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aknep"]
+atlas = ExtResource("37_nfbc7")
+region = Rect2(2718, 0, 906, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8rnbx"]
+atlas = ExtResource("37_nfbc7")
+region = Rect2(3624, 0, 906, 560)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0p5pb"]
+atlas = ExtResource("37_nfbc7")
+region = Rect2(4530, 0, 906, 560)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_grxc6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxlwj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5edvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e78k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aknep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8rnbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0p5pb")
+}],
+"loop": false,
+"name": &"pp",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgx55"]
 size = Vector2(2119, 104)
@@ -234,6 +292,66 @@ position = Vector2(896, 548)
 scale = Vector2(18.92, 11.96)
 texture = ExtResource("17_hs2jj")
 script = ExtResource("5_arokv")
+
+[node name="Node2D2" type="Node2D" parent="."]
+position = Vector2(985.505, 522.5)
+scale = Vector2(1.71193, 1.61964)
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D2"]
+position = Vector2(0, 731.105)
+texture = ExtResource("6_o525l")
+script = ExtResource("7_xbtr2")
+durasi = 1.4
+
+[node name="Sprite2D2" type="Sprite2D" parent="Node2D2"]
+position = Vector2(0, 731.105)
+texture = ExtResource("7_r1c50")
+script = ExtResource("7_xbtr2")
+durasi = 1.8
+
+[node name="Sprite2D3" type="Sprite2D" parent="Node2D2"]
+position = Vector2(0, 731.105)
+texture = ExtResource("8_of64l")
+script = ExtResource("7_xbtr2")
+durasi = 2.2
+
+[node name="Sprite2D4" type="Sprite2D" parent="Node2D2"]
+position = Vector2(0, 731.105)
+texture = ExtResource("10_22xcc")
+script = ExtResource("7_xbtr2")
+durasi = 2.6
+
+[node name="Sprite2D5" type="Sprite2D" parent="Node2D2"]
+position = Vector2(0, 731.105)
+texture = ExtResource("11_xqa7v")
+script = ExtResource("7_xbtr2")
+durasi = 3.0
+
+[node name="Sprite2D6" type="Sprite2D" parent="Node2D2"]
+position = Vector2(0, 731.105)
+texture = ExtResource("12_5l48g")
+script = ExtResource("7_xbtr2")
+durasi = 3.0
+
+[node name="Sprite2D7" type="Sprite2D" parent="Node2D2"]
+position = Vector2(0, 731.105)
+texture = ExtResource("12_5l48g")
+script = ExtResource("7_xbtr2")
+durasi = 3.4
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(927, 496)
+scale = Vector2(1.71193, 1.61964)
+energy = 0.0
+texture = ExtResource("17_hs2jj")
+texture_scale = 9.33
+
+[node name="ikan_death" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(985.505, 522.5)
+scale = Vector2(1.71193, 1.61964)
+sprite_frames = SubResource("SpriteFrames_grxc6")
+animation = &"pp"
 
 [node name="glass" type="Sprite2D" parent="."]
 visible = false
@@ -611,9 +729,6 @@ visibility_layer = 2
 position = Vector2(-134, -108)
 occluder = SubResource("OccluderPolygon2D_mfdjc")
 occluder_light_mask = 2
-
-[node name="ikan_death" type="AnimatedSprite2D" parent="."]
-visible = false
 
 [connection signal="timeout" from="explode_fish" to="." method="_on_explode_fish_timeout"]
 [connection signal="body_entered" from="drop_off_tank3" to="drop_off_tank3" method="_on_body_entered"]

@@ -35,6 +35,6 @@ func _on_timer_timeout():
 	if o2bar.value<=0 and emittable:
 		GameManager.emit_signal("game_over", GameManager.DEATH_REASON.AIR)
 
-func end(_why):
+func end(_why=null):
 	emittable = false
 	visible = false

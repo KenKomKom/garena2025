@@ -1,3 +1,39 @@
-[gd_scene format=3 uid="uid://d01co8netdvhr"]
+[gd_scene load_steps=3 format=3 uid="uid://d01co8netdvhr"]
+
+[ext_resource type="Texture2D" uid="uid://csb06nv0c3bc3" path="res://icon.svg" id="1_g4kmj"]
+[ext_resource type="Script" path="res://scripts/paralax_unit.gd" id="2_kttvj"]
 
 [node name="victory" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(972, 536)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(673, 1206)
+texture = ExtResource("1_g4kmj")
+script = ExtResource("2_kttvj")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1073, 1138)
+texture = ExtResource("1_g4kmj")
+script = ExtResource("2_kttvj")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(1445, 1522)
+texture = ExtResource("1_g4kmj")
+script = ExtResource("2_kttvj")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(541, 1566)
+texture = ExtResource("1_g4kmj")
+script = ExtResource("2_kttvj")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(437, 1194)
+texture = ExtResource("1_g4kmj")
+script = ExtResource("2_kttvj")
+
+[node name="Sprite2D6" type="Sprite2D" parent="."]
+position = Vector2(901, 1430)
+texture = ExtResource("1_g4kmj")
+script = ExtResource("2_kttvj")

@@ -25,6 +25,6 @@ func _on_timer_timeout():
 	if pressure_bar.value>=100 and emittable:
 		GameManager.emit_signal("game_over", GameManager.DEATH_REASON.PRESSURE)
 
-func end(_why):
+func end(_why=null):
 	emittable = false
 	visible = false
