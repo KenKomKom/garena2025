@@ -241,7 +241,7 @@ metadata/_edit_horizontal_guides_ = [932.0]
 metadata/_edit_vertical_guides_ = [730.0, 1544.0]
 
 [node name="Water" type="Sprite2D" parent="."]
-modulate = Color(0.0128434, 0.0308231, 0.216842, 1)
+modulate = Color(0.987727, 0.991275, 0.999684, 1)
 light_mask = 2
 visibility_layer = 2
 z_index = -2
