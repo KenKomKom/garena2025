@@ -20,7 +20,7 @@ func _on_start_button_up():
 
 func _on_credits_button_up():
 	opening_credits = true
-	$start.texture_normal = load("res://assets/Untitled_Artwork 11.png")
+	$credits.texture_normal = load("res://assets/Untitled_Artwork 11.png")
 	GameManager.play_audio("res://audio/buttons-67224.ogg")
 	$credits2.show()
 
